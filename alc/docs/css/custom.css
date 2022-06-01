@@ -1,0 +1,18 @@
+[data-md-color-scheme="syngenta-light"] {
+    --md-primary-fg-color:        #70D979;
+}
+[data-md-color-scheme="syngenta-dark"] {
+    --md-primary-fg-color:        #01004C;
+}
+
+.md-copyright {
+    display: none;
+}
+.md-header__button.md-logo :-webkit-any(img,svg){
+    background: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+    height: 60px;
+    width: 60px;
+}

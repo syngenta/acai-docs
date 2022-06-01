@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+mkdocs = "*"
+mkdocs-cinder = "*"
+mkdocs-bootstrap = "*"
+mkdocs-material = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
+
+[scripts]
+create = "mkdocs new alc"
+serve = "mkdocs serve"
