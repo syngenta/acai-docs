@@ -1,5 +1,17 @@
 site_name: AWS Lambda Client (ALC)
 site_url: https://alc.syngenta-digital.com
+site_author: Syngenta Digital
+repo_url: https://github.com/syngenta-digital/package-node-alc
+nav:
+    - Home: index.md
+    - Node:
+        - node/install.md
+    - Python:
+        - python/install.md
+    - Rust:
+        - rust/install.md
+    - Typescript:
+        - typescript/install.md
 theme:
     name: material
     logo: https://avatars.githubusercontent.com/u/65528694?s=200&v=4
