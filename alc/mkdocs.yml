@@ -1,11 +1,14 @@
 site_name: AWS Lambda Client (ALC)
 site_url: https://alc.syngenta-digital.com
 site_author: Syngenta Digital
-repo_url: https://github.com/syngenta-digital/package-node-alc
 nav:
     - Home: index.md
     - Node:
         - node/install.md
+        - Event Handler:
+            - API Gateway (REST API):
+                - node/apigateway/index.md
+                - node/apigateway/router.md
     - Python:
         - python/install.md
     - Rust:
@@ -38,8 +41,36 @@ theme:
         next: 78     # n
         previous: 80 # p
         search: 83   # s
+    features:
+        - navigation.top
+        - navigation.instant
+        - navigation.indexes
+        - navigation.tracking
+        - content.code.annotate
+markdown_extensions:
+    - admonition
+    - pymdownx.tabbed:
+        alternate_style: true
+    - pymdownx.highlight:
+        linenums: true
+    - pymdownx.details
+    - pymdownx.snippets:
+        base_path: "."
+        check_paths: true
+    - meta
+    - toc:
+        permalink: true
+        toc_depth: 4
+    - pymdownx.superfences:
+        custom_fences:
+            -
+                name: mermaid
+                class: mermaid
+                format: !!python/name:pymdownx.superfences.fence_code_format
+plugins:
+    - search
 extra_css:
-    - css/custom.css
+    - extra.css
 
 ### colors ###
 # blue: #01004C

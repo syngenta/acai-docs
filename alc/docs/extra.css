@@ -5,7 +5,7 @@
     --md-primary-fg-color:        #01004C;
 }
 
-.md-copyright {
+.md-copyright, .md-footer {
     display: none;
 }
 .md-header__button.md-logo :-webkit-any(img,svg){
