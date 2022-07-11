@@ -28,25 +28,32 @@ functions:
 
 ### 2. Configure the Router
 
-There are three routing modes: `directory`, `pattern` and `list`; `directory` and `pattern` routing mode requires your project files to be placed in a particular way; `list` does not require any structure, as you define every route and it's corresponding file. Below are the three ways configure your router:
+There are three routing modes: `directory`, `pattern` and `list`; `directory` and `pattern` routing mode requires your project files to be placed in a particular way; `list` does not require any structure, as you define every route and it's corresponding file. There is also a an option to use `strictRouting` mode with `directory` or `pattern` which will use dynamic file names. Below are the three ways configure your router:
 
 #### Routing Mode: Directory [Best]
 
 ???+ info
-    If you are using route params, the router will follow the route as if the route parameters didn't exist (seeing this `/v1/farm/:farmId/field/:fieldId` as `/v1/farm/field`).
+    If you are using route params, you will need use dynamic file names which follow this pattern: `{some-variable-name}.js`.
 
 === "file structure"
 
     ```
-    ~~ Directory ~~          ~~ Route ~~
-    ======================================
-    📦api/v1/               |
-    │---📂handler           |
-        │---📜router.js     |
-        │---📜grower.js     | /v1/grower
-        │---📂farm          |
-            │---📜index.js  | /v1/farm
-            │---📜field.js  | /v1/farm/:farmId/field/:fieldId
+    ~~ Directory ~~                     ~~ Route ~~
+    ===================================================================
+    📦api/v1/                           |          
+    │---📂handler                       |           
+        │---📜router.js                 |
+        │---📜login.js                  | /v1/login    
+        │---📂grower                    |
+            │---📜index.js              | /v1/grower
+            │---📜{growerId}.js         | /v1/grower/{growerId}
+        │---📂farm                      |
+            │---📜index.js              | /v1/farm
+            │---📂{farmId}              |
+                │---📜index.js          | /v1/farm/{farmId}
+                │---📂field             |
+                    │---📜index.js      | /v1/farm/{farmId}/field
+                    │---📜{fieldId}.js  | /v1/farm/{farmId}/field/{fieldId}
     ```
 
 === "router.js"
@@ -65,7 +72,7 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
     };
     ```
 
-#### Routing Mode: Pattern [Better]
+#### Routing Mode: Pattern (non-strict) [Better]
 
 ???+ info
     You can use any [glob](https://en.wikipedia.org/wiki/Glob_(programming)) pattern you like; common patterns are:
@@ -79,24 +86,33 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
 === "file structure"
 
     ```
-    ~~ Pattern ~~                           ~~ Route ~~
-    ======================================================
-    📦api/v1/                               |
-    │---📂handler                           |
-        │---📜router.js                     |
-        │---📂grower                        |
-            │---📜grower.controller.js      | /v1/grower
-            │---📜grower.model.js           |
-            │---📜grower.factory.js         |
-            │---📜grower.logic.js           |
-        │---📂farm                          |
-            │---📜farm.controller.js        | /v1/farm
-            │---📜farm.logic.js             |
-            │---📜farm.model.js             |
-            │---📂field                     |
-                │---📜field.controller.js   | /v1/farm/:farmId/field/:fieldId
-                │---📜field.logic.js        |
-                │---📜field.model.js        |
+    ~~ Pattern ~~                               ~~ Route ~~
+    ================================================================================
+    📦api/v1/                                       |
+    │---📂handler                                   |
+        │---📜router.js                             |
+        │---📂login                                 |
+            │---📜grower.controller.js              | /v1/login
+            │---📜grower.model.js                   |
+            │---📜grower.factory.js                 |
+            │---📜grower.logic.js                   |
+        │---📂grower                                |
+            │---📜grower.controller.js              | /v1/grower
+            │---📜{growerId}.controller.js          | /v1/grower/{growerId}
+            │---📜grower.model.js                   |
+            │---📜grower.factory.js                 |
+            │---📜grower.logic.js                   |
+        │---📂farm                                  |
+            │---📜farm.controller.js                | /v1/farm
+            │---📜farm.logic.js                     |
+            │---📜farm.model.js                     |
+            │---📂{farmId}                          |
+                │---📜{farmId}.controller.js        | /v1/farm/{farmId}
+                │---📂field                         |
+                    │---📜field.controller.js       | /v1/farm/{farmId}/field
+                    │---📜{fieldID}.controller.js   | /v1/farm/{farmId}/field/{fieldId}
+                    │---📜field.logic.js            |
+                    │---📜field.model.js            |
     ```
 
 === "router.js"
@@ -119,6 +135,9 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
 
 ???+ info
     It may be more maintainable to store your routes list in a separate file, this example does not have that for brevity
+
+???+ warning
+    Even though you are matching your files to your routes, the handler files must have functions that match HTTP method (see endpoint examples here)
 
 === "file structure"
 
@@ -143,7 +162,7 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
             handlerList: {
                 'GET::grower': 'api/v1/routes/grower.js',
                 'POST::farm': 'api/v1/routes/farm.js',
-                'PUT:farm/:farmId/field/:fieldId': 'api/v1/routes/farm-field.js'
+                'PUT:farm/{farmId}/field/{fieldId}': 'api/v1/routes/farm-field.js'
             }
         });
         return router.route();

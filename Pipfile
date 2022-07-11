@@ -15,5 +15,4 @@ mkdocs-material = "*"
 python_version = "3.8"
 
 [scripts]
-create = "mkdocs new alc"
 serve = "mkdocs serve"
