@@ -1,5 +1,5 @@
 ---
-title: API Gateway (REST API)
+title: REST
 description: Use ALC with API Gateway as a REST API
 ---
 

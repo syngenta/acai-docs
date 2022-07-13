@@ -6,14 +6,26 @@ nav:
     - Node:
         - node/install.md
         - Event Handler:
-            - API Gateway (REST API):
-                - node/apigateway/index.md
+            - API Gateway (REST):
+                - node/apigateway/rest/index.md
                 - Router:
                     - node/apigateway/router/setup.md
                     - node/apigateway/router/configurations.md
                 - EndPoint:
                     - node/apigateway/endpoint/setup.md
                     - node/apigateway/endpoint/configurations.md
+                - node/apigateway/request.md
+                - node/apigateway/response.md
+            - API Gateway (GraphQL):
+                - node/apigateway/graphql/index.md
+                - Router:
+                    - node/apigateway/router/setup.md
+                    - node/apigateway/router/configurations.md
+                - EndPoint:
+                    - node/apigateway/endpoint/setup.md
+                    - node/apigateway/endpoint/configurations.md
+                - node/apigateway/request.md
+                - node/apigateway/response.md
     - Python:
         - python/install.md
     - Rust:
