@@ -8,7 +8,10 @@ nav:
         - Event Handler:
             - API Gateway (REST API):
                 - node/apigateway/index.md
-                - node/apigateway/router.md
+                - Router:
+                    - node/apigateway/router/setup.md
+                - EndPoint:
+                    - node/apigateway/endpoint/setup.md
     - Python:
         - python/install.md
     - Rust:

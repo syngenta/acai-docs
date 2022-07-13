@@ -1,9 +1,9 @@
 ---
-title: Router Set Up
+title: Set Up
 description: How to use the ALC Router
 ---
 
-## Set Up
+## Router Set Up
 
 ???+ tip
     View our full project examples here, to have a broader context of what is going on.
@@ -30,7 +30,7 @@ functions:
 
 There are three routing modes: `directory`, `pattern` and `list`; `directory` and `pattern` routing mode requires your project files to be placed in a particular way; `list` does not require any structure, as you define every route and it's corresponding file. There is also a an option to use `strictRouting` mode with `directory` or `pattern` which will use dynamic file names. Below are the three ways configure your router:
 
-#### Routing Mode: Directory [Best]
+#### Routing Mode: Directory
 
 ???+ info
     If you are using route params, you will need use dynamic file names which follow this pattern: `{some-variable-name}.js`.
@@ -72,7 +72,7 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
     };
     ```
 
-#### Routing Mode: Pattern (non-strict) [Better]
+#### Routing Mode: Pattern
 
 ???+ info
     You can use any [glob](https://en.wikipedia.org/wiki/Glob_(programming)) pattern you like; common patterns are:
@@ -86,16 +86,16 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
 === "file structure"
 
     ```
-    ~~ Pattern ~~                               ~~ Route ~~
+    ~~ Pattern ~~                                   ~~ Route ~~
     ================================================================================
     📦api/v1/                                       |
     │---📂handler                                   |
         │---📜router.js                             |
         │---📂login                                 |
-            │---📜grower.controller.js              | /v1/login
-            │---📜grower.model.js                   |
-            │---📜grower.factory.js                 |
-            │---📜grower.logic.js                   |
+            │---📜login.controller.js               | /v1/login
+            │---📜login.model.js                    |
+            │---📜login.factory.js                  |
+            │---📜login.logic.js                    |
         │---📂grower                                |
             │---📜grower.controller.js              | /v1/grower
             │---📜{growerId}.controller.js          | /v1/grower/{growerId}
@@ -110,7 +110,7 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
                 │---📜{farmId}.controller.js        | /v1/farm/{farmId}
                 │---📂field                         |
                     │---📜field.controller.js       | /v1/farm/{farmId}/field
-                    │---📜{fieldID}.controller.js   | /v1/farm/{farmId}/field/{fieldId}
+                    │---📜{fieldId}.controller.js   | /v1/farm/{farmId}/field/{fieldId}
                     │---📜field.logic.js            |
                     │---📜field.model.js            |
     ```
@@ -131,13 +131,16 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
     };
     ```
 
-#### Routing Mode: List [Good]
+#### Routing Mode: List
 
 ???+ info
     It may be more maintainable to store your routes list in a separate file, this example does not have that for brevity
 
 ???+ warning
     Even though you are matching your files to your routes, the handler files must have functions that match HTTP method (see endpoint examples here)
+
+???+ danger
+    This is not the preferred routing mode to use; this can lead to a sloppy, unpredictable project architecture which will be hard to maintain and extend. This is *NOT RECOMMENDED*.
 
 === "file structure"
 
@@ -168,3 +171,41 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
         return router.route();
     };
     ```
+
+
+### 3. Configure the Endpoint File
+
+Every endpoint file should contain a function with matches an [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) in lower case. Most common are `post`, `get`, `put`, `patch`, `delete`, but this library does support custom methods, if you so choose. As long as the method of the request matches the function name, it will work.
+
+```js
+exports.post = async (request, response) => {
+    response.body = {post: true};
+    return response;
+};
+
+exports.get = async (request, response) => {
+    response.body = {get: true};
+    return response;
+};
+
+exports.patch = async (request, response) => {
+    response.body = {patch: true};
+    return response;
+};
+
+exports.put = async (request, response) => {
+    response.body = {put: true};
+    return response;
+};
+
+exports.delete = async (request, response) => {
+    response.body = {delete: true};
+    return response;
+};
+
+// this is non-compliant, custom http method; this will work.
+exports.query = async (request, response) => {
+    response.body = [{query: true}];
+    return response;
+};
+```
