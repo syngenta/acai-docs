@@ -25,7 +25,7 @@ As mentioned previously, the router is highly configurable to each project needs
 | **`afterAll`**          | func  | no                                  | will call this function after EVERY request to the API                            |
 | **`withAuth`**          | func  | no                                  | will call this function when `requirements` have `requiredAuth` set to `true`     |
 | **`onError`**           | func  | no                                  | will call this function on every unhandled error; not including validation errors |
-| **`loggerCallback`**    | func  | no                                  | will call this function on every call to `globalLogger`                           |
+| **`loggerCallback`**    | func  | no                                  | will call this function on every call to `global.logger`                           |
 
 ### Example: Router Config with Directory Routing
 
