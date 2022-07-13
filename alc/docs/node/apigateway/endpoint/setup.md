@@ -54,110 +54,43 @@ exports.query = async (request, response) => {
 
 ### 2. Configure the Requirements
 
-Each method within the endpoint file can have individual validation requirements.
+Each method within the endpoint file can have individual validation requirements. These requirements allow you test all structural points of the request, with the ability to use JSONSchema and custom middleware to further extend the validation options. Below is an example of a full requirements object:
 
-
-#### `requiredHeaders`
+???+ info
+    See the full configuration list, explanation and example of each setting in our [Validations Section]({{web.url}}/node/apigateway/endpoint/configurations/).
 
 ```js
+// example for endpoint file: api/v1/grower.js
 
 exports.requirements = {
     post: {
-        requiredHeaders: ['x-onbehalf-of']
-    }
-};
-```
-
-#### `availableHeaders`
-
-```js
-
-exports.requirements = {
-    post: {
-        availableHeaders: ['x-onbehalf-of']
-    }
-};
-```
-
-#### `requiredQuery`
-
-```js
-
-exports.requirements = {
-    get: {
-        requiredQuery: ['requester_id']
-    }
-};
-```
-
-#### `availableQuery`
-
-```js
-
-exports.requirements = {
-    get: {
-        availableQuery: ['grower_email', 'grower_phone', 'grower_first', 'grower_last'],
-    }
-};
-```
-
-#### `requiredPath`
-
-```js
-
-exports.requirements = {
-    put: {
-        requiredPath: 'v1/grower/{id}'
-    }
-};
-```
-
-#### `requiredBody`
-
-```js
-
-exports.requirements = {
-    post: {
+        requiredHeaders: ['x-onbehalf-of'],
+        availableHeaders: ['x-requester-id', 'x-test-id'], //not advisable to use; too strict
         requiredBody: 'v1-post-grower-request'
-    }
-};
-```
-
-
-#### `requiredAuth`
-
-```js
-
-exports.requirements = {
-    post:{
-        requiredAuth: true
-    }
-};
-```
-
-#### `before`
-
-```js
-
-exports.requirements = {
+    },
+    get: {
+        requiredQuery: ['requester_id'],
+        availableQuery: ['grower_email', 'grower_phone', 'grower_first', 'grower_last'],
+    },
+    put: {
+        requiredPath: 'v1/grower/{id}',
+        requiredAuth: true,
+        requiredBody: 'v1-put-grower-request'
+    },
     patch: {
-        before: async (request, response, requirements) => {
+        requiredPath: 'v1/grower/{id}',
+        requiredAuth: true,
+        requiredBody: 'v1-patch-grower-request'
+        before: async (request, response, requirements) => { // might be cleaner to put this in a separate file and call in context.
             const result = await db.checkGrowerIdExists(request.pathParams.id);
             if (!result){
                 response.setError('grower/{id}', `grower with id: ${id} does not exist.`);
             }
         }
-    }
-};
-```
-
-#### `after`
-
-```js
-
-exports.requirements = {
-    get: {
-        after: async (request, response, requirements) => {
+    },
+    delete: {
+        requiredPath: 'v1/grower/{id}',
+        after: async (request, response, requirements) => { // might be cleaner to put this in a separate file and call in context.
             const relations = await db.getRequesterRelations(request.headers['x-requester-id']);
             const results = []
             for (const grower in response.rawBody){
@@ -170,26 +103,34 @@ exports.requirements = {
         }
     }
 };
-```
 
-#### `dataClass`
-
-```js
-
-exports.requirements = {
-    post: {
-        dataClass: Grower
-    }
+exports.post = async (request, response) => {
+    response.body = {message: '[POST] /v1/grower was called'};
+    return response;
 };
-```
 
-#### custom requirements (example)
+exports.get = async (request, response) => {
+    response.body = {message: '[GET] /v1/grower was called'};
+    return response;
+};
 
-```js
+exports.patch = async (request, response) => {
+    response.body = {message: '[PATCH] /v1/grower was called'};
+    return response;
+};
 
-exports.requirements = {
-    post:{
-        myCustomBeforeAllPermission: ['allow-delete-grower']
-    }
+exports.put = async (request, response) => {
+    response.body = {message: '[PUT] /v1/grower was called'};
+    return response;
+};
+
+exports.delete = async (request, response) => {
+    response.body = {message: '[DELETE] /v1/grower was called'};
+    return response;
+};
+
+exports.query = async (request, response) => {
+    response.body = {message: '[QUERY] /v1/grower, a custom http method, was called'};
+    return response;
 };
 ```

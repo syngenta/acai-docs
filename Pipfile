@@ -8,6 +8,7 @@ mkdocs = "*"
 mkdocs-cinder = "*"
 mkdocs-bootstrap = "*"
 mkdocs-material = "*"
+mkdocs-markdownextradata-plugin = "*"
 
 [dev-packages]
 

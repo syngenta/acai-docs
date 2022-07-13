@@ -10,8 +10,10 @@ nav:
                 - node/apigateway/index.md
                 - Router:
                     - node/apigateway/router/setup.md
+                    - node/apigateway/router/configurations.md
                 - EndPoint:
                     - node/apigateway/endpoint/setup.md
+                    - node/apigateway/endpoint/configurations.md
     - Python:
         - python/install.md
     - Rust:
@@ -72,6 +74,10 @@ markdown_extensions:
                 format: !!python/name:pymdownx.superfences.fence_code_format
 plugins:
     - search
+    - markdownextradata
+extra:
+    web:
+        url: http://127.0.0.1:8000
 extra_css:
     - extra.css
 
