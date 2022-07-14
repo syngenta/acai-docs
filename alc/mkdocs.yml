@@ -5,7 +5,7 @@ nav:
     - Home: index.md
     - Node:
         - node/install.md
-        - Event Handler:
+        - Event Handlers:
             - APIGateway:
                 - node/apigateway/index.md
                 - Router:
@@ -24,6 +24,10 @@ nav:
                 - node/s3/index.md
                 - node/s3/configurations.md
                 - node/s3/record.md
+            - SNS/SQS:
+                - node/sqs/index.md
+                - node/sqs/configurations.md
+                - node/sqs/record.md
     - Python:
         - python/install.md
     - Rust:
@@ -103,7 +107,6 @@ extra_css:
     # bg: blue
     # text: white
     # links: green
-
 # light mode:
     # bg: white
     # text: blue

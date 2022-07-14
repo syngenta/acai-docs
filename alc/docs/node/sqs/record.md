@@ -1,0 +1,126 @@
+---
+title: Record
+description: Review SNS/SQS Record Structure
+---
+
+## SNS/SQS Record Object
+
+The SNS/SQS event will by default provide instances of `record` classes which will be easier to work with then standard lambda event record object. This is the same object which will be passed down to the `dataClass`, if you provide on in your configuration. Below is a list of all the properties and example outputs for the SNS/SQS event record:
+
+???+ example
+    Don't like reading documentation? Then look at our examples which can run locally! :nerd:
+
+### Record Properties
+
+| property                                                                        | type  | description                                                      |
+|---------------------------------------------------------------------------------|-------|------------------------------------------------------------------|
+| **[`attributes`]({{web.url}}/node/sqs/record/#record.attributes)**               | object| the attributes of the message                                    |
+| **[`body`]({{web.url}}/node/sqs/record/#record.body)**                           | object| the object from the bucket in memory; decodes json automatically |
+| **[`eventSource`]({{web.url}}/node/sqs/record/#record.eventSource)**             | str   | the source of the event which invoked the lambda                 |
+| **[`md5OfBody`]({{web.url}}/node/sqs/record/#record.md5OfBody)**                 | str   | the message in an md4 hash format                                |
+| **[`messageAttributes`]({{web.url}}/node/sqs/record/#record.messageAttributes)** | object| the attributes of the message, flattened                         |
+| **[`messageId`]({{web.url}}/node/sqs/record/#record.messageId)**                 | str   | the id of message                                                |
+| **[`rawBody`]({{web.url}}/node/sqs/record/#record.rawBody)**                     | any   | the body of the message as is, no conversion                     |
+| **[`receiptHandle`]({{web.url}}/node/sqs/record/#record.receiptHandle)**         | str   | the handle of the receipt                                        |
+| **[`region`]({{web.url}}/node/sqs/record/#record.region)**                       | str   | the region of the message                                        |
+| **[`sourceARN`]({{web.url}}/node/sqs/record/#record.sourceARN)**                 | str   | the arn of the source                                            |
+
+
+#### `record.attributes`
+
+```javascript
+console.log(record.attributes);
+
+// example output:
+{
+    "ApproximateReceiveCount": "1",
+    "SentTimestamp": "1545082650636",
+    "SenderId": "AIDAIENQZJOLO23YVJ4VO",
+    "ApproximateFirstReceiveTimestamp": "1545082650649"
+}
+```
+
+#### `record.body`
+
+```javascript
+console.log(record.body);
+
+// example output:
+{
+    some_key: 'some_value'
+}
+```
+
+#### `record.eventSource`
+
+```javascript
+console.log(record.eventSource);
+
+// example output:
+'aws:sqs'
+```
+
+#### `record.md5OfBody`
+
+```javascript
+console.log(record.md5OfBody);
+
+// example output:
+'e4e68fb7bd0e697a0ae8f1bb342846b3'
+```
+
+#### `record.messageAttributes`
+
+```javascript
+console.log(record.messageAttributes);
+
+// example output:
+{
+    some_attribute_key: 'some_attribute_value'
+}
+```
+
+#### `record.messageId`
+
+```javascript
+console.log(record.messageId);
+
+// example output:
+'2e1424d4-f796-459a-8184-9c92662be6da'
+```
+
+#### `record.rawBody`
+
+```javascript
+console.log(record.rawBody);
+
+// example output:
+'{"some_key": "some_value"}'
+```
+
+#### `record.receiptHandle`
+
+```javascript
+console.log(record.receiptHandle);
+
+// example output:
+'AQEBzWwaftRI0KuVm4tP+/7q1rGgNqicHq...'
+```
+
+#### `record.region`
+
+```javascript
+console.log(record.region);
+
+// example output:
+'us-east-2'
+```
+
+#### `record.sourceARN`
+
+```javascript
+console.log(record.sourceARN);
+
+// example output:
+'arn:aws:sqs:us-east-2:123456789012:my-queue'
+```

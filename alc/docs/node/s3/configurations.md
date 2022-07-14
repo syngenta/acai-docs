@@ -5,7 +5,7 @@ description: Configure S3 ALC Events
 
 ## Event Configurations
 
-The S3 event will automatically handle many common things done when eventing off a DynamoDB stream. Developers then have the ability to further extend that functionality with custom middleware. Below is a full list of all the configurations available and examples of their use.
+The S3 event will automatically handle many common things done when eventing off a S3 event. Developers then have the ability to further extend that functionality with custom middleware. Below is a full list of all the configurations available and examples of their use.
 
 ???+ example
     Don't like reading documentation? Then look at our examples which can run locally! :nerd:
@@ -30,15 +30,15 @@ The S3 event will automatically handle many common things done when eventing off
 ### Example: S3 Configuration Options
 
 ```js
-const EventClient = require('@syngenta-digital/alc').S3.Event;
+const EventClient = require('@syngenta-digital/alc').s3.Event;
 const Grower = require('api/v1/logic/grower');
 
-exports.stream = async (event) => {
+exports.eventer = async (event) => {
     const options = {
         globalLogger: true,
         operations: ['create', 'delete'] // [create, update, delete] by default; s3 doesn't support delete
         operationError: false, // will raise exception if wrong operation;  default false
-        requiredBody: 'v1-ddb-record', // only works with isJSON
+        requiredBody: 'v1-s3-record', // only works with isJSON
         schemaPath: 'api/openapi.yml', // only works with isJSON
         validationError: false, // will raise exception if validation fails;  default false
         getObject: true, // required for isJSON or isCSV

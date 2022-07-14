@@ -1,6 +1,6 @@
 ---
 title: S3
-description: Use ALC with Se Events
+description: Use ALC with S3 Events
 ---
 
 Event handler for Amazon S3 Bucket Events.
