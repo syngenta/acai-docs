@@ -3,7 +3,7 @@ title: 2.0 Breaking Changes
 description: The changes to ALC in version 2.0
 ---
 
-## Changes to the ALC
+## Changes to the ALC from 1.x to 2.0
 
 In version 2.0 we have added a lot of cool new features, but that does require deprecating some old things. Below is a list of all the changes:
 
