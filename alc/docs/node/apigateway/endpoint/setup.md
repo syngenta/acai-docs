@@ -9,8 +9,8 @@ Each endpoint should read as procedural list of steps to be completed. To help k
 
 ## Endpoint Set Up
 
-???+ tip
-    View our full project examples here, to have a broader context of what is going on.
+???+ example
+    Don't like reading documentation? Then look at our examples which can run locally! :nerd:
 
 ### 1. Match Function to HTTP Method
 

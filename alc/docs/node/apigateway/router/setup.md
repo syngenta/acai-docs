@@ -5,8 +5,8 @@ description: How to use the ALC Router
 
 ## Router Set Up
 
-???+ tip
-    View our full project examples here, to have a broader context of what is going on.
+???+ example
+    Don't like reading documentation? Then look at our examples which can run locally! :nerd:
 
 
 ### 1. Configure the Lambda
@@ -32,7 +32,7 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
 
 #### Routing Mode: Directory
 
-???+ info
+???+ tip
     If you are using route params, you will need use dynamic file names which follow this pattern: `{some-variable-name}.js`.
 
 === "file structure"
@@ -73,7 +73,7 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
 
 #### Routing Mode: Pattern
 
-???+ info
+???+ tip
     You can use any [glob](https://en.wikipedia.org/wiki/Glob_(programming)) pattern you like; common patterns are:
 
     * `/**/*.controller.js`
@@ -131,7 +131,7 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
 
 #### Routing Mode: List
 
-???+ info
+???+ tip
     It may be more maintainable to store your routes list in a separate file, this example does not have that for brevity
 
 ???+ warning

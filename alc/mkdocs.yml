@@ -16,6 +16,10 @@ nav:
                     - node/apigateway/endpoint/configurations.md
                 - node/apigateway/request.md
                 - node/apigateway/response.md
+            - DynamoDB:
+                - node/dynamodb/index.md
+                - node/dynamodb/configurations.md
+                - node/dynamodb/record.md
     - Python:
         - python/install.md
     - Rust:

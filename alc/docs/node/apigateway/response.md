@@ -7,6 +7,8 @@ description: ALC Response Object
 
 By default, every endpoint function will receive an instance of the `ResponseClient` class (aka `response`) as the second argument of their function. This response object is meant to provide consistency to HTTP response codes and error signatures. Below is a list and examples of all the properties of the `response`:
 
+???+ example
+    Don't like reading documentation? Then look at our examples which can run locally! :nerd:
 
 ### Response Properties
 
