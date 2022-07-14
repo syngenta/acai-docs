@@ -48,7 +48,6 @@ In version 2.0 we have added a lot of cool new features, but that does require d
 | old                                   | new                    |
 |---------------------------------------|------------------------|
 | `record.awsRegion`                    | **`record.region`**    |
-| `record.configurationId`              | **`record.id`**        |
 | `record.eventID`                      | **`record.id`**        |
 | `record.eventName`                    | **`record.name`**      |
 | `record.eventSource`                  | **`record.source`**    |
@@ -63,7 +62,6 @@ In version 2.0 we have added a lot of cool new features, but that does require d
 |---------------------------------------|------------------------|
 | `record.awsRegion`                    | **`record.region`**    |
 | `record.configurationId`              | **`record.id`**        |
-| `record.eventID`                      | **`record.id`**        |
 | `record.eventName`                    | **`record.name`**      |
 | `record.eventSource`                  | **`record.source`**    |
 | `record.eventSourceARN`               | **`record.sourceARN`** |
