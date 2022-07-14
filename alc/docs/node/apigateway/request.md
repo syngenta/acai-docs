@@ -33,7 +33,7 @@ By default, every endpoint function will receive an instance of the `RequestClie
 ```javascript
 console.log(request.method);
 
-// output:
+// example output:
 'get'
 ```
 
@@ -43,7 +43,7 @@ console.log(request.method);
 
 console.log(request.resource);
 
-// output:
+// example output:
 '/{proxy+}'
 
 ```
@@ -57,7 +57,7 @@ console.log(request.resource);
 
 console.log(request.authorizer);
 
-// output:
+// example output:
 {
     apiKey: 'SOME KEY',
     userId: 'x-1-3-4',
@@ -74,7 +74,7 @@ console.log(request.authorizer);
 
 console.log(request.headers);
 
-// output:
+// example output:
 {
     'x-api-key': 'SOME-KEY',
     'content-type': 'application/json'
@@ -90,7 +90,7 @@ console.log(request.headers);
 
 console.log(request.params);
 
-// output:
+// example output:
 {
     query: {
         name: 'me'
@@ -107,7 +107,7 @@ console.log(request.params);
 
 console.log(request.queryParams);
 
-// output:
+// example output:
 {
      name: 'me'
 }
@@ -119,7 +119,7 @@ console.log(request.queryParams);
 
 console.log(request.pathParams);
 
-// output:
+// example output:
 {
      id: 1
 }
@@ -134,7 +134,7 @@ console.log(request.pathParams);
 
 console.log(request.route);
 
-// output:
+// example output:
 'v1/grower/{id}'
 ```
 
@@ -147,7 +147,7 @@ console.log(request.route);
 
 console.log(request.path);
 
-// output:
+// example output:
 'v1/grower/1'
 ```
 
@@ -160,7 +160,7 @@ console.log(request.path);
 
 console.log(request.json);
 
-// output:
+// example output:
 {
     someJsonKey: 'someJsonValue'
 }
@@ -175,7 +175,7 @@ console.log(request.json);
 
 console.log(request.xml);
 
-// output:
+// example output:
 {
     someXMLKey: 'someXMLValue'
 }
@@ -191,7 +191,7 @@ console.log(request.xml);
 
 console.log(request.graphql);
 
-// output:
+// example output:
 '{
     players {
         name
@@ -208,7 +208,7 @@ console.log(request.graphql);
 
 console.log(request.body);
 
-// output:
+// example output:
 {
     someXMLKey: 'someXMLValue'
 }
@@ -221,7 +221,7 @@ console.log(request.body);
 
 console.log(request.raw);
 
-// output: whatever the raw data of the body is; string, json string, xml, binary, etc
+// example output: whatever the raw data of the body is; string, json string, xml, binary, etc
 ```
 
 
@@ -235,7 +235,7 @@ console.log(request.raw);
 request.context = {application_assignable: true}
 console.log(request.context);
 
-// output:
+// example output:
 {
     application_assignable: true
 }
@@ -250,7 +250,7 @@ console.log(request.context);
 
 console.log(request.event);
 
-// output:
+// example output:
 {
   "version": "2.0",
   "routeKey": "$default",

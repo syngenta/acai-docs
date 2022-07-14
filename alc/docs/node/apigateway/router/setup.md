@@ -63,12 +63,11 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
 
     exports.route = async (event) => {
         const router = new Router({
-            event: event,
             routingMode: 'directory',
             basePath: 'api/v1', // for use with custom apigateway domain
             handlerPath: 'api/v1/handler'
         });
-        return router.route();
+        return router.route(event);
     };
     ```
 
@@ -122,12 +121,11 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
 
     exports.route = async (event) => {
         const router = new Router({
-            event: event,
             routingMode: 'pattern',
             basePath: 'api/v1', // for use with custom apigateway domain
             handlerPattern: 'api/v1/**/*.controller.js'
         });
-        return router.route();
+        return router.route(event);
     };
     ```
 
@@ -159,7 +157,6 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
 
     exports.route = async (event) => {
         const router = new Router({
-            event: event,
             routingMode: 'list',
             basePath: 'api/v1', // for use with custom apigateway domain
             handlerList: {
@@ -168,7 +165,7 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
                 'PUT:farm/{farmId}/field/{fieldId}': 'api/v1/routes/farm-field.js'
             }
         });
-        return router.route();
+        return router.route(event);
     };
     ```
 

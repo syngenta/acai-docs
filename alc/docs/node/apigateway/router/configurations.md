@@ -25,7 +25,7 @@ As mentioned previously, the router is highly configurable to each project needs
 | **`afterAll`**          | func  | no                                  | will call this function after EVERY request to the API                            |
 | **`withAuth`**          | func  | no                                  | will call this function when `requirements` have `requiredAuth` set to `true`     |
 | **`onError`**           | func  | no                                  | will call this function on every unhandled error; not including validation errors |
-| **`loggerCallback`**    | func  | no                                  | will call this function on every call to `global.logger`                           |
+| **`loggerCallback`**    | func  | no                                  | will call this function on every call to `global.logger`                          |
 
 ### Example: Router Config with Directory Routing
 
@@ -37,7 +37,6 @@ const Authenticator = require('api/v1/logic/authenticator');
 
 exports.route = async (event) => {
     const router = new Router({
-        event: event,
         basePath: 'api/v1',
         routingMode: 'directory',
         handlerPath: 'api/v1/handler',
@@ -51,7 +50,7 @@ exports.route = async (event) => {
         withAuth: Authenticator.authenticate,
         loggerCallback: MiddlewareUtils.loggerCallback,
     });
-    return router.route();
+    return router.route(event);
 };
 ```
 
@@ -65,7 +64,6 @@ const Authenticator = require('api/v1/logic/authenticator');
 
 exports.route = async (event) => {
     const router = new Router({
-        event: event,
         basePath: 'api/v1',
         routingMode: 'pattern',
         handlerPattern: 'api/v1/**/*.controller.js'
@@ -79,7 +77,7 @@ exports.route = async (event) => {
         withAuth: Authenticator.authenticate,
         loggerCallback: MiddlewareUtils.loggerCallback,
     });
-    return router.route();
+    return router.route(event);
 };
 ```
 
@@ -99,7 +97,6 @@ const routes = {
 
 exports.route = async (event) => {
     const router = new Router({
-        event: event,
         basePath: 'api/v1',
         routingMode: 'list',
         handlerList: routes,
@@ -113,6 +110,6 @@ exports.route = async (event) => {
         withAuth: Authenticator.authenticate,
         loggerCallback: MiddlewareUtils.loggerCallback
     });
-    return router.route();
+    return router.route(event);
 };
 ```

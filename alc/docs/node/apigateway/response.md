@@ -29,7 +29,7 @@ response.headers = {response_id: 'some-guid'};
 
 console.log(response.headers);
 
-// output:
+// example output:
 {
     status: 'ok',
     response_id: 'some-guid',
@@ -43,7 +43,7 @@ response.code = 418;
 
 console.log(response.code);
 
-// output:
+// example output:
 418
 ```
 
@@ -57,7 +57,7 @@ response.body = {someKey: 'someValue'};
 
 console.log(response.body);
 
-// output:
+// example output:
 '{"someKey":"someValue"}'
 ```
 
@@ -71,7 +71,7 @@ response.rawBody = {someKey: 'someValue'};
 
 console.log(response.rawBody);
 
-// output:
+// example output:
 {
     someKey: 'someValue'
 }
@@ -86,7 +86,7 @@ console.log(response.rawBody);
 response.compress = true;
 
 console.log(response.body);
-// output: this will gzip and compress the body.
+// example output: this will gzip and compress the body.
 ```
 
 #### `response.setError`
@@ -99,7 +99,7 @@ response.setError('anotherKey', `${anotherKey} is not the correct type to operat
 
 console.log(response.rawBody);
 
-// output:
+// example output:
 {
     errors: [
         {
@@ -120,13 +120,13 @@ console.log(response.rawBody);
 response.setError('user', `your access is denied`);
 console.log(response.hasError);
 
-// output:
+// example output:
 true
 
 
 response.body = {user: 'you have been granted access'};
 console.log(response.hasError);
 
-// output:
+// example output:
 false
 ```
