@@ -12,24 +12,22 @@ The DynamoDB event will by default provide instances of `record` classes which w
 
 ### Record Properties
 
-| property                                                                                                 | type  | description                                           |
-|----------------------------------------------------------------------------------------------------------|-------|-------------------------------------------------------|
-| **[`awsRegion`]({{web.url}}/node/dynamodb/record/#record.awsRegion)**                                    | str   | the region the record is from                         |
-| **[`eventID`]({{web.url}}/node/dynamodb/record/#record.eventID)**                                        | str   | the id of the event which invoked the lambda          |
-| **[`eventName`]({{web.url}}/node/dynamodb/record/#record.eventName)**                                    | str   | the name of the event which invoked the lambda        |
-| **[`eventSource`]({{web.url}}/node/dynamodb/record/#record.eventSource)**                                | str   | the source of the event which invoked the lambda      |
-| **[`keys`]({{web.url}}/node/dynamodb/record/#record.keys)**                                              | object| the keys of DynamoDB record                           |
-| **[`oldImage`]({{web.url}}/node/dynamodb/record/#record.oldImage)**                                      | object| the old image of dynamodb record; updated or deleted  |
-| **[`newImage`]({{web.url}}/node/dynamodb/record/#record.newImage)**                                      | object| the new image of dynamodb record; created or updated  |
-| **[`body`]({{web.url}}/node/dynamodb/record/#record.body)**                                              | object| the new image of dynamodb record; created or updated  |
-| **[`operation`]({{web.url}}/node/dynamodb/record/#record.operation)**                                    | str   | triggered operation lambda (create, update, delete)   |
-| **[`eventSourceARN`]({{web.url}}/node/dynamodb/record/#record.eventSourceARN)**                          | str   | the event source arn                                  |
-| **[`eventVersion`]({{web.url}}/node/dynamodb/record/#record.eventVersion)**                              | str   | the event version                                     |
-| **[`streamViewType`]({{web.url}}/node/dynamodb/record/#record.streamViewType)**                          | str   | the stream view type                                  |
-| **[`sizeBytes`]({{web.url}}/node/dynamodb/record/#record.sizeBytes)**                                    | int   | the size in bytes of the record                       |
-| **[`approximateCreationDateTime`]({{web.url}}/node/dynamodb/record/#record.approximateCreationDateTime)**| float | the approximate creationDate time                     |
-| **[`userIdentity`]({{web.url}}/node/dynamodb/record/#record.userIdentity)**                              | object| the identity who triggered the dynamodb change|
-| **[`timeToLiveExpired`]({{web.url}}/node/dynamodb/record/#record.timeToLiveExpired)**                    | boo   | whether the ttl has expired                           |
+| property                                                                        | type  | description                                                      |
+|---------------------------------------------------------------------------------|-------|------------------------------------------------------------------|
+| **[`awsRegion`]({{web.url}}/node/s3/record/#record.awsRegion)**                 | str   | the region the record is from                                    |
+| **[`body`]({{web.url}}/node/s3/record/#record.body)**                           | object| the object from the bucket in memory; buffer, json or csv object |
+| **[`bucket`]({{web.url}}/node/s3/record/#record.bucket)**                       | str   | the name of the bucket                                           |
+| **[`configurationId`]({{web.url}}/node/s3/record/#record.configurationId)**     | str   | the id of configuration                                          |
+| **[`eventName`]({{web.url}}/node/s3/record/#record.eventName)**                 | str   | the name of the event which invoked the lambda                   |
+| **[`eventSource`]({{web.url}}/node/s3/record/#record.eventSource)**             | str   | the source of the event which invoked the lambda                 |
+| **[`eventTime`]({{web.url}}/node/s3/record/#record.eventTime)**                 | float | the event time                                                   |
+| **[`key`]({{web.url}}/node/s3/record/#record.key)**                             | str   | the bucket key                                                   |
+| **[`object`]({{web.url}}/node/s3/record/#record.object)**                       | object| the object described from the bucket                             |
+| **[`operation`]({{web.url}}/node/s3/record/#record.operation)**                 | str   | triggered operation lambda (create, delete)                      |
+| **[`requestParameters`]({{web.url}}/node/s3/record/#record.requestParameters)** | object| the request parameters                                           |
+| **[`responseElements`]({{web.url}}/node/s3/record/#record.responseElements)**   | object| the response parameters                                          |
+| **[`s3SchemaVersion`]({{web.url}}/node/s3/record/#record.s3SchemaVersion)**     | object| the s3 schema version                                            |
+
 
 #### `record.awsRegion`
 
@@ -40,13 +38,37 @@ console.log(record.awsRegion);
 'us-east-2'
 ```
 
-#### `record.eventID`
+#### `record.body`
 
 ```javascript
-console.log(record.eventID);
+console.log(record.body);
+
+// example output: depending on the configuration, it might be a Buffer, CSV, or JSON object
+// does require `getObject: true` to be set in the options of the EventClient
+```
+
+#### `record.bucket`
+
+```javascript
+console.log(record.bucket);
 
 // example output:
-'9a37c0d03eb60f7cf70cabc823de9907'
+{
+    "name": "DOC-EXAMPLE-BUCKET",
+    "ownerIdentity": {
+        "principalId": "A3I5XTEXAMAI3E"
+    },
+    "arn": "arn:aws:s3:::lambda-artifacts-deafc19498e3f2df"
+}
+```
+
+#### `record.configurationId`
+
+```javascript
+console.log(record.configurationId);
+
+// example output:
+'828aa6fc-f7b5-4305-8584-487c791949c1'
 ```
 
 #### `record.eventName`
@@ -55,7 +77,7 @@ console.log(record.eventID);
 console.log(record.eventName);
 
 // example output:
-'INSERT'
+'ObjectCreated:Put'
 ```
 
 #### `record.eventSource`
@@ -64,62 +86,38 @@ console.log(record.eventName);
 console.log(record.eventSource);
 
 // example output:
-'aws:dynamodb'
+'aws:s3'
 ```
 
-#### `record.keys`
-
-???+ info
-    This is converted from the original DDB JSON to standard json
+#### `record.eventTime`
 
 ```javascript
-console.log(record.keys);
+console.log(record.eventTime);
+
+// example output:
+'2019-09-03T19:37:27.192Z'
+```
+
+#### `record.key`
+
+```javascript
+console.log(record.key);
+
+// example output:
+'some-directory/b21b84d653bb07b05b1e6b33684dc11b.json'
+```
+
+#### `record.object`
+
+```javascript
+console.log(record.object);
 
 // example output:
 {
-    example_id: '123456789'
-}
-```
-
-#### `record.oldImage`
-
-???+ info
-    This is converted from the original DDB JSON to standard json
-
-```javascript
-console.log(record.oldImage);
-
-// example output:
-{
-    old_data: '123456789'
-}
-```
-
-#### `record.newImage`
-
-???+ info
-    This is converted from the original DDB JSON to standard json
-
-```javascript
-console.log(record.newImage);
-
-// example output:
-{
-    new_data: '123456789'
-}
-```
-
-#### `record.body`
-
-???+ info
-    This is converted from the original DDB JSON to standard json from `newImage`
-
-```javascript
-console.log(record.body);
-
-// example output:
-{
-    new_data: '123456789'
+    'key': 'some-directory/b21b84d653bb07b05b1e6b33684dc11b.json',
+    'size': 1305107,
+    'eTag': 'b21b84d653bb07b05b1e6b33684dc11b',
+    'sequencer': '0C0F6F405D6ED209E1'
 }
 ```
 
@@ -132,68 +130,34 @@ console.log(record.operation);
 'create'
 ```
 
-#### `record.eventSourceARN`
+#### `record.requestParameters`
 
 ```javascript
-console.log(record.eventSourceARN);
-
-// example output:
-'arn:aws:dynamodb:us-east-1:771875143460:table/test-example/stream/2019-10-04T23:18:26.340'
-```
-
-#### `record.eventVersion`
-
-```javascript
-console.log(record.eventVersion);
-
-// example output:
-'1.1'
-```
-
-#### `record.streamViewType`
-
-```javascript
-console.log(record.streamViewType);
-
-// example output:
-'NEW_AND_OLD_IMAGES'
-```
-
-#### `record.sizeBytes`
-
-```javascript
-console.log(record.sizeBytes);
-
-// example output:
-1124
-```
-
-#### `record.approximateCreationDateTime`
-
-```javascript
-console.log(record.approximateCreationDateTime);
-
-// example output:
-1538695200.0 //unix timestamp
-```
-
-#### `record.userIdentity`
-
-```javascript
-console.log(record.userIdentity);
+console.log(record.requestParameters);
 
 // example output:
 {
-    type: 'Service',
-    principalId: 'dynamodb.amazonaws.com'
+    "sourceIPAddress": "205.255.255.255"
 }
 ```
 
-#### `record.timeToLiveExpired`
+#### `record.responseParameters`
 
 ```javascript
-console.log(record.timeToLiveExpired);
+console.log(record.responseParameters);
 
 // example output:
-false
+{
+    "x-amz-request-id": "D82B88E5F771F645",
+    "x-amz-id-2": "vlR7PnpV2Ce81l0PRw6jlUpck7Jo5ZsQjryTjKlc5aLWGVHPZLj5NeC6qMa0emYBDXOo6QBU0Wo="
+}
+```
+
+#### `record.s3SchemaVersion`
+
+```javascript
+console.log(record.s3SchemaVersion);
+
+// example output:
+"1.0"
 ```
