@@ -1,9 +1,9 @@
 ---
 title: Record
-description: Review DynamoDB Record Structure
+description: Review S3 Record Structure
 ---
 
-## DynamoDB Record Object
+## S3 Record Object
 
 The DynamoDB event will by default provide instances of `record` classes which will be easier to work with then standard lambda event record object. This is the same object which will be passed down to the `dataClass`, if you provide on in your configuration. Below is a list of all the properties and example outputs for the DynamoDB event record:
 
@@ -29,7 +29,7 @@ The DynamoDB event will by default provide instances of `record` classes which w
 | **[`sizeBytes`]({{web.url}}/node/dynamodb/record/#record.sizeBytes)**                                    | int   | the size in bytes of the record                       |
 | **[`approximateCreationDateTime`]({{web.url}}/node/dynamodb/record/#record.approximateCreationDateTime)**| float | the approximate creationDate time                     |
 | **[`userIdentity`]({{web.url}}/node/dynamodb/record/#record.userIdentity)**                              | object| the identity who triggered the dynamodb change|
-| **[`timeToLiveExpired`]({{web.url}}/node/dynamodb/record/#record.timeToLiveExpired)**                    | bool  | whether the ttl has expired                           |
+| **[`timeToLiveExpired`]({{web.url}}/node/dynamodb/record/#record.timeToLiveExpired)**                    | boo   | whether the ttl has expired                           |
 
 #### `record.awsRegion`
 

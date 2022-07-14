@@ -12,15 +12,15 @@ By default, every endpoint function will receive an instance of the `ResponseCli
 
 ### Response Properties
 
-| property                                                          | type  | description                                                   |
-|-------------------------------------------------------------------|-------|---------------------------------------------------------------|
-| [`headers`]({{web.url}}/node/apigateway/response/#headers)        | object| provide headers in key/value pairs to add new headers         |
-| [`code`]({{web.url}}/node/apigateway/response/#code)              | int   | http response code to be returned the requester               |
-| [`body`]({{web.url}}/node/apigateway/response/#body)              | any   | body of the response automatically converted to JSON string   |
-| [`rawBody`]({{web.url}}/node/apigateway/response/#rawBody)        | any   | body of the response not converted to JSON string             |
-| [`compress`]({{web.url}}/node/apigateway/response/#compress)      | bool  | will compress the body if set to true and add proper headers  |
-| [`setError`]({{web.url}}/node/apigateway/response/#setError)      | func  | function to set an error with a key and value                 |
-| [`hasError`]({{web.url}}/node/apigateway/response/#hasError)      | boolen| simple property to check if response already has errors in it |
+| property                                                                   | type  | description                                                   |
+|----------------------------------------------------------------------------|-------|---------------------------------------------------------------|
+| [`headers`]({{web.url}}/node/apigateway/response/#response.headers)        | object| provide headers in key/value pairs to add new headers         |
+| [`code`]({{web.url}}/node/apigateway/response/#response.code)              | int   | http response code to be returned the requester               |
+| [`body`]({{web.url}}/node/apigateway/response/#response.body)              | any   | body of the response automatically converted to JSON string   |
+| [`rawBody`]({{web.url}}/node/apigateway/response/#response.rawBody)        | any   | body of the response not converted to JSON string             |
+| [`compress`]({{web.url}}/node/apigateway/response/#response.compress)      | bool  | will compress the body if set to true and add proper headers  |
+| [`setError`]({{web.url}}/node/apigateway/response/#response.setError)      | func  | function to set an error with a key and value                 |
+| [`hasError`]({{web.url}}/node/apigateway/response/#response.hasError)      | boolen| simple property to check if response already has errors in it |
 
 
 #### `response.headers`

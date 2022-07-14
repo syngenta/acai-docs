@@ -12,24 +12,24 @@ By default, every endpoint function will receive an instance of the `RequestClie
 
 ### Request Properties
 
-| property                                                          | type  | mutable | description                                                   |
-|-------------------------------------------------------------------|-------|---------|---------------------------------------------------------------|
-| [`method`]({{web.url}}/node/apigateway/request/#method)           | str   | no      | the http method of the request                                |
-| [`resource`]({{web.url}}/node/apigateway/request/#resource)       | str   | no      | the AWS resource being invoked                                |
-| [`authorizer`]({{web.url}}/node/apigateway/request/#authorizer)   | object| no      | if using a customized authorizer, the authorizer object       |
-| [`headers`]({{web.url}}/node/apigateway/request/#headers)         | object| no      | the headers of the request                                    |
-| [`params`]({{web.url}}/node/apigateway/request/#params)           | object| no      | combination of query string and path params in one object     |
-| [`queryParams`]({{web.url}}/node/apigateway/request/#queryParams) | object| no      | query string parameters from the request                      |
-| [`pathParams`]({{web.url}}/node/apigateway/request/#pathParams)   | object| no      | the path parameters of the request                            |
-| [`route`]({{web.url}}/node/apigateway/request/#route)             | str   | no      | the requested route with placeholders of params               |
-| [`path`]({{web.url}}/node/apigateway/request/#path)               | str   | no      | the raw requested path with actual param values               |
-| [`json`]({{web.url}}/node/apigateway/request/#json)               | object| no      | the body of the request, converted from json string in object |
-| [`xml`]({{web.url}}/node/apigateway/request/#xml)                 | object| no      | the body of the request, converted from xml string in object  |
-| [`graphql`]({{web.url}}/node/apigateway/request/#graphql)         | str   | no      | the body of the graphql request as a string                   |
-| [`body`]({{web.url}}/node/apigateway/request/#body)               | any   | no      | the body of the request, converted to based on data type      |
-| [`raw`]({{web.url}}/node/apigateway/request/#raw)                 | any   | no      | the raw body of the request no conversion                     |
-| [`context`]({{web.url}}/node/apigateway/request/#context)         | object| yes     | mutable request context to assigned and pass around           |
-| [`event`]({{web.url}}/node/apigateway/request/#event)             | object| no      | the full event originally coming from the lamdba              |
+| property                                                                  | type  | mutable | description                                                   |
+|---------------------------------------------------------------------------|-------|---------|---------------------------------------------------------------|
+| [`method`]({{web.url}}/node/apigateway/request/#request.method)           | str   | no      | the http method of the request                                |
+| [`resource`]({{web.url}}/node/apigateway/request/#request.resource)       | str   | no      | the AWS resource being invoked                                |
+| [`authorizer`]({{web.url}}/node/apigateway/request/#request.authorizer)   | object| no      | if using a customized authorizer, the authorizer object       |
+| [`headers`]({{web.url}}/node/apigateway/request/#request.headers)         | object| no      | the headers of the request                                    |
+| [`params`]({{web.url}}/node/apigateway/request/#request.params)           | object| no      | combination of query string and path params in one object     |
+| [`queryParams`]({{web.url}}/node/apigateway/request/#request.queryParams) | object| no      | query string parameters from the request                      |
+| [`pathParams`]({{web.url}}/node/apigateway/request/#request.pathParams)   | object| no      | the path parameters of the request                            |
+| [`route`]({{web.url}}/node/apigateway/request/#request.route)             | str   | no      | the requested route with placeholders of params               |
+| [`path`]({{web.url}}/node/apigateway/request/#request.path)               | str   | no      | the raw requested path with actual param values               |
+| [`json`]({{web.url}}/node/apigateway/request/#request.json)               | object| no      | the body of the request, converted from json string in object |
+| [`xml`]({{web.url}}/node/apigateway/request/#request.xml)                 | object| no      | the body of the request, converted from xml string in object  |
+| [`graphql`]({{web.url}}/node/apigateway/request/#request.graphql)         | str   | no      | the body of the graphql request as a string                   |
+| [`body`]({{web.url}}/node/apigateway/request/#request.body)               | any   | no      | the body of the request, converted to based on data type      |
+| [`raw`]({{web.url}}/node/apigateway/request/#request.raw)                 | any   | no      | the raw body of the request no conversion                     |
+| [`context`]({{web.url}}/node/apigateway/request/#request.context)         | object| yes     | mutable request context to assigned and pass around           |
+| [`event`]({{web.url}}/node/apigateway/request/#request.event)             | object| no      | the full event originally coming from the lamdba              |
 
 #### `request.method`
 

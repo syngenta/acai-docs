@@ -20,6 +20,10 @@ nav:
                 - node/dynamodb/index.md
                 - node/dynamodb/configurations.md
                 - node/dynamodb/record.md
+            - S3:
+                - node/s3/index.md
+                - node/s3/configurations.md
+                - node/s3/record.md
     - Python:
         - python/install.md
     - Rust:
