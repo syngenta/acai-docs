@@ -28,6 +28,7 @@ nav:
                 - node/sqs/index.md
                 - node/sqs/configurations.md
                 - node/sqs/record.md
+        - node/changes.md
     - Python:
         - python/install.md
     - Rust:
