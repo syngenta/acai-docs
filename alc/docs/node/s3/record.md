@@ -12,27 +12,27 @@ The S3 event will by default provide instances of `record` classes which will be
 
 ### Record Properties
 
-| property                                                                        | type  | description                                                      |
-|---------------------------------------------------------------------------------|-------|------------------------------------------------------------------|
-| **[`awsRegion`]({{web.url}}/node/s3/record/#record.awsRegion)**                 | str   | the region the record is from                                    |
-| **[`body`]({{web.url}}/node/s3/record/#record.body)**                           | object| the object from the bucket in memory; buffer, json or csv object |
-| **[`bucket`]({{web.url}}/node/s3/record/#record.bucket)**                       | str   | the name of the bucket                                           |
-| **[`configurationId`]({{web.url}}/node/s3/record/#record.configurationId)**     | str   | the id of configuration                                          |
-| **[`eventName`]({{web.url}}/node/s3/record/#record.eventName)**                 | str   | the name of the event which invoked the lambda                   |
-| **[`eventSource`]({{web.url}}/node/s3/record/#record.eventSource)**             | str   | the source of the event which invoked the lambda                 |
-| **[`eventTime`]({{web.url}}/node/s3/record/#record.eventTime)**                 | float | the event time                                                   |
-| **[`key`]({{web.url}}/node/s3/record/#record.key)**                             | str   | the bucket key                                                   |
-| **[`object`]({{web.url}}/node/s3/record/#record.object)**                       | object| the object described from the bucket                             |
-| **[`operation`]({{web.url}}/node/s3/record/#record.operation)**                 | str   | triggered operation lambda (create, delete)                      |
-| **[`requestParameters`]({{web.url}}/node/s3/record/#record.requestParameters)** | object| the request parameters                                           |
-| **[`responseElements`]({{web.url}}/node/s3/record/#record.responseElements)**   | object| the response parameters                                          |
-| **[`s3SchemaVersion`]({{web.url}}/node/s3/record/#record.s3SchemaVersion)**     | object| the s3 schema version                                            |
+| property                                                          | type  | description                                                      |
+|-------------------------------------------------------------------|-------|------------------------------------------------------------------|
+| **[`body`]({{web.url}}/node/s3/record/#record.body)**             | object| the object from the bucket in memory; buffer, json or csv object |
+| **[`bucket`]({{web.url}}/node/s3/record/#record.bucket)**         | str   | the name of the bucket                                           |
+| **[`id`]({{web.url}}/node/s3/record/#record.id)**                 | str   | the id of configuration                                          |
+| **[`key`]({{web.url}}/node/s3/record/#record.key)**               | str   | the bucket key                                                   |
+| **[`name`]({{web.url}}/node/s3/record/#record.name)**             | str   | the name of the event which invoked the lambda                   |
+| **[`object`]({{web.url}}/node/s3/record/#record.object)**         | object| the object described from the bucket                             |
+| **[`operation`]({{web.url}}/node/s3/record/#record.operation)**   | str   | triggered operation lambda (create, delete)                      |
+| **[`region`]({{web.url}}/node/s3/record/#record.region)**         | str   | the region the record is from                                    |
+| **[`request`]({{web.url}}/node/s3/record/#record.request)**       | object| the request parameters                                           |
+| **[`response`]({{web.url}}/node/s3/record/#record.response)**     | object| the response parameters                                          |
+| **[`source`]({{web.url}}/node/s3/record/#record.source)**         | str   | the source of the event which invoked the lambda                 |
+| **[`time`]({{web.url}}/node/s3/record/#record.time)**             | float | the event time                                                   |
+| **[`version`]({{web.url}}/node/s3/record/#record.version)**       | object| the s3 schema version                                            |
 
 
-#### `record.awsRegion`
+#### `record.region`
 
 ```javascript
-console.log(record.awsRegion);
+console.log(record.region);
 
 // example output:
 'us-east-2'
@@ -62,37 +62,37 @@ console.log(record.bucket);
 }
 ```
 
-#### `record.configurationId`
+#### `record.id`
 
 ```javascript
-console.log(record.configurationId);
+console.log(record.id);
 
 // example output:
 '828aa6fc-f7b5-4305-8584-487c791949c1'
 ```
 
-#### `record.eventName`
+#### `record.name`
 
 ```javascript
-console.log(record.eventName);
+console.log(record.name);
 
 // example output:
 'ObjectCreated:Put'
 ```
 
-#### `record.eventSource`
+#### `record.source`
 
 ```javascript
-console.log(record.eventSource);
+console.log(record.source);
 
 // example output:
 'aws:s3'
 ```
 
-#### `record.eventTime`
+#### `record.time`
 
 ```javascript
-console.log(record.eventTime);
+console.log(record.time);
 
 // example output:
 '2019-09-03T19:37:27.192Z'
@@ -130,10 +130,10 @@ console.log(record.operation);
 'create'
 ```
 
-#### `record.requestParameters`
+#### `record.request`
 
 ```javascript
-console.log(record.requestParameters);
+console.log(record.request);
 
 // example output:
 {
@@ -141,10 +141,11 @@ console.log(record.requestParameters);
 }
 ```
 
-#### `record.responseParameters`
+
+#### `record.response`
 
 ```javascript
-console.log(record.responseParameters);
+console.log(record.response);
 
 // example output:
 {
@@ -153,10 +154,10 @@ console.log(record.responseParameters);
 }
 ```
 
-#### `record.s3SchemaVersion`
+#### `record.version`
 
 ```javascript
-console.log(record.s3SchemaVersion);
+console.log(record.version);
 
 // example output:
 "1.0"

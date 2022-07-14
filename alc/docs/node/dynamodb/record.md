@@ -14,54 +14,54 @@ The DynamoDB event will by default provide instances of `record` classes which w
 
 | property                                                                                                 | type  | description                                           |
 |----------------------------------------------------------------------------------------------------------|-------|-------------------------------------------------------|
-| **[`awsRegion`]({{web.url}}/node/dynamodb/record/#record.awsRegion)**                                    | str   | the region the record is from                         |
-| **[`eventID`]({{web.url}}/node/dynamodb/record/#record.eventID)**                                        | str   | the id of the event which invoked the lambda          |
-| **[`eventName`]({{web.url}}/node/dynamodb/record/#record.eventName)**                                    | str   | the name of the event which invoked the lambda        |
-| **[`eventSource`]({{web.url}}/node/dynamodb/record/#record.eventSource)**                                | str   | the source of the event which invoked the lambda      |
+| **[`region`]({{web.url}}/node/dynamodb/record/#record.region)**                                    | str   | the region the record is from                         |
+| **[`id`]({{web.url}}/node/dynamodb/record/#record.id)**                                        | str   | the id of the event which invoked the lambda          |
+| **[`name`]({{web.url}}/node/dynamodb/record/#record.name)**                                    | str   | the name of the event which invoked the lambda        |
+| **[`source`]({{web.url}}/node/dynamodb/record/#record.source)**                                | str   | the source of the event which invoked the lambda      |
 | **[`keys`]({{web.url}}/node/dynamodb/record/#record.keys)**                                              | object| the keys of DynamoDB record                           |
 | **[`oldImage`]({{web.url}}/node/dynamodb/record/#record.oldImage)**                                      | object| the old image of dynamodb record; updated or deleted  |
 | **[`newImage`]({{web.url}}/node/dynamodb/record/#record.newImage)**                                      | object| the new image of dynamodb record; created or updated  |
 | **[`body`]({{web.url}}/node/dynamodb/record/#record.body)**                                              | object| the new image of dynamodb record; created or updated  |
 | **[`operation`]({{web.url}}/node/dynamodb/record/#record.operation)**                                    | str   | triggered operation lambda (create, update, delete)   |
-| **[`eventSourceARN`]({{web.url}}/node/dynamodb/record/#record.eventSourceARN)**                          | str   | the event source arn                                  |
-| **[`eventVersion`]({{web.url}}/node/dynamodb/record/#record.eventVersion)**                              | str   | the event version                                     |
-| **[`streamViewType`]({{web.url}}/node/dynamodb/record/#record.streamViewType)**                          | str   | the stream view type                                  |
-| **[`sizeBytes`]({{web.url}}/node/dynamodb/record/#record.sizeBytes)**                                    | int   | the size in bytes of the record                       |
-| **[`approximateCreationDateTime`]({{web.url}}/node/dynamodb/record/#record.approximateCreationDateTime)**| float | the approximate creationDate time                     |
-| **[`userIdentity`]({{web.url}}/node/dynamodb/record/#record.userIdentity)**                              | object| the identity who triggered the dynamodb change|
-| **[`timeToLiveExpired`]({{web.url}}/node/dynamodb/record/#record.timeToLiveExpired)**                    | bool  | whether the ttl has expired                           |
+| **[`sourceARN`]({{web.url}}/node/dynamodb/record/#record.sourceARN)**                          | str   | the event source arn                                  |
+| **[`version`]({{web.url}}/node/dynamodb/record/#record.version)**                              | str   | the event version                                     |
+| **[`streamType`]({{web.url}}/node/dynamodb/record/#record.streamType)**                          | str   | the stream view type                                  |
+| **[`size`]({{web.url}}/node/dynamodb/record/#record.size)**                                    | int   | the size in bytes of the record                       |
+| **[`created`]({{web.url}}/node/dynamodb/record/#record.created)**| float | the approximate creationDate time                     |
+| **[`identity`]({{web.url}}/node/dynamodb/record/#record.identity)**                              | object| the identity who triggered the dynamodb change|
+| **[`expired`]({{web.url}}/node/dynamodb/record/#record.expired)**                    | bool  | whether the ttl has expired                           |
 
-#### `record.awsRegion`
+#### `record.region`
 
 ```javascript
-console.log(record.awsRegion);
+console.log(record.region);
 
 // example output:
 'us-east-2'
 ```
 
-#### `record.eventID`
+#### `record.id`
 
 ```javascript
-console.log(record.eventID);
+console.log(record.id);
 
 // example output:
 '9a37c0d03eb60f7cf70cabc823de9907'
 ```
 
-#### `record.eventName`
+#### `record.name`
 
 ```javascript
-console.log(record.eventName);
+console.log(record.name);
 
 // example output:
 'INSERT'
 ```
 
-#### `record.eventSource`
+#### `record.source`
 
 ```javascript
-console.log(record.eventSource);
+console.log(record.source);
 
 // example output:
 'aws:dynamodb'
@@ -132,55 +132,55 @@ console.log(record.operation);
 'create'
 ```
 
-#### `record.eventSourceARN`
+#### `record.sourceARN`
 
 ```javascript
-console.log(record.eventSourceARN);
+console.log(record.sourceARN);
 
 // example output:
 'arn:aws:dynamodb:us-east-1:771875143460:table/test-example/stream/2019-10-04T23:18:26.340'
 ```
 
-#### `record.eventVersion`
+#### `record.version`
 
 ```javascript
-console.log(record.eventVersion);
+console.log(record.version);
 
 // example output:
 '1.1'
 ```
 
-#### `record.streamViewType`
+#### `record.streamType`
 
 ```javascript
-console.log(record.streamViewType);
+console.log(record.streamType);
 
 // example output:
 'NEW_AND_OLD_IMAGES'
 ```
 
-#### `record.sizeBytes`
+#### `record.size`
 
 ```javascript
-console.log(record.sizeBytes);
+console.log(record.size);
 
 // example output:
 1124
 ```
 
-#### `record.approximateCreationDateTime`
+#### `record.created`
 
 ```javascript
-console.log(record.approximateCreationDateTime);
+console.log(record.created);
 
 // example output:
 1538695200.0 //unix timestamp
 ```
 
-#### `record.userIdentity`
+#### `record.identity`
 
 ```javascript
-console.log(record.userIdentity);
+console.log(record.identity);
 
 // example output:
 {
@@ -189,10 +189,10 @@ console.log(record.userIdentity);
 }
 ```
 
-#### `record.timeToLiveExpired`
+#### `record.expired`
 
 ```javascript
-console.log(record.timeToLiveExpired);
+console.log(record.expired);
 
 // example output:
 false

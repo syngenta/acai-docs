@@ -12,19 +12,18 @@ The SNS/SQS event will by default provide instances of `record` classes which wi
 
 ### Record Properties
 
-| property                                                                        | type  | description                                                      |
-|---------------------------------------------------------------------------------|-------|------------------------------------------------------------------|
-| **[`attributes`]({{web.url}}/node/sqs/record/#record.attributes)**               | object| the attributes of the message                                    |
-| **[`body`]({{web.url}}/node/sqs/record/#record.body)**                           | object| the object from the bucket in memory; decodes json automatically |
-| **[`eventSource`]({{web.url}}/node/sqs/record/#record.eventSource)**             | str   | the source of the event which invoked the lambda                 |
-| **[`md5OfBody`]({{web.url}}/node/sqs/record/#record.md5OfBody)**                 | str   | the message in an md4 hash format                                |
-| **[`messageAttributes`]({{web.url}}/node/sqs/record/#record.messageAttributes)** | object| the attributes of the message, flattened                         |
-| **[`messageId`]({{web.url}}/node/sqs/record/#record.messageId)**                 | str   | the id of message                                                |
-| **[`rawBody`]({{web.url}}/node/sqs/record/#record.rawBody)**                     | any   | the body of the message as is, no conversion                     |
-| **[`receiptHandle`]({{web.url}}/node/sqs/record/#record.receiptHandle)**         | str   | the handle of the receipt                                        |
-| **[`region`]({{web.url}}/node/sqs/record/#record.region)**                       | str   | the region of the message                                        |
-| **[`sourceARN`]({{web.url}}/node/sqs/record/#record.sourceARN)**                 | str   | the arn of the source                                            |
-
+| property                                                                          | type  | description                                                      |
+|-----------------------------------------------------------------------------------|-------|------------------------------------------------------------------|
+| **[`attributes`]({{web.url}}/node/sqs/record/#record.attributes)**                | object| the attributes of the message                                    |
+| **[`body`]({{web.url}}/node/sqs/record/#record.body)**                            | object| the object from the bucket in memory; decodes json automatically |
+| **[`id`]({{web.url}}/node/sqs/record/#record.id)**                                | str   | the id of message                                                |
+| **[`md5`]({{web.url}}/node/sqs/record/#record.md5)**                              | str   | the message in an md4 hash format                                |
+| **[`messageAttributes`]({{web.url}}/node/sqs/record/#record.messageAttributes)**  | object| the attributes of the message, flattened                         |
+| **[`raw`]({{web.url}}/node/sqs/record/#record.raw)**                              | any   | the body of the message as is, no conversion                     |
+| **[`receiptHandle`]({{web.url}}/node/sqs/record/#record.receiptHandle)**          | str   | the handle of the receipt                                        |
+| **[`region`]({{web.url}}/node/sqs/record/#record.region)**                        | str   | the region of the message                                        |
+| **[`source`]({{web.url}}/node/sqs/record/#record.source)**                        | str   | the source of the event which invoked the lambda                 |
+| **[`sourceARN`]({{web.url}}/node/sqs/record/#record.sourceARN)**                  | str   | the arn of the source                                            |
 
 #### `record.attributes`
 
@@ -51,19 +50,19 @@ console.log(record.body);
 }
 ```
 
-#### `record.eventSource`
+#### `record.source`
 
 ```javascript
-console.log(record.eventSource);
+console.log(record.source);
 
 // example output:
 'aws:sqs'
 ```
 
-#### `record.md5OfBody`
+#### `record.md5`
 
 ```javascript
-console.log(record.md5OfBody);
+console.log(record.md5);
 
 // example output:
 'e4e68fb7bd0e697a0ae8f1bb342846b3'
@@ -80,19 +79,19 @@ console.log(record.messageAttributes);
 }
 ```
 
-#### `record.messageId`
+#### `record.id`
 
 ```javascript
-console.log(record.messageId);
+console.log(record.id);
 
 // example output:
 '2e1424d4-f796-459a-8184-9c92662be6da'
 ```
 
-#### `record.rawBody`
+#### `record.raw`
 
 ```javascript
-console.log(record.rawBody);
+console.log(record.raw);
 
 // example output:
 '{"some_key": "some_value"}'
