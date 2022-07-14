@@ -1,9 +1,9 @@
 ---
-title: REST
-description: Use ALC with API Gateway as a REST API
+title: APIGateway
+description: Use ALC with APIGateway
 ---
 
-Event handler for Amazon API Gateway REST.
+Event handler for Amazon APIGateway REST & GraphQL.
 
 ## Features
 

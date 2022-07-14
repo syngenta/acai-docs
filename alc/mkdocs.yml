@@ -6,18 +6,8 @@ nav:
     - Node:
         - node/install.md
         - Event Handler:
-            - API Gateway (REST):
-                - node/apigateway/rest/index.md
-                - Router:
-                    - node/apigateway/router/setup.md
-                    - node/apigateway/router/configurations.md
-                - EndPoint:
-                    - node/apigateway/endpoint/setup.md
-                    - node/apigateway/endpoint/configurations.md
-                - node/apigateway/request.md
-                - node/apigateway/response.md
-            - API Gateway (GraphQL):
-                - node/apigateway/graphql/index.md
+            - APIGateway:
+                - node/apigateway/index.md
                 - Router:
                     - node/apigateway/router/setup.md
                     - node/apigateway/router/configurations.md
@@ -65,16 +55,20 @@ theme:
         - navigation.tracking
         - content.code.annotate
 markdown_extensions:
+    - codehilite
+    - meta
     - admonition
+    - pymdownx.details
     - pymdownx.tabbed:
         alternate_style: true
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
     - pymdownx.highlight:
         linenums: true
-    - pymdownx.details
     - pymdownx.snippets:
         base_path: "."
         check_paths: true
-    - meta
     - toc:
         permalink: true
         toc_depth: 4

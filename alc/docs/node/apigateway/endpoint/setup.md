@@ -62,6 +62,8 @@ Each method within the endpoint file can have individual validation requirements
 ```js
 // example for endpoint file: api/v1/grower.js
 
+const Grower = require('api/v1/logic/grower');
+
 exports.requirements = {
     post: {
         requiredHeaders: ['x-onbehalf-of'],
@@ -75,7 +77,8 @@ exports.requirements = {
     put: {
         requiredPath: 'v1/grower/{id}',
         requiredAuth: true,
-        requiredBody: 'v1-put-grower-request'
+        requiredBody: 'v1-put-grower-request',
+        dataClass: Grower
     },
     patch: {
         requiredPath: 'v1/grower/{id}',
@@ -119,8 +122,8 @@ exports.patch = async (request, response) => {
     return response;
 };
 
-exports.put = async (request, response) => {
-    response.body = {message: '[PUT] /v1/grower was called'};
+exports.put = async (grower, response) => {
+    response.body = {message: '[PUT] /v1/grower was called; got instance of grower instead of request'};
     return response;
 };
 

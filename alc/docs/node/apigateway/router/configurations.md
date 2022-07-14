@@ -9,7 +9,7 @@ As mentioned previously, the router is highly configurable to each project needs
 
 ### Configuration Options
 
-| requirement             | type  | required                            | description                                                                       |
+| option                  | type  | required                            | description                                                                       |
 |-------------------------|-------|-------------------------------------|-----------------------------------------------------------------------------------|
 | **`event`**             | object| yes                                 | the event object from the handler must be passed in here                          |
 | **`basePath`**          | str   | yes                                 | the base path of the API Gateway instance this is running on                      |
