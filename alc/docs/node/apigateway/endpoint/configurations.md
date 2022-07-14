@@ -22,7 +22,9 @@ In order to encourage "Happy Path Programming" and make it easier for developers
 | **[`requiredBody`]({{web.url}}/node/apigateway/endpoint/validations/#requiredBody)**        | str   | references a JSONschmea component in your `schemaFile`        |
 | **[`requiredAuth`]({{web.url}}/node/apigateway/endpoint/validations/#requiredAuth)**        | bool  | will trigger `withAuth` function defined in the router config |
 | **[`before`]({{web.url}}/node/apigateway/endpoint/validations/#before)**                    | func  | a custom function to be ran before your method function       |
+| **[`after`]({{web.url}}/node/apigateway/endpoint/validations/#after)**                      | func  | a custom function to be ran after your method function        |
 | **[`dataClass`]({{web.url}}/node/apigateway/endpoint/validations/#dataClass)**              | class | a custom class that will be passed instead of the request obj |
+| **[`custom-requirement`]**                                                                  | any   | see bottom of page                                            |
 
 #### `requiredHeaders`
 
