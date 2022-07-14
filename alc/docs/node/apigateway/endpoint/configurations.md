@@ -23,7 +23,7 @@ In order to encourage "Happy Path Programming" and make it easier for developers
 
 #### `requiredHeaders`
 
-??? info
+???+ info
     Headers are case sensitive, make sure your casing matches your expectations.
 
 ```js
@@ -37,7 +37,7 @@ exports.requirements = {
 
 #### `availableHeaders`
 
-??? warning
+???+ warning
     This is not recommended for frequent use as it raise errors for every header which does not conform to the array provided. Many browsers, http tools and libraries will automatically add headers to request, unbeknownst to the user. By using this setting, you will force every user of the endpoint to take extra care with the headers provided and may result in power API consumer experience.
 
 ```js
@@ -73,7 +73,7 @@ exports.requirements = {
 
 #### `requiredPath`
 
-??? warning
+???+ warning
     This is required if you are using dynamic routing (ex. `{id}.js`) with path parameters. The router will provide a path values in `request.pathParams`
 
 ```js
@@ -87,7 +87,7 @@ exports.requirements = {
 
 #### `requiredBody`
 
-??? info
+???+ info
     This is referencing a `components.schemas` section of your openapi.yml file defined in the `schemaFile` value in your router config.
 
 ```js
@@ -102,7 +102,7 @@ exports.requirements = {
 
 #### `requiredAuth`
 
-??? info
+???+ info
     This will trigger the function you provided in the router config under the `withAuth` configuration
 
 ```js
@@ -153,7 +153,7 @@ exports.requirements = {
 
 #### `dataClass`
 
-??? info
+???+ info
     Instead of getting a `request` and `response` as arguments passed to your API function, you will get a instance of the class you provided here
 
 ```js
@@ -167,7 +167,7 @@ exports.requirements = {
 
 #### custom requirements (example)
 
-??? info
+???+ info
     You can add as many custom requirements as you want, with any variable type you want and they will be passed to your `beforeAll`, `before`, 'afterAll', `after` and `withAuth` middleware defined functions.
 
 ```js

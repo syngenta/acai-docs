@@ -50,7 +50,7 @@ console.log(request.resource);
 
 #### `request.authorizer`
 
-??? info
+???+ info
     This is only useful if you are using an external authorizer with your lambda.
 
 ```js
@@ -83,7 +83,7 @@ console.log(request.headers);
 
 #### `request.params`
 
-??? info
+???+ info
     This combines both path parameters and query string parameters, nested in one object.
 
 ```js
@@ -127,7 +127,7 @@ console.log(request.pathParams);
 
 #### `request.route`
 
-??? info
+???+ info
     This will provide the route with the path param variables included
 
 ```js
@@ -140,7 +140,7 @@ console.log(request.route);
 
 #### `request.path`
 
-??? info
+???+ info
     This will provide the route with the path param values replacing the variables
 
 ```js
@@ -184,7 +184,7 @@ console.log(request.xml);
 
 #### `request.graphql`
 
-??? info
+???+ info
     This is graphql string since there is no object equivalent; you can pass this directly to your graphql resolver
 
 ```js
@@ -201,7 +201,7 @@ console.log(request.graphql);
 
 #### `request.body`
 
-??? info
+???+ info
     This is the safest way to get the body of the request. It will use the headers to determine the data type using `content-type` header and convert it; if the data can't be converted for whatever reason it will catch the error and return the raw body provided.
 
 ```js
@@ -243,7 +243,7 @@ console.log(request.context);
 
 #### `request.event`
 
-??? warning
+???+ warning
     This is the original full request. Not advisable to use this as defeats the purpose of the entire ALC :smile:. In addition, you don't want to mutate this object and potentially mess up the entire router.
 
 ```js
