@@ -1,4 +1,7 @@
+const Grower = require('../../logic/grower');
+
 exports.get = async (request, response) => {
-    response.body = {'grower': true};
+    const growers = await Grower.getAll();
+    response.body = {'growers': growers.map(grower => grower.export())};
     return response;
 };
