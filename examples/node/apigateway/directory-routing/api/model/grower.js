@@ -19,8 +19,8 @@ class Grower {
             id: this.__chance.guid(),
             email: this.__chance.email(),
             phone: this.__chance.phone({formatted: false}),
-            first: this.__chance.first(),
-            last: this.__chance.last()
+            first: this.__chance.first().toLowerCase(),
+            last: this.__chance.last().toLowerCase()
         }
     }
 
