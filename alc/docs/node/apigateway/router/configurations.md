@@ -35,14 +35,14 @@ As mentioned previously, the router is highly configurable to each project needs
 ```js
 
 const {Router} = require('@syngenta-digital/alc').apigateway;
-const MiddlewareUtils = require('api/v1/logic/utils/middleware');
-const Authenticator = require('api/v1/logic/authenticator');
+const MiddlewareUtils = require('api/logic/utils/middleware');
+const Authenticator = require('api/logic/authenticator');
 
 exports.route = async (event) => {
     const router = new Router({
-        basePath: 'api/v1',
+        basePath: 'api',
         routingMode: 'directory',
-        handlerPath: 'api/v1/handler',
+        handlerPath: 'api/handler',
         schemaPath: 'api/openapi.yml',
         strictValidation: true,
         autoValidate: true,
@@ -62,14 +62,14 @@ exports.route = async (event) => {
 ```js
 
 const {Router} = require('@syngenta-digital/alc').apigateway;
-const MiddlewareUtils = require('api/v1/logic/utils/middleware');
-const Authenticator = require('api/v1/logic/authenticator');
+const MiddlewareUtils = require('api/logic/utils/middleware');
+const Authenticator = require('api/logic/authenticator');
 
 exports.route = async (event) => {
     const router = new Router({
-        basePath: 'api/v1',
+        basePath: 'api',
         routingMode: 'pattern',
-        handlerPattern: 'api/v1/**/*.controller.js'
+        handlerPattern: 'api/**/*.controller.js'
         schemaPath: 'api/openapi.yml',
         strictValidation: true,
         autoValidate: true,
@@ -89,18 +89,18 @@ exports.route = async (event) => {
 ```js
 
 const {Router} = require('@syngenta-digital/alc').apigateway;
-const MiddlewareUtils = require('api/v1/logic/utils/middleware');
-const Authenticator = require('api/v1/logic/authenticator');
+const MiddlewareUtils = require('api/logic/utils/middleware');
+const Authenticator = require('api/logic/authenticator');
 
 const routes = {
-    'GET::grower': 'api/v1/routes/grower.js',
-    'POST::farm': 'api/v1/routes/farm.js',
-    'PUT:farm/{farmId}/field/{fieldId}': 'api/v1/routes/farm-field.js'
+    'GET::grower': 'api/routes/grower.js',
+    'POST::farm': 'api/routes/farm.js',
+    'PUT:farm/{farmId}/field/{fieldId}': 'api/routes/farm-field.js'
 }
 
 exports.route = async (event) => {
     const router = new Router({
-        basePath: 'api/v1',
+        basePath: 'api',
         routingMode: 'list',
         handlerList: routes,
         schemaPath: 'api/openapi.yml',

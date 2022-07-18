@@ -138,7 +138,7 @@ console.log(request.pathParams);
 console.log(request.route);
 
 // example output:
-'v1/grower/{id}'
+'grower/{id}'
 ```
 
 #### `request.path`
@@ -151,7 +151,7 @@ console.log(request.route);
 console.log(request.path);
 
 // example output:
-'v1/grower/1'
+'grower/1'
 ```
 
 #### `request.json`

@@ -1,4 +1,4 @@
 exports.get = async (request, response) => {
-    response.body = {get: true};
+    response.body = {'growerId': true};
     return response;
 };

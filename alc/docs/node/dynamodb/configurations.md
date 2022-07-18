@@ -28,14 +28,14 @@ The Dynamodb event will automatically handle many common things done when eventi
 
 ```js
 const EventClient = require('@syngenta-digital/alc').dynamodb.Event;
-const Grower = require('api/v1/logic/grower');
+const Grower = require('api/logic/grower');
 
 exports.stream = async (event) => {
     const options = {
         globalLogger: true,
         operations: ['create', 'update'] // [create, update, delete] by default
         operationError: false, // will raise exception if wrong operation;  default false
-        requiredBody: 'v1-ddb-record',
+        requiredBody: 'ddb-record',
         schemaPath: 'api/openapi.yml',
         validationError: false, // will raise exception if validation fails;  default false
         dataClass: Grower, // will get instance of this instead of record instance

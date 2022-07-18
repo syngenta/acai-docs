@@ -15,14 +15,14 @@ description: How to use the ALC Router
 
 ```yaml
 functions:
-    v1-apigateway-handler:
-        handler: api/v1/handler/router.route
+    apigateway-handler:
+        handler: api/handler/router.route
         events:
             - http:
-                path: /v1/
+                path: /
                 method: ANY
             - http:
-                path: /v1/{proxy+}
+                path: /{proxy+}
                 method: ANY    
 ```
 
@@ -40,20 +40,20 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
     ```
     ~~ Directory ~~                     ~~ Route ~~
     ===================================================================
-    📦api/v1/                           |          
+    📦api/                           |          
     │---📂handler                       |           
         │---📜router.js                 |
-        │---📜login.js                  | /v1/login    
+        │---📜org.js                    | /org    
         │---📂grower                    |
-            │---📜index.js              | /v1/grower
-            │---📜{growerId}.js         | /v1/grower/{growerId}
+            │---📜index.js              | /grower
+            │---📜{growerId}.js         | /grower/{growerId}
         │---📂farm                      |
-            │---📜index.js              | /v1/farm
+            │---📜index.js              | /farm
             │---📂{farmId}              |
-                │---📜index.js          | /v1/farm/{farmId}
+                │---📜index.js          | /farm/{farmId}
                 │---📂field             |
-                    │---📜index.js      | /v1/farm/{farmId}/field
-                    │---📜{fieldId}.js  | /v1/farm/{farmId}/field/{fieldId}
+                    │---📜index.js      | /farm/{farmId}/field
+                    │---📜{fieldId}.js  | /farm/{farmId}/field/{fieldId}
     ```
 
 === "router.js"
@@ -64,8 +64,8 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
     exports.route = async (event) => {
         const router = new Router({
             routingMode: 'directory',
-            basePath: 'api/v1', // for use with custom apigateway domain
-            handlerPath: 'api/v1/handler'
+            basePath: 'api', // for use with custom apigateway domain
+            handlerPath: 'api/handler'
         });
         return router.route(event);
     };
@@ -87,29 +87,29 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
     ```
     ~~ Pattern ~~                                   ~~ Route ~~
     ================================================================================
-    📦api/v1/                                       |
+    📦api/                                       |
     │---📂handler                                   |
         │---📜router.js                             |
-        │---📂login                                 |
-            │---📜login.controller.js               | /v1/login
-            │---📜login.model.js                    |
-            │---📜login.factory.js                  |
-            │---📜login.logic.js                    |
+        │---📂org                                   |
+            │---📜org.controller.js                 | /org
+            │---📜org.model.js                      |
+            │---📜org.factory.js                    |
+            │---📜org.logic.js                      |
         │---📂grower                                |
-            │---📜grower.controller.js              | /v1/grower
-            │---📜{growerId}.controller.js          | /v1/grower/{growerId}
+            │---📜grower.controller.js              | /grower
+            │---📜{growerId}.controller.js          | /grower/{growerId}
             │---📜grower.model.js                   |
             │---📜grower.factory.js                 |
             │---📜grower.logic.js                   |
         │---📂farm                                  |
-            │---📜farm.controller.js                | /v1/farm
+            │---📜farm.controller.js                | /farm
             │---📜farm.logic.js                     |
             │---📜farm.model.js                     |
             │---📂{farmId}                          |
-                │---📜{farmId}.controller.js        | /v1/farm/{farmId}
+                │---📜{farmId}.controller.js        | /farm/{farmId}
                 │---📂field                         |
-                    │---📜field.controller.js       | /v1/farm/{farmId}/field
-                    │---📜{fieldId}.controller.js   | /v1/farm/{farmId}/field/{fieldId}
+                    │---📜field.controller.js       | /farm/{farmId}/field
+                    │---📜{fieldId}.controller.js   | /farm/{farmId}/field/{fieldId}
                     │---📜field.logic.js            |
                     │---📜field.model.js            |
     ```
@@ -122,8 +122,8 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
     exports.route = async (event) => {
         const router = new Router({
             routingMode: 'pattern',
-            basePath: 'api/v1', // for use with custom apigateway domain
-            handlerPattern: 'api/v1/**/*.controller.js'
+            basePath: 'api', // for use with custom apigateway domain
+            handlerPattern: 'api/**/*.controller.js'
         });
         return router.route(event);
     };
@@ -145,7 +145,7 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
     ```
     File structure doesn't matter
     ======================================================
-    📦api/v1/
+    📦api/
     │---📂handler
         │---📜router.js
     ```
@@ -158,11 +158,11 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
     exports.route = async (event) => {
         const router = new Router({
             routingMode: 'list',
-            basePath: 'api/v1', // for use with custom apigateway domain
+            basePath: 'api', // for use with custom apigateway domain
             handlerList: {
-                'GET::grower': 'api/v1/routes/grower.js',
-                'POST::farm': 'api/v1/routes/farm.js',
-                'PUT:farm/{farmId}/field/{fieldId}': 'api/v1/routes/farm-field.js'
+                'GET::grower': 'api/routes/grower.js',
+                'POST::farm': 'api/routes/farm.js',
+                'PUT:farm/{farmId}/field/{fieldId}': 'api/routes/farm-field.js'
             }
         });
         return router.route(event);

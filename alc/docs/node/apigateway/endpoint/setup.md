@@ -17,37 +17,37 @@ Each endpoint should read as procedural list of steps to be completed. To help k
 Each endpoint must have stateless functions which match the name of the name of the HTTP method. If endpoint is called the a `POST` HTTP method, then the `post` endpoint function is invoked.
 
 ```js
-// example for endpoint file: api/v1/grower.js
+// example for endpoint file: api/grower.js
 
 exports.requirements = {}; // discussed in next section below
 
 exports.post = async (request, response) => {
-    response.body = {message: '[POST] /v1/grower was called'};
+    response.body = {message: '[POST] /grower was called'};
     return response;
 };
 
 exports.get = async (request, response) => {
-    response.body = {message: '[GET] /v1/grower was called'};
+    response.body = {message: '[GET] /grower was called'};
     return response;
 };
 
 exports.patch = async (request, response) => {
-    response.body = {message: '[PATCH] /v1/grower was called'};
+    response.body = {message: '[PATCH] /grower was called'};
     return response;
 };
 
 exports.put = async (request, response) => {
-    response.body = {message: '[PUT] /v1/grower was called'};
+    response.body = {message: '[PUT] /grower was called'};
     return response;
 };
 
 exports.delete = async (request, response) => {
-    response.body = {message: '[DELETE] /v1/grower was called'};
+    response.body = {message: '[DELETE] /grower was called'};
     return response;
 };
 
 exports.query = async (request, response) => {
-    response.body = {message: '[QUERY] /v1/grower, a custom http method, was called'};
+    response.body = {message: '[QUERY] /grower, a custom http method, was called'};
     return response;
 };
 ```
@@ -60,30 +60,30 @@ Each method within the endpoint file can have individual validation requirements
     See the full configuration list, explanation and example of each setting in our [Validations Section]({{web.url}}/node/apigateway/endpoint/configurations/).
 
 ```js
-// example for endpoint file: api/v1/grower.js
+// example for endpoint file: api/grower.js
 
-const Grower = require('api/v1/logic/grower');
+const Grower = require('api/logic/grower');
 
 exports.requirements = {
     post: {
         requiredHeaders: ['x-onbehalf-of'],
         availableHeaders: ['x-requester-id', 'x-test-id'], //not advisable to use; too strict
-        requiredBody: 'v1-post-grower-request'
+        requiredBody: 'post-grower-request'
     },
     get: {
         requiredQuery: ['requester_id'],
         availableQuery: ['grower_email', 'grower_phone', 'grower_first', 'grower_last'],
     },
     put: {
-        requiredPath: 'v1/grower/{id}',
+        requiredPath: 'grower/{id}',
         requiredAuth: true,
-        requiredBody: 'v1-put-grower-request',
+        requiredBody: 'put-grower-request',
         dataClass: Grower
     },
     patch: {
-        requiredPath: 'v1/grower/{id}',
+        requiredPath: 'grower/{id}',
         requiredAuth: true,
-        requiredBody: 'v1-patch-grower-request'
+        requiredBody: 'patch-grower-request'
         before: async (request, response, requirements) => { // might be cleaner to put this in a separate file and call in context.
             const result = await db.checkGrowerIdExists(request.pathParams.id);
             if (!result){
@@ -92,7 +92,7 @@ exports.requirements = {
         }
     },
     delete: {
-        requiredPath: 'v1/grower/{id}',
+        requiredPath: 'grower/{id}',
         after: async (request, response, requirements) => { // might be cleaner to put this in a separate file and call in context.
             const relations = await db.getRequesterRelations(request.headers['x-requester-id']);
             const results = []
@@ -108,32 +108,32 @@ exports.requirements = {
 };
 
 exports.post = async (request, response) => {
-    response.body = {message: '[POST] /v1/grower was called'};
+    response.body = {message: '[POST] /grower was called'};
     return response;
 };
 
 exports.get = async (request, response) => {
-    response.body = {message: '[GET] /v1/grower was called'};
+    response.body = {message: '[GET] /grower was called'};
     return response;
 };
 
 exports.patch = async (request, response) => {
-    response.body = {message: '[PATCH] /v1/grower was called'};
+    response.body = {message: '[PATCH] /grower was called'};
     return response;
 };
 
 exports.put = async (grower, response) => {
-    response.body = {message: '[PUT] /v1/grower was called; got instance of grower instead of request'};
+    response.body = {message: '[PUT] /grower was called; got instance of grower instead of request'};
     return response;
 };
 
 exports.delete = async (request, response) => {
-    response.body = {message: '[DELETE] /v1/grower was called'};
+    response.body = {message: '[DELETE] /grower was called'};
     return response;
 };
 
 exports.query = async (request, response) => {
-    response.body = {message: '[QUERY] /v1/grower, a custom http method, was called'};
+    response.body = {message: '[QUERY] /grower, a custom http method, was called'};
     return response;
 };
 ```

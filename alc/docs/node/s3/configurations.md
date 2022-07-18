@@ -31,14 +31,14 @@ The S3 event will automatically handle many common things done when eventing off
 
 ```js
 const EventClient = require('@syngenta-digital/alc').s3.Event;
-const Grower = require('api/v1/logic/grower');
+const Grower = require('api/logic/grower');
 
 exports.eventer = async (event) => {
     const options = {
         globalLogger: true,
         operations: ['create', 'delete'] // [create, update, delete] by default; s3 doesn't support delete
         operationError: false, // will raise exception if wrong operation;  default false
-        requiredBody: 'v1-s3-record', // only works with isJSON
+        requiredBody: 's3-record', // only works with isJSON
         schemaPath: 'api/openapi.yml', // only works with isJSON
         validationError: false, // will raise exception if validation fails;  default false
         getObject: true, // required for isJSON or isCSV

@@ -85,7 +85,7 @@ exports.requirements = {
 
 exports.requirements = {
     put: {
-        requiredPath: 'v1/grower/{id}'
+        requiredPath: 'grower/{id}'
     }
 };
 ```
@@ -99,7 +99,7 @@ exports.requirements = {
 
 exports.requirements = {
     post: {
-        requiredBody: 'v1-post-grower-request'
+        requiredBody: 'post-grower-request'
     }
 };
 ```

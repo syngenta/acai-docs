@@ -26,12 +26,12 @@ The SNS/SQS event will automatically handle many common things done when eventin
 
 ```js
 const EventClient = require('@syngenta-digital/alc').sqs.Event;
-const Grower = require('api/v1/logic/grower');
+const Grower = require('api/logic/grower');
 
 exports.listen = async (event) => {
     const options = {
         globalLogger: true,
-        requiredBody: 'v1-sqs-record',
+        requiredBody: 'sqs-record',
         schemaPath: 'api/openapi.yml',
         validationError: false, // will raise exception if validation fails;  default false
         dataClass: Grower, // will get instance of this instead of record instance
