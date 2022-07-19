@@ -1,7 +1,7 @@
 const Chance = require('chance');
 
 // let's pretend this is a database model
-class Farm {
+class Field {
     constructor() {
         this.__chance = new Chance();
     }
@@ -13,38 +13,41 @@ class Farm {
         return true;
     }
 
-    getFarmFromID(id) {
-        const farm = this.__createRandom();
-        farm.id = id;
-        return farm;
+    getFieldFromID(id) {
+        const field = this.__createRandom();
+        field.id = id;
+        return field;
     }
 
-    create(farm) {
-        farm.id = this.__chance.guid();
-        return farm;
+    getFieldFromFarm(farmId) {
+        const field = this.__createRandom();
+        field.id = id;
+        field.farmId = farmId;
+        return field;
     }
 
-    update(farm) {
-        return farm;
+    create(field) {
+        field.id = this.__chance.guid();
+        return field;
     }
 
-    delete(farm) {
+    update(field) {
+        return field;
+    }
+
+    delete(field) {
         return {};
     }
 
     __createRandom(){
         return {
             id: this.__chance.guid(),
-            name: `${this.__chance.name()}'s Farm`,
-            address: this.__chance.address(),
-            city: this.__chance.city(),
-            state: this.__chance.state(),
-            zip: this.__chance.zip(),
+            name: `${this.__chance.word()} Field`,
+            coordinates: this.__chance.coordinates().split(','),
             created: this.__chance.date({year: new Date().getFullYear()}).toISOString(),
             modified: this.__chance.date({year: new Date().getFullYear()}).toISOString()
         }
     }
-
 }
 
-module.exports = Farm;
+module.exports = Field;
