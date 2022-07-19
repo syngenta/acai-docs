@@ -85,33 +85,32 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
 === "file structure"
 
     ```
-    ~~ Pattern ~~                                   ~~ Route ~~
+    ~~ Pattern ~~                               ~~ Route ~~
     ================================================================================
-    📦api/                                       |
-    │---📂handler                                   |
-        │---📜router.js                             |
-        │---📂org                                   |
-            │---📜org.controller.js                 | /org
-            │---📜org.model.js                      |
-            │---📜org.factory.js                    |
-            │---📜org.logic.js                      |
-        │---📂grower                                |
-            │---📜grower.controller.js              | /grower
-            │---📜{growerId}.controller.js          | /grower/{growerId}
-            │---📜grower.model.js                   |
-            │---📜grower.factory.js                 |
-            │---📜grower.logic.js                   |
-        │---📂farm                                  |
-            │---📜farm.controller.js                | /farm
-            │---📜farm.logic.js                     |
-            │---📜farm.model.js                     |
-            │---📂{farmId}                          |
-                │---📜{farmId}.controller.js        | /farm/{farmId}
-                │---📂field                         |
-                    │---📜field.controller.js       | /farm/{farmId}/field
-                    │---📜{fieldId}.controller.js   | /farm/{farmId}/field/{fieldId}
-                    │---📜field.logic.js            |
-                    │---📜field.model.js            |
+    📦api/                                      |
+    │---📜router.js                             |
+    │---📂org                                   |
+        │---📜org.controller.js                 | /org
+        │---📜org.model.js                      |
+        │---📜org.factory.js                    |
+        │---📜org.logic.js                      |
+    │---📂grower                                |
+        │---📜grower.controller.js              | /grower
+        │---📜{growerId}.controller.js          | /grower/{growerId}
+        │---📜grower.model.js                   |
+        │---📜grower.factory.js                 |
+        │---📜grower.logic.js                   |
+    │---📂farm                                  |
+        │---📜farm.controller.js                | /farm
+        │---📜farm.logic.js                     |
+        │---📜farm.model.js                     |
+        │---📂{farmId}                          |
+            │---📜{farmId}.controller.js        | /farm/{farmId}
+            │---📂field                         |
+                │---📜field.controller.js       | /farm/{farmId}/field
+                │---📜{fieldId}.controller.js   | /farm/{farmId}/field/{fieldId}
+                │---📜field.logic.js            |
+                │---📜field.model.js            |
     ```
 
 === "router.js"
@@ -146,8 +145,7 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
     File structure doesn't matter
     ======================================================
     📦api/
-    │---📂handler
-        │---📜router.js
+    │---📜router.js
     ```
 
 === "router.js"
