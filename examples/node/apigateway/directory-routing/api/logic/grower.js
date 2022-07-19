@@ -2,7 +2,7 @@ const {v4: uuidv4} = require('uuid');
 const GrowerModel = require('../model/grower');
 
 class Grower {
-    constructor(grower = {}, grower_model = null) {
+    constructor(grower = {}, growerModel = null) {
         const now = new Date().toISOString();
         this.__id = grower.id;
         this.__email = grower.email;
@@ -11,7 +11,7 @@ class Grower {
         this.__last = grower.last;
         this.__created = grower.created || now;
         this.__modified = grower.modified || now;
-        this.__model = grower_model || new GrowerModel()
+        this.__model = growerModel || new GrowerModel()
     }
 
     static convertFromRequest(request){

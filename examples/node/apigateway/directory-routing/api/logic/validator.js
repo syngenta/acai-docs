@@ -1,4 +1,5 @@
 const GrowerModel = require('../model/grower');
+const OrgModel = require('../model/organization');
 
 class Validator {
 
@@ -14,6 +15,23 @@ class Validator {
         if (!await growerModel.idExists(request.pathParams.growerId)){
             response.setError('id', `no grower found wth  id ${request.pathParams.growerId}`);
         }
+    }
+
+    static async orgExists(request, response){
+        const growerModel = new OrgModel();
+        if (!await growerModel.idExists(request.headers['x-org-id'])){
+            response.setError('id', `no organization found wth  id ${request.headers['x-org-id']}`);
+        }
+    }
+
+    static async filterOrgProperties(request, response){
+        if (request.headers['x-org-id'].startsWith('del')){
+            const org = response.rawBody;
+            delete org.revenue;
+            delete org.profit;
+            response.body = org;
+        }
+        return response;
     }
 }
 
