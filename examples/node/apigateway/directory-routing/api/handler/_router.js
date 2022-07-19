@@ -7,6 +7,7 @@ exports.route = async (event) => {
         basePath: 'directory-example',
         handlerPath: 'api/handler',
         schemaPath: 'openapi.yml',
+        autoValidate: true, // will automatically validate against openapi.yml
         beforeAll: ApiTraffic.logRequest,
         afterAll: ApiTraffic.logResponse,
         onError: (request, response, error) => {
