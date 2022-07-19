@@ -261,29 +261,6 @@ paths:
                     $ref: '#/components/responses/BadRequest'
                 401:
                     $ref: '#/components/responses/Unauthorized'
-        delete:
-            tags:
-                - alc
-            operationId: GetFarmByID
-            summary: Get a list of farms
-            parameters:
-                -   in: path
-                    name: farmId
-                    description: id of farm
-                    required: true
-                    schema:
-                        type: string
-            responses:
-                200:
-                    description: Successful request
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/farm-model'
-                400:
-                    $ref: '#/components/responses/BadRequest'
-                401:
-                    $ref: '#/components/responses/Unauthorized'
     /directory-example/farm/{farmId}:
         get:
             tags:
@@ -326,6 +303,29 @@ paths:
                     application/json:
                         schema:
                             $ref: '#/components/schemas/patch-farm-request'
+            responses:
+                200:
+                    description: Successful request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/farm-model'
+                400:
+                    $ref: '#/components/responses/BadRequest'
+                401:
+                    $ref: '#/components/responses/Unauthorized'
+        delete:
+            tags:
+                - alc
+            operationId: DeleteFarmByID
+            summary: Delete a farms
+            parameters:
+                -   in: path
+                    name: farmId
+                    description: id of farm
+                    required: true
+                    schema:
+                        type: string
             responses:
                 200:
                     description: Successful request

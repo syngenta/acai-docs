@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-    title: ALC Pattern Examples
+    title: ALC List Examples
     version: 1.0.0
     description: ALC API Example
     contact:
@@ -13,7 +13,7 @@ tags:
 servers:
     - url: https://alc.syngenta-digital.com
 paths:
-    /pattern-example/org:
+    /list-example/org:
         post:
             tags:
                 - alc
@@ -88,7 +88,7 @@ paths:
                     $ref: '#/components/responses/BadRequest'
                 401:
                     $ref: '#/components/responses/Unauthorized'
-    /pattern-example/grower:
+    /list-example/grower:
         post:
             tags:
                 - alc
@@ -140,7 +140,7 @@ paths:
                     $ref: '#/components/responses/BadRequest'
                 401:
                     $ref: '#/components/responses/Unauthorized'
-    /pattern-example/grower/{growerId}:
+    /list-example/grower/{growerId}:
         get:
             tags:
                 - alc
@@ -215,7 +215,7 @@ paths:
                     $ref: '#/components/responses/BadRequest'
                 401:
                     $ref: '#/components/responses/Unauthorized'
-    /pattern-example/farm:
+    /list-example/farm:
         post:
             tags:
                 - alc
@@ -247,7 +247,7 @@ paths:
                 -   in: query
                     name: ownerId
                     description: owner of farm
-                    required: true
+                    required: false
                     schema:
                         type: string
             responses:
@@ -261,7 +261,7 @@ paths:
                     $ref: '#/components/responses/BadRequest'
                 401:
                     $ref: '#/components/responses/Unauthorized'
-    /pattern-example/farm/{farmId}:
+    /list-example/farm/{farmId}:
         get:
             tags:
                 - alc
@@ -317,8 +317,8 @@ paths:
         delete:
             tags:
                 - alc
-            operationId: DeleteByID
-            summary: Get a list of farms
+            operationId: DeleteFarmByID
+            summary: Delete a farm
             parameters:
                 -   in: path
                     name: farmId
@@ -337,7 +337,7 @@ paths:
                     $ref: '#/components/responses/BadRequest'
                 401:
                     $ref: '#/components/responses/Unauthorized'
-    /pattern-example/farm/{farmId}/field:
+    /list-example/farm/{farmId}/field:
         get:
             tags:
                 - alc
@@ -361,7 +361,7 @@ paths:
                     $ref: '#/components/responses/BadRequest'
                 401:
                     $ref: '#/components/responses/Unauthorized'
-    /pattern-example/farm/{farmId}/field/{fieldId}:
+    /list-example/farm/{farmId}/field/{fieldId}:
         get:
             tags:
                 - alc
