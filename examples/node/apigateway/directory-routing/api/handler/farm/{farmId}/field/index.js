@@ -1,3 +1,5 @@
+const Field = require('../../../../logic/field');
+
 exports.requirements = {
     get: {
        requiredPath: '/farm/{farmId}/field'
@@ -5,6 +7,7 @@ exports.requirements = {
 }
 
 exports.get = async (request, response) => {
-    response.body = {'get-field': true}
+    const fields = await Field.getAll(request.pathParams.farmId);
+    response.body = {fields: fields.map(field => field.export())}
     return response;
 };

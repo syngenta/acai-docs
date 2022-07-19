@@ -18,6 +18,6 @@ exports.post = async (request, response) => {
 
 exports.get = async (request, response) => {
     const farm = await Farm.getByID(request.queryParams.ownerId);
-    response.body = farm.export();
+    response.body = {'farms': farm.export()};
     return response;
 };

@@ -13,17 +13,21 @@ class Field {
         return true;
     }
 
-    getFieldFromID(id) {
-        const field = this.__createRandom();
-        field.id = id;
-        return field;
-    }
-
-    getFieldFromFarm(farmId) {
+    getFieldFromID(farmId, id) {
         const field = this.__createRandom();
         field.id = id;
         field.farmId = farmId;
         return field;
+    }
+
+    getAll(farmId) {
+        const fields = [];
+        for (let i=0; i < 25; i++){
+            const field = this.__createRandom();
+            field.farmId = farmId;
+            fields.push(field);
+        }
+        return fields;
     }
 
     create(field) {
@@ -42,7 +46,7 @@ class Field {
     __createRandom(){
         return {
             id: this.__chance.guid(),
-            name: `${this.__chance.word()} Field`,
+            name: `${this.__chance.word()} field`,
             coordinates: this.__chance.coordinates().split(','),
             created: this.__chance.date({year: new Date().getFullYear()}).toISOString(),
             modified: this.__chance.date({year: new Date().getFullYear()}).toISOString()

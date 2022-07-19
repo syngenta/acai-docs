@@ -2,8 +2,9 @@ const {v4: uuidv4} = require('uuid');
 const FarmModel = require('../model/farm');
 
 class Farm {
-    constructor(farm = {}, farmModel = null) {
+    constructor(farmConstruct = {}, farmModel = null) {
         const now = new Date().toISOString();
+        const farm = this.__findValues(farmConstruct);
         this.__id = farm.id;
         this.__name = farm.name;
         this.__address = farm.address;
@@ -12,7 +13,8 @@ class Farm {
         this.__zip = farm.zip;
         this.__created = farm.created || now;
         this.__modified = farm.modified || now;
-        this.__model = farmModel || new FarmModel()
+        this.__model = farmModel || new FarmModel();
+
     }
 
     static convertFromRequest(request){
@@ -85,6 +87,16 @@ class Farm {
 
     async update(){
         return this.__model.update(this.export())
+    }
+
+    async delete(){
+        return this.__model.delete(this.id);
+    }
+
+    __findValues(farm){
+        const values = farm.body ? farm.body : farm;
+        values.id = farm.body ? farm.pathParams.farmId : farm.id;
+        return values;
     }
 }
 

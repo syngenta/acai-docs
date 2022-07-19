@@ -1,9 +1,13 @@
+const Farm = require('../../../logic/farm');
+
 exports.requirements = {
     get: {
        requiredPath: '/farm/{farmId}'
     },
     patch: {
-       requiredPath: '/farm/{farmId}'
+       requiredPath: '/farm/{farmId}',
+       requiredBody: 'patch-farm-request',
+       dataClass: Farm
     },
     delete: {
        requiredPath: '/farm/{farmId}'
@@ -11,16 +15,19 @@ exports.requirements = {
 }
 
 exports.get = async (request, response) => {
-    response.body = {'get-farm': true}
+    const farm = await Farm.getByID(request.pathParams.farmId);
+    response.body = farm.export();
     return response;
 };
 
-exports.patch = async (request, response) => {
-    response.body = {'patch-farm': true}
+exports.patch = async (farm, response) => {
+    await farm.update();
+    response.body = farm.export();
     return response;
 };
 
 exports.delete = async (request, response) => {
-    response.body = {'delete-farm': true}
+    const farm = await Farm.getByID(request.pathParams.farmId);
+    await farm.delete();
     return response;
 };

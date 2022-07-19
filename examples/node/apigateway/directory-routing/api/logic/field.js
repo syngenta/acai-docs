@@ -5,7 +5,7 @@ class Field {
     constructor(field = {}, fieldModel = null) {
         const now = new Date().toISOString();
         this.__id = field.id;
-        this.__farm = field.farm;
+        this.__farmId = field.farmId;
         this.__name = field.name;
         this.__coordinates = field.coordinates;
         this.__created = field.created || now;
@@ -19,9 +19,19 @@ class Field {
         return new Field(copied);
     }
 
-    static async getByID(id){
+    static async getAll(farmId){
         const model = new FieldModel();
-        const result = await model.getOrgFromID(id);
+        const results = await model.getAll(farmId);
+        const fields = [];
+        for (const result of results){
+            fields.push(new Field(result))
+        }
+        return fields;
+    }
+
+    static async getByID(farmId, id){
+        const model = new FieldModel();
+        const result = await model.getFieldFromID(farmId, id);
         return new Field(result);
     }
 
@@ -29,8 +39,8 @@ class Field {
         return this.__id;
     }
 
-    get farm() {
-        return this.__farm;
+    get farmId() {
+        return this.__farmId;
     }
 
     get name() {
@@ -75,6 +85,10 @@ class Field {
 
     async update(){
         return this.__model.update(this.export())
+    }
+
+    async delete(){
+        return this.__model.delete(this.export())
     }
 }
 

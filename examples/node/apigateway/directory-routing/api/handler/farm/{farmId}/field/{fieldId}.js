@@ -1,3 +1,5 @@
+const Field = require('../../../../logic/field');
+
 exports.requirements = {
     get: {
        requiredPath: '/farm/{farmId}/field/{fieldId}'
@@ -11,16 +13,21 @@ exports.requirements = {
 }
 
 exports.get = async (request, response) => {
-    response.body = {'get-field': true}
+    const field = await Field.getByID(request.pathParams.farmId, request.pathParams.fieldId);
+    response.body = field.export();
     return response;
 };
 
 exports.put = async (request, response) => {
-    response.body = {'put-field': true}
+    const field = await Field.getByID(request.pathParams.farmId, request.pathParams.fieldId);
+    field.merge(request.body);
+    await field.update();
+    response.body = field.export();
     return response;
 };
 
 exports.delete = async (request, response) => {
-    response.body = {'delete-field': true}
+    const field = await Field.getByID(request.pathParams.farmId, request.pathParams.fieldId);
+    await field.delete();
     return response;
 };
