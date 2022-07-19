@@ -265,3 +265,65 @@ components:
                     type: string
                 zip:
                     type: string
+        post-farm-request:
+            title: post-farm-request
+            type: object
+            required:
+                - name
+                - address
+                - city
+                - state
+                - zip
+            properties:
+                name:
+                    type: string
+                address:
+                    type: string
+                city:
+                    type: string
+                state:
+                    type: string
+                zip:
+                    type: string
+        patch-farm-request:
+            title: patch-farm-request
+            type: object
+            properties:
+                name:
+                    type: string
+                address:
+                    type: string
+                city:
+                    type: string
+                state:
+                    type: string
+                zip:
+                    type: string
+        post-field-request:
+            title: post-field-request
+            type: object
+            required:
+                - name
+                - coordinates
+            properties:
+                name:
+                    type: string
+                address:
+                    type: string
+                city:
+                    type: string
+                state:
+                    type: string
+                zip:
+                    type: string
+        put-field-request:
+            title: put-field-request
+            type: object
+            required:
+                - name
+                - coordinates
+            properties:
+                name:
+                    type: string
+                coordinates:
+                    type: string

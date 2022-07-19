@@ -5,6 +5,7 @@ class Organization {
     constructor(org = {}, orgModel = null) {
         const now = new Date().toISOString();
         this.__id = org.id;
+        this.__name = org.name;
         this.__address = org.address;
         this.__city = org.city;
         this.__state = org.state;
@@ -29,6 +30,10 @@ class Organization {
 
     get id() {
         return this.__id;
+    }
+
+    get name() {
+        return this.__name;
     }
 
     get address() {

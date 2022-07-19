@@ -1,14 +1,22 @@
 exports.requirements = {
-    put: {
+    get: {
        requiredPath: '/farm/{farmId}'
-   },
+    },
+    patch: {
+       requiredPath: '/farm/{farmId}'
+    },
     delete: {
        requiredPath: '/farm/{farmId}'
    }
 }
 
-exports.put = async (request, response) => {
-    response.body = {'put-farm': true}
+exports.get = async (request, response) => {
+    response.body = {'get-farm': true}
+    return response;
+};
+
+exports.patch = async (request, response) => {
+    response.body = {'patch-farm': true}
     return response;
 };
 

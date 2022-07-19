@@ -1,3 +1,12 @@
+exports.requirements = {
+    post: {
+       requiredBody: 'post-farm-request'
+   },
+    get: {
+       requiredQuery: ['ownerId']
+   }
+}
+
 exports.post = async (request, response) => {
     response.body = {'post-farm': true}
     return response;

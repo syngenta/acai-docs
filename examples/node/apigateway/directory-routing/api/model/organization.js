@@ -35,6 +35,7 @@ class Organization {
     __createRandom(){
         return {
             id: this.__chance.guid(),
+            name: this.__chance.name(),
             address: this.__chance.address(),
             city: this.__chance.city(),
             state: this.__chance.state(),
