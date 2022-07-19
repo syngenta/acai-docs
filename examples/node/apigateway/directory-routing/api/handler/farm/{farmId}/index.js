@@ -1,8 +1,8 @@
 exports.requirements = {
-    get: {
+    put: {
        requiredPath: '/farm/{farmId}'
    },
-    post: {
+    delete: {
        requiredPath: '/farm/{farmId}'
    }
 }

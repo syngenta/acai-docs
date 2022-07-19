@@ -8,11 +8,11 @@ exports.requirements = {
 }
 
 exports.post = async (request, response) => {
-    response.body = {'put-field': true}
+    response.body = {'post-field': true}
     return response;
 };
 
 exports.get = async (request, response) => {
-    response.body = {'delete-field': true}
+    response.body = {'get-field': true}
     return response;
 };
