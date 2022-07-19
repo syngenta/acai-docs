@@ -4,7 +4,8 @@ exports.route = async (event) => {
     const router = new Router({
         routingMode: 'directory',
         basePath: 'directory-example',
-        handlerPath: 'api/handler'
+        handlerPath: 'api/handler',
+        schemaPath: 'openapi.yml'
     });
     return router.route(event);
 };

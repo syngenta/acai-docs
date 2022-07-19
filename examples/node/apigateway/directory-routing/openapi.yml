@@ -1,0 +1,193 @@
+openapi: 3.0.0
+info:
+    title: ALC Examples
+    version: 1.0.0
+    description: ALC API Example
+    contact:
+        name: Syngenta Digital
+        email: developer@syngenta-digital.com
+        url: https://alc.syngenta-digital.com/
+tags:
+    - name: alc
+      description: alc
+servers:
+    - url: https://alc.syngenta-digital.com
+paths:
+    /grower:
+        post:
+            tags:
+                - alc
+            operationId: PostGrower
+            summary: Create new grower
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/post-grower-request'
+            responses:
+                200:
+                    description: Successful request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/grower-model'
+                400:
+                    $ref: '#/components/responses/BadRequest'
+                401:
+                    $ref: '#/components/responses/Unauthorized'
+        get:
+            tags:
+                - broker
+            operationId: GetObject
+            summary: Get Salesforce Data from Broker
+            description: Provides the ability to pull a single record of salesforce data
+            parameters:
+                -   in: query
+                    name: object_type
+                    description: the type of object we are getting
+                    required: true
+                    schema:
+                        type: string
+                -   in: query
+                    name: object_id
+                    description: the type of object we are getting
+                    required: true
+                    schema:
+                        type: string
+                -   in: query
+                    name: sf_org_id
+                    description: the type of object we are getting
+                    required: false
+                    schema:
+                        type: string
+                        default: "00D5t0000004eCZEAY"
+                -   in: query
+                    name: version
+                    description: the type of object we are getting
+                    required: false
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: Successful request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/growers-model'
+                400:
+                    $ref: '#/components/responses/BadRequest'
+                401:
+                    $ref: '#/components/responses/Unauthorized'
+        /grower/{growerId}:
+            patch:
+                tags:
+                    - alc
+                operationId: PatchGrower
+                summary: update grower
+                requestBody:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/patch-grower-request'
+                responses:
+                    200:
+                        description: Successful request
+                        content:
+                            application/json:
+                                schema:
+                                    $ref: '#/components/schemas/grower-model'
+                    400:
+                        $ref: '#/components/responses/BadRequest'
+                    401:
+                        $ref: '#/components/responses/Unauthorized'
+components:
+    responses:
+        BadRequest:
+            description: Malformed request
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/error-response'
+        Unauthorized:
+            description: Unathorized request
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/error-response'
+        NotFound:
+            description: Not found
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/error-response'
+    schemas:
+        error-response:
+            title: error-response
+            type: object
+            properties:
+                errors:
+                    type: array
+                    items:
+                        type: string
+        growers-model:
+            title: growers-model
+            type: object
+            properties:
+                grower:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/grower-model'
+        grower-model:
+            title: grower-model
+            type: object
+            properties:
+                id:
+                    type: string
+                first:
+                    type: string
+                last:
+                    type: string
+                phone:
+                    type: string
+                    minLength: 10
+                email:
+                    type: string
+                    format: email
+                created:
+                    type: string
+                modified:
+                    type: string
+        post-grower-request:
+            title: post-grower-request
+            type: object
+            required:
+                - first
+                - last
+                - phone
+                - email
+            properties:
+                first:
+                    type: string
+                last:
+                    type: string
+                phone:
+                    type: string
+                    minLength: 10
+                email:
+                    type: string
+                    format: email
+        patch-grower-request:
+            title: patch-grower-request
+            type: object
+            properties:
+                first:
+                    type: string
+                last:
+                    type: string
+                phone:
+                    type: string
+                    minLength: 10
+                email:
+                    type: string
+                    format: email

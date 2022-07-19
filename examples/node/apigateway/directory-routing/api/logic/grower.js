@@ -17,7 +17,7 @@ class Grower {
     static convertFromRequest(request){
         const copied = JSON.parse(JSON.stringify(request));
         copied.id = uuidv4();
-        return new Grower(copied)
+        return new Grower(copied);
     }
 
     static async getAll(){
@@ -27,25 +27,25 @@ class Grower {
         for (const result of results){
             growers.push(new Grower(result))
         }
-        return growers
+        return growers;
     }
 
     static async getByID(id){
         const model = new GrowerModel();
         const result = await model.getGrowerFromID(id);
-        return new Grower(result)
+        return new Grower(result);
     }
 
     static async getByEmail(email){
         const model = new GrowerModel();
         const result = model.getGrowerFromEmail(email);
-        return new Grower(result)
+        return new Grower(result);
     }
 
     static async getByPhone(phone){
         const model = new GrowerModel();
         const result = model.getGrowerFromPhone(phone);
-        return new Grower(result)
+        return new Grower(result);
     }
 
     get id() {
@@ -66,6 +66,24 @@ class Grower {
 
     get last() {
         return this.__last;
+    }
+
+    get created() {
+        return this.__created;
+    }
+
+    get modified() {
+        return this.__modified;
+    }
+
+    merge(updatedGrower) {
+        const blacklist = ['id', 'email', 'modified'];
+        for (const key in this) {
+            const property = key.replace('__', '');
+            if (updatedGrower[property] && updatedGrower[property] !== '' && !blacklist.includes(property)) {
+                this[key] = updatedGrower[property];
+            }
+        }
     }
 
     export() {
