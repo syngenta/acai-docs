@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-    title: ALC Directory Examples
+    title: ALC Pattern Examples
     version: 1.0.0
     description: ALC API Example
     contact:
@@ -141,6 +141,29 @@ paths:
                 401:
                     $ref: '#/components/responses/Unauthorized'
     /pattern-example/grower/{growerId}:
+        get:
+            tags:
+                - alc
+            operationId: GetGrowerByID
+            summary: Get a grower
+            parameters:
+                -   in: path
+                    name: growerId
+                    description: id of grower
+                    required: true
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: Successful request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/grower-model'
+                400:
+                    $ref: '#/components/responses/BadRequest'
+                401:
+                    $ref: '#/components/responses/Unauthorized'
         patch:
             tags:
                 - alc
@@ -224,7 +247,7 @@ paths:
                 -   in: query
                     name: ownerId
                     description: owner of farm
-                    required: false
+                    required: true
                     schema:
                         type: string
             responses:
@@ -280,6 +303,29 @@ paths:
                     application/json:
                         schema:
                             $ref: '#/components/schemas/patch-farm-request'
+            responses:
+                200:
+                    description: Successful request
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/farm-model'
+                400:
+                    $ref: '#/components/responses/BadRequest'
+                401:
+                    $ref: '#/components/responses/Unauthorized'
+        delete:
+            tags:
+                - alc
+            operationId: GetFarmByID
+            summary: Get a list of farms
+            parameters:
+                -   in: path
+                    name: farmId
+                    description: id of farm
+                    required: true
+                    schema:
+                        type: string
             responses:
                 200:
                     description: Successful request
@@ -655,4 +701,6 @@ components:
                 name:
                     type: string
                 coordinates:
-                    type: string
+                    type: array
+                    items:
+                        type: string

@@ -13,6 +13,8 @@ exports.route = async (event) => {
         onError: (request, response, error) => {
             // could do something more clever here, like push to an APM
             console.error(error);
+            response.code = 500;
+            response.setError('ERROR', error.message);
         }
     });
     return router.route(event);

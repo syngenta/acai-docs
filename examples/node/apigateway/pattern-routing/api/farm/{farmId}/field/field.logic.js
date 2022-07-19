@@ -1,5 +1,5 @@
 const {v4: uuidv4} = require('uuid');
-const FieldModel = require('./field.logic');
+const FieldModel = require('./field.model');
 
 class Field {
     constructor(field = {}, fieldModel = null) {

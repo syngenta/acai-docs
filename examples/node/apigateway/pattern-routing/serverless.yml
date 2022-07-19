@@ -47,7 +47,7 @@ resources:
 functions:
     v1-apigateway-handler:
         name: ${self:provider.stackTags.name}-v1-apigateway-handler
-        handler: api/_router.route
+        handler: api/router.route
         description: example router for pattern routing with alc
         memorySize: 256
         timeout: 30
