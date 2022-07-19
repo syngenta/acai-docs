@@ -23,7 +23,7 @@ class Farm {
 
     static async getByID(id){
         const model = new FarmModel();
-        const result = await model.getOrgFromID(id);
+        const result = await model.getFarmFromID(id);
         return new Farm(result);
     }
 

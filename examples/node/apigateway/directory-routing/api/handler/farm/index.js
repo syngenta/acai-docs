@@ -1,3 +1,5 @@
+const Farm = require('../../logic/farm');
+
 exports.requirements = {
     post: {
        requiredBody: 'post-farm-request'
@@ -8,11 +10,14 @@ exports.requirements = {
 }
 
 exports.post = async (request, response) => {
-    response.body = {'post-farm': true}
+    const farm = Farm.convertFromRequest(request.body);
+    await farm.create();
+    response.body = farm.export();
     return response;
 };
 
 exports.get = async (request, response) => {
-    response.body = {'get-farm': true}
+    const farm = await Farm.getByID(request.queryParams.ownerId);
+    response.body = farm.export();
     return response;
 };
