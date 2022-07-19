@@ -43,15 +43,6 @@ theme:
         -
             media: "(prefers-color-scheme: light)"
             scheme: syngenta-light
-            toggle:
-                icon: material/weather-night
-                name: Dark Mode
-        -
-            media: "(prefers-color-scheme: dark)"
-            scheme: syngenta-dark
-            toggle:
-                icon: material/weather-sunny
-                name: Light Mode
     highlightjs: true
     hljs_languages:
         - python
