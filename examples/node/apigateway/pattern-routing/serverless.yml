@@ -1,4 +1,4 @@
-service: directory-example
+service: pattern-example
 package:
     exclude:
         - .*
@@ -48,7 +48,7 @@ functions:
     v1-apigateway-handler:
         name: ${self:provider.stackTags.name}-v1-apigateway-handler
         handler: api/handler/_router.route
-        description: example router for directory routing with alc
+        description: example router for pattern routing with alc
         memorySize: 256
         timeout: 30
         events:
