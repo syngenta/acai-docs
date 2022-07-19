@@ -2,6 +2,10 @@ const Grower = require('../../logic/grower');
 const Validator = require('../../logic/validator');
 
 exports.requirements = {
+    get: {
+       requiredPath: '/grower/{growerId}',
+       before: Validator.growerExists
+   },
     patch: {
        requiredPath: '/grower/{growerId}',
        requiredBody: 'patch-grower-request',
@@ -12,6 +16,12 @@ exports.requirements = {
        before: Validator.growerExists
    }
 }
+
+exports.get = async (request, response) => {
+    const grower = await Grower.getByID(request.pathParams.growerId);
+    response.body = grower.export();
+    return response;
+};
 
 exports.patch = async (request, response) => {
     const grower = await Grower.getByID(request.pathParams.growerId);
