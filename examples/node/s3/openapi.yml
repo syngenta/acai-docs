@@ -1,0 +1,10 @@
+components:
+    schemas:
+        s3-record:
+            title: s3-record
+            type: object
+            properties:
+                id:
+                    type: string
+                body:
+                    type: object
