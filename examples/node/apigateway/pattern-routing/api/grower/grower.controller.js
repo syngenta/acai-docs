@@ -19,7 +19,8 @@ exports.get = async (request, response) => {
     if (request.queryParams.last) {
         growers = growers.filter(grower => grower.last.startsWith(request.queryParams.last.toLowerCase()));
     }
-    response.body = {'growers': growers.map(grower => grower.export())};
+    response.compress = true;
+    response.body = {growers: growers.map(grower => grower.export())};
     return response;
 };
 
