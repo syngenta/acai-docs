@@ -8,7 +8,7 @@
         "deploy": "serverless deploy --stage poc --profile global-poc"
     },
     "dependencies": {
-        "@syngenta-digital/alc": "2.0.0-beta.2.1"
+        "@syngenta-digital/alc": "2.0.0"
     },
     "devDependencies": {
         "serverless": "2.72.0",
