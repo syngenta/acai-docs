@@ -30,7 +30,7 @@ commands:
 jobs:
     install-build-deploy:
         docker:
-            - image: cimg/python:3.8.6-node
+            - image: cimg/python:3.8.9-node
         steps:
             - checkout
             - stage-setup
