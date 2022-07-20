@@ -1,0 +1,57 @@
+version: 2.1
+orbs:
+    aws-cli: circleci/aws-cli@1.2.1
+commands:
+    stage-setup:
+        steps:
+            - run:
+                command: |
+                    STAGE=$(echo $CIRCLE_TAG | cut -f1 -d'/')
+                    echo "export DEPLOY_STAGE=$STAGE" >> $BASH_ENV
+                    source $BASH_ENV
+    aws-profiles:
+        steps:
+            - run: npx @syngenta-digital/acp --file aws/profiles.yml
+    node-install:
+        steps:
+            - run: npm ci
+    pipenv-install:
+        steps:
+            - run: python3 -m pip install pipenv
+            - run: pipenv install --deploy
+    mkdocs-build:
+        steps:
+            - run: pipenv run build
+    s3-website:
+        steps:
+            - run: aws s3api create-bucket --bucket alc.syngenta-digital.com --region us-east-2 --create-bucket-configuration LocationConstraint=us-east-2 --profile $DEPLOY_STAGE || exit 0
+            - run: aws s3api put-bucket-policy --bucket alc.syngenta-digital.com --policy "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"PublicReadGetObject\",\"Effect\":\"Allow\",\"Principal\":\"*\",\"Action\":\"s3:GetObject\",\"Resource\":\"arn:aws:s3:::alc.syngenta-digital.com/*\"}]}" --profile $DEPLOY_STAGE || exit 0
+            - run: aws s3 website s3://alc.syngenta-digital.com --index-document 404.html --error-document index.html --profile $DEPLOY_STAGE || exit 0
+    s3-deploy:
+        steps:
+            - run: aws s3 sync alc/site s3://alc.syngenta-digital.com --profile $DEPLOY_STAGE --delete
+jobs:
+    install-build-deploy:
+        docker:
+            - image: cimg/python:3.8.6-node
+        steps:
+            - checkout
+            - stage-setup
+            - aws-cli/setup
+            - aws-profiles
+            - node-install
+            - pipenv-install
+            - mkdocs-build
+            - s3-website
+            - s3-deploy
+workflows:
+    install-build-deploy:
+        jobs:
+            - install-build-deploy:
+                context:
+                    - global-devops-cicd
+                filters:
+                    tags:
+                        only: /.*/
+                    branches:
+                        ignore: /.*/
