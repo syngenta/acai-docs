@@ -14,13 +14,12 @@ The SNS/SQS event will automatically handle many common things done when eventin
 
 | option                | type      | required | default                        | description                                                                 |
 |-----------------------|-----------|----------|--------------------------------|-----------------------------------------------------------------------------|
+| **`before`**          | func      | no       | null                           | a custom function to be ran before your records are pulled                  |
+| **`dataClass`**       | class     | no       | null                           | a custom class that will be passed instead of the records object            |
 | **`globalLogger`**    | bool      | no       | false                          | will assign the ALC logger to the global variable `globalLogger`            |
 | **`requiredBody`**    | str or obj| no       | null                           | will validate body of record against this schema                            |
 | **`schemaPath`**      | str       | no       | null                           | file path pointing to the location of the openapi.yml file                  |
 | **`validationError`** | bool      | no       | false                          | will raise exception if validation of record fails                          |
-| **`dataClass`**       | class     | no       | null                           | a custom class that will be passed instead of the records object            |
-| **`before`**          | func      | no       | null                           | a custom function to be ran before your records are pulled                  |
-
 
 ### Example: SNS/SQS Configuration Options
 

@@ -12,24 +12,24 @@ The DynamoDB event will by default provide instances of `record` classes which w
 
 ### Record Properties
 
-| property                                                                                                 | type  | description                                           |
-|----------------------------------------------------------------------------------------------------------|-------|-------------------------------------------------------|
-| **[`region`]({{web.url}}/node/dynamodb/record/#record.region)**                                    | str   | the region the record is from                         |
-| **[`id`]({{web.url}}/node/dynamodb/record/#record.id)**                                        | str   | the id of the event which invoked the lambda          |
-| **[`name`]({{web.url}}/node/dynamodb/record/#record.name)**                                    | str   | the name of the event which invoked the lambda        |
-| **[`source`]({{web.url}}/node/dynamodb/record/#record.source)**                                | str   | the source of the event which invoked the lambda      |
-| **[`keys`]({{web.url}}/node/dynamodb/record/#record.keys)**                                              | object| the keys of DynamoDB record                           |
-| **[`oldImage`]({{web.url}}/node/dynamodb/record/#record.oldImage)**                                      | object| the old image of dynamodb record; updated or deleted  |
-| **[`newImage`]({{web.url}}/node/dynamodb/record/#record.newImage)**                                      | object| the new image of dynamodb record; created or updated  |
-| **[`body`]({{web.url}}/node/dynamodb/record/#record.body)**                                              | object| the new image of dynamodb record; created or updated  |
-| **[`operation`]({{web.url}}/node/dynamodb/record/#record.operation)**                                    | str   | triggered operation lambda (create, update, delete)   |
-| **[`sourceARN`]({{web.url}}/node/dynamodb/record/#record.sourceARN)**                          | str   | the event source arn                                  |
-| **[`version`]({{web.url}}/node/dynamodb/record/#record.version)**                              | str   | the event version                                     |
-| **[`streamType`]({{web.url}}/node/dynamodb/record/#record.streamType)**                          | str   | the stream view type                                  |
-| **[`size`]({{web.url}}/node/dynamodb/record/#record.size)**                                    | int   | the size in bytes of the record                       |
-| **[`created`]({{web.url}}/node/dynamodb/record/#record.created)**| float | the approximate creationDate time                     |
-| **[`identity`]({{web.url}}/node/dynamodb/record/#record.identity)**                              | object| the identity who triggered the dynamodb change|
-| **[`expired`]({{web.url}}/node/dynamodb/record/#record.expired)**                    | bool  | whether the ttl has expired                           |
+| property                                                                | type  | description                                           |
+|-------------------------------------------------------------------------|-------|-------------------------------------------------------|
+| **[`body`]({{web.url}}/node/dynamodb/record/#recordbody)**              | object| the new image of dynamodb record; created or updated  |
+| **[`created`]({{web.url}}/node/dynamodb/record/#recordcreated)**        | float | the approximate creationDate time                     |
+| **[`expired`]({{web.url}}/node/dynamodb/record/#recordexpired)**        | bool  | whether the ttl has expired                           |
+| **[`id`]({{web.url}}/node/dynamodb/record/#recordid)**                  | str   | the id of the event which invoked the lambda          |
+| **[`identity`]({{web.url}}/node/dynamodb/record/#recordidentity)**      | object| the identity who triggered the dynamodb change        |
+| **[`keys`]({{web.url}}/node/dynamodb/record/#recordkeys)**              | object| the keys of DynamoDB record                           |
+| **[`name`]({{web.url}}/node/dynamodb/record/#recordname)**              | str   | the name of the event which invoked the lambda        |
+| **[`newImage`]({{web.url}}/node/dynamodb/record/#recordnewimage)**      | object| the new image of dynamodb record; created or updated  |
+| **[`oldImage`]({{web.url}}/node/dynamodb/record/#recordoldimage)**      | object| the old image of dynamodb record; updated or deleted  |
+| **[`operation`]({{web.url}}/node/dynamodb/record/#recordoperation)**    | str   | triggered operation lambda (create, update, delete)   |
+| **[`region`]({{web.url}}/node/dynamodb/record/#recordregion)**          | str   | the region the record is from                         |
+| **[`size`]({{web.url}}/node/dynamodb/record/#recordsize)**              | int   | the size in bytes of the record                       |
+| **[`source`]({{web.url}}/node/dynamodb/record/#recordsource)**          | str   | the source of the event which invoked the lambda      |
+| **[`sourceARN`]({{web.url}}/node/dynamodb/record/#recordsourcearn)**    | str   | the event source arn                                  |
+| **[`streamType`]({{web.url}}/node/dynamodb/record/#recordstreamtype)**  | str   | the stream view type                                  |
+| **[`version`]({{web.url}}/node/dynamodb/record/#recordversion)**        | str   | the event version                                     |
 
 #### `record.region`
 

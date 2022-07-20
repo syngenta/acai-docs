@@ -14,18 +14,17 @@ The S3 event will automatically handle many common things done when eventing off
 
 | option                | type      | required | default                        | description                                                                 |
 |-----------------------|-----------|----------|--------------------------------|-----------------------------------------------------------------------------|
+| **`before`**          | func      | no       | null                           | a custom function to be ran before your records are pulled                  |
+| **`dataClass`**       | class     | no       | null                           | a custom class that will be passed instead of the records object            |
+| **`getObject`**       | bool      | no       | false                          | will pull the file from S3 bucket and hold in memory                        |
 | **`globalLogger`**    | bool      | no       | false                          | will assign the ALC logger to the global variable `globalLogger`            |
+| **`isJSON`**          | bool      | no       | false                          | will convert file into JSON object; requires `getObject`                    |
+| **`isCSV`**           | bool      | no       | false                          | will convert file into CSV object; requires `getObject`                     |
 | **`operations`**      | array     | no       | ['create', 'update', 'delete'] | will only run if record was created from the listed operation               |
 | **`operationError`**  | bool      | no       | false                          | will raise exception if operation of record is not from listed operations   |
 | **`requiredBody`**    | str or obj| no       | null                           | will validate body of record against this schema, requires `isJSON`         |
 | **`schemaPath`**      | str       | no       | null                           | file path pointing to the location of the openapi.yml file                  |
 | **`validationError`** | bool      | no       | false                          | will raise exception if validation of record fails                          |
-| **`getObject`**       | bool      | no       | false                          | will pull the file from S3 bucket and hold in memory                        |
-| **`isJSON`**          | bool      | no       | false                          | will convert file into JSON object; requires `getObject`                    |
-| **`isCSV`**           | bool      | no       | false                          | will convert file into CSV object; requires `getObject`                     |
-| **`dataClass`**       | class     | no       | null                           | a custom class that will be passed instead of the records object            |
-| **`before`**          | func      | no       | null                           | a custom function to be ran before your records are pulled                  |
-
 
 ### Example: S3 Configuration Options
 

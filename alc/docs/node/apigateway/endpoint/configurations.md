@@ -8,23 +8,23 @@ description: How to use the built-in validation & custom middleware
 In order to encourage "Happy Path Programming" and make it easier for developers to validate request fully, the ALC comes with a host of built-in validations as well as the ability to extend with custom validations and middleware. See the full validation list here:
 
 ???+ example
-    Don't like reading documentation? Then look at our examples which can run locally! :nerd:
+    Don't like reading documentation? Then look at [our examples](https://github.com/syngenta-digital/docs-markdown-alc/tree/main/examples/node/apigateway) which can run locally! :nerd:
 
 ### Validation Configurations
 
-| requirement                                                                                 | type  | description                                                   |
-|---------------------------------------------------------------------------------------------|-------|---------------------------------------------------------------|
-| **[`requiredHeaders`]({{web.url}}/node/apigateway/endpoint/validations/#requiredHeaders)**  | array | every header in this array must be in the headers of request  |
-| **[`availableHeaders`]({{web.url}}/node/apigateway/endpoint/validations/#availableHeaders)**| array | only headers in this array will be allowed in the request     |
-| **[`requiredQuery`]({{web.url}}/node/apigateway/endpoint/validations/#requiredQuery)**      | array | every item in the array is a required query string parameter  |
-| **[`availableQuery`]({{web.url}}/node/apigateway/endpoint/validations/#availableQuery)**    | array | only items in this array are allowed in the request           |
-| **[`requiredPath`]({{web.url}}/node/apigateway/endpoint/validations/#requiredPath)**        | str   | when using parameters, this is the required parameters        |
-| **[`requiredBody`]({{web.url}}/node/apigateway/endpoint/validations/#requiredBody)**        | str   | references a JSONschmea component in your `schemaFile`        |
-| **[`requiredAuth`]({{web.url}}/node/apigateway/endpoint/validations/#requiredAuth)**        | bool  | will trigger `withAuth` function defined in the router config |
-| **[`before`]({{web.url}}/node/apigateway/endpoint/validations/#before)**                    | func  | a custom function to be ran before your method function       |
-| **[`after`]({{web.url}}/node/apigateway/endpoint/validations/#after)**                      | func  | a custom function to be ran after your method function        |
-| **[`dataClass`]({{web.url}}/node/apigateway/endpoint/validations/#dataClass)**              | class | a custom class that will be passed instead of the request obj |
-| **[`custom-requirement`]**                                                                  | any   | see bottom of page                                            |
+| requirement                                                                                    | type  | description                                                   |
+|------------------------------------------------------------------------------------------------|-------|---------------------------------------------------------------|
+| **[`requiredHeaders`]({{web.url}}/node/apigateway/endpoint/configurations/#requiredheaders)**  | array | every header in this array must be in the headers of request  |
+| **[`availableHeaders`]({{web.url}}/node/apigateway/endpoint/configurations/#availableheaders)**| array | only headers in this array will be allowed in the request     |
+| **[`requiredQuery`]({{web.url}}/node/apigateway/endpoint/configurations/#requiredquery)**      | array | every item in the array is a required query string parameter  |
+| **[`availableQuery`]({{web.url}}/node/apigateway/endpoint/configurations/#availablequery)**    | array | only items in this array are allowed in the request           |
+| **[`requiredPath`]({{web.url}}/node/apigateway/endpoint/configurations/#requiredpath)**        | str   | when using parameters, this is the required parameters        |
+| **[`requiredBody`]({{web.url}}/node/apigateway/endpoint/configurations/#requiredbody)**        | str   | references a JSONschmea component in your `schemaFile`        |
+| **[`requiredAuth`]({{web.url}}/node/apigateway/endpoint/configurations/#requiredauth)**        | bool  | will trigger `withAuth` function defined in the router config |
+| **[`before`]({{web.url}}/node/apigateway/endpoint/configurations/#before)**                    | func  | a custom function to be ran before your method function       |
+| **[`after`]({{web.url}}/node/apigateway/endpoint/configurations/#after)**                      | func  | a custom function to be ran after your method function        |
+| **[`dataClass`]({{web.url}}/node/apigateway/endpoint/configurations/#dataclass)**              | class | a custom class that will be passed instead of the request obj |
+| **[`custom-requirement`]**                                                                     | any   | see bottom of page                                            |
 
 #### `requiredHeaders`
 
@@ -172,7 +172,7 @@ exports.requirements = {
 
 #### custom requirements (example)
 
-???+ tip
+???+ info
     You can add as many custom requirements as you want, with any variable type you want and they will be passed to your `beforeAll`, `before`, 'afterAll', `after` and `withAuth` middleware defined functions.
 
 ```js

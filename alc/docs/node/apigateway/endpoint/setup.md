@@ -3,18 +3,18 @@ title: Set Up
 description: How to set up an endpoint for the ALC
 ---
 
-Each endpoint is meant to be treated as a separate module with the API. These endpoints are not meant to be extended or comingled and thus should approached individually. If resources are meant to be shared across endpoints, then those resources should be packaged as shared classes or utilities.
+Each endpoint is meant to be treated as a separate module within the API. These endpoints are not meant to be extended or comingled and thus should approached individually. If resources are meant to be shared across endpoints, then those resources should be packaged as shared classes or utilities.
 
-Each endpoint should read as procedural list of steps to be completed. To help keep this list clean and easy to read, the ALC follows its philosophy of "Happy Path Programming." To achieve this, the ALC comes with a plethora of validation configurations with the ability to extend with even more customized validation options. This ensures the request sent to your endpoint will be correct with little need for exception handling or complex conditionals.
+Each endpoint should read as a procedural list of steps to be completed. To help keep this list clean and easy to read, the ALC follows its philosophy of "Happy Path Programming." To achieve this, the ALC comes with a plethora of validation configurations with the ability to extend with even more customized validation options. This ensures the request sent to your endpoint will be correct with little need for exception handling or complex conditionals.
 
 ## Endpoint Set Up
 
 ???+ example
-    Don't like reading documentation? Then look at our examples which can run locally! :nerd:
+    Don't like reading documentation? Then look at [our examples](https://github.com/syngenta-digital/docs-markdown-alc/tree/main/examples/node/apigateway) which can run locally! :nerd:
 
 ### 1. Match Function to HTTP Method
 
-Each endpoint must have stateless functions which match the name of the name of the HTTP method. If endpoint is called the a `POST` HTTP method, then the `post` endpoint function is invoked.
+Each endpoint must have stateless a functions which matches the name of the name of the HTTP method. If endpoint is called the a `POST` HTTP method, then the `post` endpoint function is invoked.
 
 ```js
 // example for endpoint file: api/grower.js
@@ -52,12 +52,15 @@ exports.query = async (request, response) => {
 };
 ```
 
-### 2. Configure the Requirements
+### 2. Configure the Requirements (optional)
 
 Each method within the endpoint file can have individual validation requirements. These requirements allow you test all structural points of the request, with the ability to use JSONSchema and custom middleware to further extend the validation options. Below is an example of a full requirements object:
 
 ???+ info
     See the full configuration list, explanation and example of each setting in our [Validations Section]({{web.url}}/node/apigateway/endpoint/configurations/).
+
+???+ tip
+    If you are already using an `openapi.yml`, none of these requirements below are necessary. Ensure your `router` has enabled [`autoValidate`]({{web.url}}/node/apigateway/router/configurations/#example-router-config-with-directory-routing) with proper `schemaPath` configured and the below requirements are not necessary for any basic structural validation (headers, body, query, params will be checked via openapi.yml). You can still use `before`, `after` & `dataClass` with other custom validations for more advanced use cases.
 
 ```js
 // example for endpoint file: api/grower.js

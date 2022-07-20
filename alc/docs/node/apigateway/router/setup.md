@@ -6,7 +6,7 @@ description: How to use the ALC Router
 ## Router Set Up
 
 ???+ example
-    Don't like reading documentation? Then look at our examples which can run locally! :nerd:
+    Don't like reading documentation? Then look at [our examples](https://github.com/syngenta-digital/docs-markdown-alc/tree/main/examples/node/apigateway) which can run locally! :nerd:
 
 
 ### 1. Configure the Lambda
@@ -28,7 +28,7 @@ functions:
 
 ### 2. Configure the Router
 
-There are three routing modes: `directory`, `pattern` and `list`; `directory` and `pattern` routing mode requires your project files to be placed in a particular way; `list` does not require any structure, as you define every route and it's corresponding file. There is also a an option to use `strictRouting` mode with `directory` or `pattern` which will use dynamic file names. Below are the three ways configure your router:
+There are three routing modes: `directory`, `pattern` and `list`; `directory` and `pattern` routing mode requires your project files to be placed in a particular way; `list` does not require any structure, as you define every route and it's corresponding file. Below are the three ways configure your router:
 
 #### Routing Mode: Directory
 
@@ -170,7 +170,7 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
 
 ### 3. Configure the Endpoint File
 
-Every endpoint file should contain a function with matches an [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) in lower case. Most common are `post`, `get`, `put`, `patch`, `delete`, but this library does support custom methods, if you so choose. As long as the method of the request matches the function name, it will work.
+Every endpoint file should contain a function which matches an [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) in lower case. Most common are `post`, `get`, `put`, `patch`, `delete`, but this library does support custom methods, if you so choose. As long as the method of the request matches the function name, it will work.
 
 ```js
 exports.post = async (request, response) => {
@@ -198,7 +198,7 @@ exports.delete = async (request, response) => {
     return response;
 };
 
-// this is non-compliant, custom http method; this will work.
+// this is a non-compliant, custom http method; this will work.
 exports.query = async (request, response) => {
     response.body = [{query: true}];
     return response;
