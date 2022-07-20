@@ -8,7 +8,7 @@ description: Configure S3 ALC Events
 The S3 event will automatically handle many common things done when eventing off a S3 event. Developers then have the ability to further extend that functionality with custom middleware. Below is a full list of all the configurations available and examples of their use.
 
 ???+ example
-    Don't like reading documentation? Then look at our examples which can run locally! :nerd:
+    Don't like reading documentation? Then look at [our examples](https://github.com/syngenta-digital/docs-markdown-alc/tree/main/examples/node/s3) which can run locally! :nerd:
 
 ### Configuration Options
 
