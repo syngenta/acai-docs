@@ -1,0 +1,10 @@
+components:
+    schemas:
+        sqs-record:
+            title: sqs-record
+            type: object
+            properties:
+                id:
+                    type: string
+                body:
+                    type: object
