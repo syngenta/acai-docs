@@ -8,7 +8,7 @@ description: Review SNS/SQS Record Structure
 The SNS/SQS event will by default provide instances of `record` classes which will be easier to work with then standard lambda event record object. This is the same object which will be passed down to the `dataClass`, if you provide on in your configuration. Below is a list of all the properties and example outputs for the SNS/SQS event record:
 
 ???+ example
-    Don't like reading documentation? Then look at our examples which can run locally! :nerd:
+    Don't like reading documentation? Then look at [our examples](https://github.com/syngenta-digital/docs-markdown-alc/tree/main/examples/node/sns-sqs) which can be deploy in 1 command into your AWS account! :nerd:
 
 ### Record Properties
 

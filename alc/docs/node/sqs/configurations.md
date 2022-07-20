@@ -8,7 +8,7 @@ description: Configure SNS/SQS ALC Events
 The SNS/SQS event will automatically handle many common things done when eventing off a SNS/SQS stream. Developers then have the ability to further extend that functionality with custom middleware. Below is a full list of all the configurations available and examples of their use.
 
 ???+ example
-    Don't like reading documentation? Then look at our examples which can run locally! :nerd:
+    Don't like reading documentation? Then look at [our examples](https://github.com/syngenta-digital/docs-markdown-alc/tree/main/examples/node/sns-sqs) which can be deploy in 1 command into your AWS account! :nerd:
 
 ### Configuration Options
 
