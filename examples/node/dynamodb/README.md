@@ -1,4 +1,4 @@
-# ALC ApiGateway DynamoDB Stream Example
+# ALC DynamoDB Stream Example
 A simple serverless app using the ALC library and dynamodb events
 
 ## Getting Started

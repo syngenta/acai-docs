@@ -8,7 +8,7 @@ description: Review DynamoDB Record Structure
 The DynamoDB event will by default provide instances of `record` classes which will be easier to work with then standard lambda event record object. This is the same object which will be passed down to the `dataClass`, if you provide on in your configuration. Below is a list of all the properties and example outputs for the DynamoDB event record:
 
 ???+ example
-    Don't like reading documentation? Then look at our examples which can run locally! :nerd:
+    Don't like reading documentation? Then look at [our examples](https://github.com/syngenta-digital/docs-markdown-alc/tree/main/examples/node/dynamodb) which can run locally! :nerd:
 
 ### Record Properties
 
