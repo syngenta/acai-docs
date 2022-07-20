@@ -12,9 +12,6 @@ commands:
     aws-profiles:
         steps:
             - run: npx @syngenta-digital/acp --file aws/profiles.yml
-    node-install:
-        steps:
-            - run: npm ci
     pipenv-install:
         steps:
             - run: python3 -m pip install pipenv
@@ -39,7 +36,6 @@ jobs:
             - stage-setup
             - aws-cli/setup
             - aws-profiles
-            - node-install
             - pipenv-install
             - mkdocs-build
             - s3-website
