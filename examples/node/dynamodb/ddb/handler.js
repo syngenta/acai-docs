@@ -30,6 +30,6 @@ exports.stream = async (event) => {
     const eventClient = new EventClient(event, options);
     const records = await eventClient.getRecords();
     for (const record of records) {
-        global.logger.log({level: 'INFO' log: record});
+        global.logger.log({level: 'INFO', log: record});
     }
 };
