@@ -26,8 +26,8 @@ By default, every endpoint function will receive an instance of the `ResponseCli
 #### `response.headers`
 
 ```js
-response.headers = {status: 'ok'};
-response.headers = {response_id: 'some-guid'};
+response.headers = {key: 'status', value: 'ok'};
+response.headers = {key: 'response_id', value: 'some-guid'};
 
 console.log(response.headers);
 
