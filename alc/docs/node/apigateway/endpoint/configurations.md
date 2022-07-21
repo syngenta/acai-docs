@@ -43,7 +43,7 @@ exports.requirements = {
 #### `availableHeaders`
 
 ???+ warning
-    This is not recommended for frequent use as it raise errors for every header which does not conform to the array provided. Many browsers, http tools and libraries will automatically add headers to request, unbeknownst to the user. By using this setting, you will force every user of the endpoint to take extra care with the headers provided and may result in power API consumer experience.
+    This is not recommended for frequent use as it raise errors for every header which does not conform to the array provided. Many browsers, http tools and libraries will automatically add headers to request, unbeknownst to the user. By using this setting, you will force every user of the endpoint to take extra care with the headers provided and may result in poor API consumer experience.
 
 ```js
 
@@ -173,7 +173,7 @@ exports.requirements = {
 #### custom requirements (example)
 
 ???+ info
-    You can add as many custom requirements as you want, with any variable type you want and they will be passed to your `beforeAll`, `before`, 'afterAll', `after` and `withAuth` middleware defined functions.
+    You can add as many custom requirements as you want, with any variable type you want and they will be passed to your `beforeAll`, `before`, `afterAll`, `after` and `withAuth` middleware defined functions.
 
 ```js
 

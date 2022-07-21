@@ -205,7 +205,7 @@ console.log(request.graphql);
 #### `request.body`
 
 ???+ tip
-    This is the safest way to get the body of the request. It will use the headers to determine the data type using `content-type` header and convert it; if the data can't be converted for whatever reason it will catch the error and return the raw body provided.
+    This is the safest way to get the body of the request. It will use the `content-type` header to determine the data sent and convert it; if the data can't be converted for whatever reason it will catch the error and return the raw body provided unconverted.
 
 ```js
 

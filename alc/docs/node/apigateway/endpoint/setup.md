@@ -57,7 +57,7 @@ exports.query = async (request, response) => {
 Each method within the endpoint file can have individual validation requirements. These requirements allow you test all structural points of the request, with the ability to use JSONSchema and custom middleware to further extend the validation options. Below is an example of a full requirements object:
 
 ???+ info
-    See the full configuration list, explanation and example of each setting in our [Validations Section]({{web.url}}/node/apigateway/endpoint/configurations/).
+    See the full configuration list, explanation and example of each setting in our [Configurations Section]({{web.url}}/node/apigateway/endpoint/configurations/).
 
 ???+ tip
     If you are already using an `openapi.yml`, none of these requirements below are necessary. Ensure your `router` has enabled [`autoValidate`]({{web.url}}/node/apigateway/router/configurations/#example-router-config-with-directory-routing) with proper `schemaPath` configured and the below requirements are not necessary for any basic structural validation (headers, body, query, params will be checked via openapi.yml). You can still use `before`, `after` & `dataClass` with other custom validations for more advanced use cases.
