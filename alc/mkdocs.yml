@@ -30,11 +30,13 @@ nav:
                 - node/sqs/record.md
         - node/common/logger.md
         - node/changes.md
-        - Repository: https://github.com/syngenta-digital/package-node-alc/
+        - NPM Registry: https://www.npmjs.com/package/@syngenta-digital/alc
+        - Github Repository: https://github.com/syngenta-digital/package-node-alc/
         - Issues: https://github.com/syngenta-digital/package-node-alc/issues
     - Python:
         - python/install.md
-        - Repository: https://github.com/syngenta-digital/package-python-alc/
+        - PYPI Registry: https://pypi.org/project/syngenta-digital-alc/
+        - Github Repository: https://github.com/syngenta-digital/package-python-alc/
         - Issues: https://github.com/syngenta-digital/package-python-alc/issues
     - Rust:
         - rust/install.md
