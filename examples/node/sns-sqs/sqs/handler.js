@@ -17,8 +17,6 @@ const schema = {
 exports.listen = async (event) => {
     const options = {
         globalLogger: true,
-        operations: ['create', 'delete'], // [create, delete] by default
-        operationError: false, // will raise exception if wrong operation;  default false
         requiredBody: schema, // or provide the name of a component schema found in an openapi.yml
         // schemaPath: 'openapi.yml', required if requiredBody is a name reference to openapi.yml schema
         validationError: false, // will raise exception if validation fails;  default false
