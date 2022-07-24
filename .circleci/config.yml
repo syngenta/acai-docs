@@ -27,6 +27,7 @@ commands:
     s3-deploy:
         steps:
             - run: aws s3 sync alc/site s3://alc.syngenta-digital.com --profile $DEPLOY_STAGE --delete
+            - run: aws s3 sync scripts s3://alc.syngenta-digital.com/scripts --profile $DEPLOY_STAGE --delete
     invalidate-cloudfront:
         steps:
             - run: aws cloudfront create-invalidation --distribution-id E1BZJFNH2HIRL9 --paths "/*" --profile $DEPLOY_STAGE || exit 0

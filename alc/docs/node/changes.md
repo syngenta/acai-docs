@@ -10,7 +10,7 @@ In version 2.0 we have added a lot of cool new features, but that does require d
 ???+ tip
     If you don't want to make the changes yourself manually, we have a script which will make the changes for you. Just run this command in your terminal from the root of the directory of the project you want to upgrade:
     ```bash
-        # Coming soon... in the mean time just do a Find All & Replace All on the words below
+        /bin/bash -c "$(curl -fsSL https://alc.syngenta-digital.com/scripts/node-upgrade.sh)"
     ```
 
 ### APIGateway
@@ -61,10 +61,8 @@ In version 2.0 we have added a lot of cool new features, but that does require d
 | old                                   | new                    |
 |---------------------------------------|------------------------|
 | `record.awsRegion`                    | **`record.region`**    |
-| `record.configurationId`              | **`record.id`**        |
 | `record.eventName`                    | **`record.name`**      |
 | `record.eventSource`                  | **`record.source`**    |
 | `record.eventSourceARN`               | **`record.sourceARN`** |
 | `record.messageId`                    | **`record.id`**        |
 | `record.rawBody`                      | **`record.raw`**       |
-| `record.s3SchemaVersion`              | **`record.version`**   |
