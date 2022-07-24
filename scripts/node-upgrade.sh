@@ -49,7 +49,7 @@ ALC_UPGRADE=(
 
 echo '================================='
 echo 'Upgrading ALC Node v1.x to v2.x 🤓'
-echo '=================================\n'
+echo '================================='
 
 read -r -p 'Do you want to upgrade your NODE project from ALC 1.x to 2.x? [y/N] ' UPGRADE_RESPONSE
 if [[ ! "$UPGRADE_RESPONSE" =~ ^([yY][eE][sS]|[yY])$ ]]; then
@@ -61,7 +61,7 @@ if [[ ! "$BRANCH_RESPONSE" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 PWD=$(pwd)
-echo "\nCurrent directory: ${PWD}\n"
+echo "Current directory: ${PWD}"
 read -r -p 'Is the above currently the root of your project directory? [y/N]' DIRECTORY_RESPONSE
 
 if [[ ! "$DIRECTORY_RESPONSE" =~ ^([yY][eE][sS]|[yY])$ ]]; then
@@ -82,9 +82,9 @@ for FILE in $APP_FILES; do
     echo "Done with file: ${FILE}"
 done
 
-echo '\n'
+echo ''
 echo 'Please make sure to check & review each file INDIVIDUALLY before creating a PR and submitting these changes.'
-echo '\n'
+echo ''
 echo 'If you have any issues, or concerns please reach create a issue here: https://github.com/syngenta-digital/package-node-alc/issues'
-echo '\n'
+echo ''
 echo 'Thank you for using the ALC!!!'
