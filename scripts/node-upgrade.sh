@@ -5,45 +5,45 @@ abort() {
 }
 
 ALC_CURRENT=(
-    'router.route()',
-    'requiredParams',
-    'request.params',
-    'event.records',
-    'approximateCreationDateTime',
-    'awsRegion',
-    'eventID',
-    'eventName',
-    'eventSource',
-    'eventSourceARN',
-    'streamViewType',
-    'sizeBytes',
-    'userIdentity',
-    'timeToLiveExpired',
-    'requestParameters',
-    'responseElements',
-    's3SchemaVersion',
-    'messageId',
+    'router.route()'
+    'requiredParams'
+    'request.params'
+    'event.records'
+    'approximateCreationDateTime'
+    'awsRegion'
+    'eventID'
+    'eventName'
+    'eventSource'
+    'eventSourceARN'
+    'streamViewType'
+    'sizeBytes'
+    'userIdentity'
+    'timeToLiveExpired'
+    'requestParameters'
+    'responseElements'
+    's3SchemaVersion'
+    'messageId'
     'rawBody'
 )
 ALC_UPGRADE=(
-    'router.route(event)',
-    'requiredQuery',
-    'request.query',
-    'await event.getRecords()',
-    'created',
-    'region',
-    'id',
-    'name',
-    'source',
-    'sourceARN',
-    'streamType',
-    'size',
-    'identity',
-    'expired',
-    'request',
-    'response',
-    'version',
-    'id',
+    'router.route(event)'
+    'requiredQuery'
+    'request.query'
+    'await event.getRecords()'
+    'created'
+    'region'
+    'id'
+    'name'
+    'source'
+    'sourceARN'
+    'streamType'
+    'size'
+    'identity'
+    'expired'
+    'request'
+    'response'
+    'version'
+    'id'
     'raw'
 )
 
@@ -62,7 +62,7 @@ fi
 
 PWD=$(pwd)
 echo "Current directory: ${PWD}"
-read -r -p 'Is the above currently the root of your project directory? [y/N]' DIRECTORY_RESPONSE
+read -r -p 'Is the above currently the root of your project directory? [y/N] ' DIRECTORY_RESPONSE
 
 if [[ ! "$DIRECTORY_RESPONSE" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     abort 'Please navigate to the root of directory of your project and try again...'
@@ -70,7 +70,7 @@ fi
 
 read -r -p 'Please enter the relative path of your code from this current directory (no starting slash): ' CODE_RESPONSE
 
-APP_FILES=$(find $CODE_RESPONSE -type f)
+APP_FILES=$(find $CODE_RESPONSE -type f -name "*.js")
 for FILE in $APP_FILES; do
     echo "Upgrading file: ${FILE}";
     for i in ${!ALC_CURRENT[@]}; do
