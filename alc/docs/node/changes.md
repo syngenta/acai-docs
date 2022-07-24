@@ -10,7 +10,7 @@ In version 2.0 we have added a lot of cool new features, but that does require d
 ???+ tip
     If you don't want to make the changes yourself manually, we have a script which will make the changes for you. Just run this command in your terminal from the root of the directory of the project you want to upgrade:
     ```bash
-        /bin/bash -c "$(curl -fsSL https://alc.syngenta-digital.com/scripts/node-upgrade.sh)"
+    /bin/bash -c "$(curl -fsSL https://alc.syngenta-digital.com/scripts/node-upgrade.sh)"
     ```
 
 ### APIGateway
