@@ -4,11 +4,11 @@ const Validator = require('../../logic/validator');
 exports.requirements = {
     get: {
        availableQuery: ['first', 'last'],
-   },
-   post: {
+    },
+    post: {
        requiredBody: 'post-grower-request',
        before: Validator.isUniqueGrower
-   }
+    }
 }
 
 exports.get = async (request, response) => {

@@ -3,7 +3,7 @@ const Farm = require('./farm');
 exports.requirements = {
     post: {
        requiredBody: 'post-farm-request'
-   },
+    },
     get: {
        requiredQuery: ['ownerId']
    }

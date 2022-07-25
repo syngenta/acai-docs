@@ -6,14 +6,14 @@ exports.requirements = {
         requiredHeaders: ['x-org-id'],
         before: Validator.orgExists,
         after: Validator.filterOrgProperties
-   },
-   post: {
+    },
+    post: {
        requiredBody: 'post-org-request',
-   },
-   patch: {
+    },
+    patch: {
        requiredHeaders: ['x-org-id'],
        requiredBody: 'patch-org-request'
-   }
+    }
 }
 
 exports.get = async (request, response) => {

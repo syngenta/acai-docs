@@ -9,7 +9,7 @@ exports.requirements = {
     },
     delete: {
        requiredPath: '/farm/{farmId}/field/{fieldId}'
-   }
+    }
 }
 
 exports.get = async (request, response) => {

@@ -5,16 +5,16 @@ exports.requirements = {
     get: {
        requiredPath: '/grower/{growerId}',
        before: Validator.growerExists
-   },
+    },
     patch: {
        requiredPath: '/grower/{growerId}',
        requiredBody: 'patch-grower-request',
        before: Validator.growerExists
-   },
-   delete: {
+    },
+    delete: {
        requiredPath: '/grower/{growerId}',
        before: Validator.growerExists
-   }
+    }
 }
 
 exports.get = async (request, response) => {

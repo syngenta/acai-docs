@@ -3,10 +3,10 @@ const Farm = require('../../logic/farm');
 exports.requirements = {
     post: {
        requiredBody: 'post-farm-request'
-   },
+    },
     get: {
        requiredQuery: ['ownerId']
-   }
+    }
 }
 
 exports.post = async (request, response) => {
