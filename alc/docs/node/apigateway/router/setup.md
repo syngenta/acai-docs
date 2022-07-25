@@ -40,7 +40,7 @@ There are three routing modes: `directory`, `pattern` and `list`; `directory` an
     ```
     ~~ Directory ~~                     ~~ Route ~~
     ===================================================================
-    📦api/                           |          
+    📦api/                              |          
     │---📂handler                       |           
         │---📜router.js                 |
         │---📜org.js                    | /org    
