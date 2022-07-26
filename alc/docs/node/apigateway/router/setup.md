@@ -3,7 +3,7 @@ title: Set Up
 description: How to use the ALC Router
 ---
 
-## Router Set Up
+# Router Set Up
 
 ???+ example
     Don't like reading documentation? Then look at [our examples](https://github.com/syngenta-digital/docs-markdown-alc/tree/main/examples/node/apigateway) which can run locally! :nerd:

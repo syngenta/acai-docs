@@ -3,7 +3,7 @@ title: Configurations
 description: Configure DynamoDB ALC Events
 ---
 
-## Event Configurations
+# DynamoDB Event Configurations
 
 The Dynamodb event will automatically handle many common things done when eventing off a DynamoDB stream. Developers then have the ability to further extend that functionality with custom middleware. Below is a full list of all the configurations available and examples of their use.
 

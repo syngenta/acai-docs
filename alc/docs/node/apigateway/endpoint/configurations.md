@@ -3,7 +3,7 @@ title: Configurations
 description: How to use the built-in validation & custom middleware
 ---
 
-## Endpoint Configurations
+# Endpoint Configurations
 
 In order to encourage "Happy Path Programming" and make it easier for developers to validate request fully, the ALC comes with a host of built-in validations as well as the ability to extend with custom validations and middleware. See the full validation list here:
 

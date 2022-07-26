@@ -3,7 +3,7 @@ title: Configurations
 description: Configure SNS/SQS ALC Events
 ---
 
-## Event Configurations
+# SNS/SQS Event Configurations
 
 The SNS/SQS event will automatically handle many common things done when eventing off a SNS/SQS stream. Developers then have the ability to further extend that functionality with custom middleware. Below is a full list of all the configurations available and examples of their use.
 

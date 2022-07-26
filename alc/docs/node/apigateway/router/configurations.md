@@ -3,7 +3,7 @@ title: Configurations
 description: The different options available to configure the router
 ---
 
-## Router Configurations
+# Router Configurations
 
 As mentioned previously, the router is highly configurable to each project needs and desires. The point of the router is to enforce predictable thus making the API more extensible. Below is a table of all the configuration options available:
 

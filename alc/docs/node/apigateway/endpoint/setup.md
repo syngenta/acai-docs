@@ -3,11 +3,11 @@ title: Set Up
 description: How to set up an endpoint for the ALC
 ---
 
+# Endpoint Set Up
+
 Each endpoint is meant to be treated as a separate module within the API. These endpoints are not meant to be extended or comingled and thus should approached individually. If resources are meant to be shared across endpoints, then those resources should be packaged as shared classes or utilities.
 
 Each endpoint should read as a procedural list of steps to be completed. To help keep this list clean and easy to read, the ALC follows its philosophy of "Happy Path Programming." To achieve this, the ALC comes with a plethora of validation configurations with the ability to extend with even more customized validation options. This ensures the request sent to your endpoint will be correct with little need for exception handling or complex conditionals.
-
-## Endpoint Set Up
 
 ???+ example
     Don't like reading documentation? Then look at [our examples](https://github.com/syngenta-digital/docs-markdown-alc/tree/main/examples/node/apigateway) which can run locally! :nerd:

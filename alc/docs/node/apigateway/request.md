@@ -3,7 +3,7 @@ title: Request
 description: ALC Request Object
 ---
 
-## Request Object
+# Request Object
 
 By default, every endpoint function will receive an instance of the `RequestClient` class (aka `request`) as the first argument of their function. This `request` has a lot properties which will do common things automatically, but still allows the developer to override those operations if they deem necessary. Below is a list and examples of all the properties of the `request`:
 
