@@ -4,6 +4,8 @@ site_author: Syngenta Digital
 nav:
     - Home: index.md
     - Node:
+        - Tutorials:
+            - node/demo.md
         - node/install.md
         - Event Handlers:
             - APIGateway:
@@ -92,6 +94,7 @@ markdown_extensions:
 plugins:
     - search
     - markdownextradata
+    - mkdocs-video
 extra:
     web:
         url: https://alc.syngenta-digital.com
