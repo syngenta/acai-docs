@@ -32,8 +32,8 @@ nav:
     - common/logger.md
     - changes.md
     - NPM Registry: https://www.npmjs.com/package/@syngenta-digital/alc
-    - Github Repository: https://github.com/syngenta-digital/package-node-alc/
-    - Issues: https://github.com/syngenta-digital/package-node-alc/issues
+    - Github Repository: https://github.com/syngenta/acai-js
+    - Issues: https://github.com/syngenta/acai-js/issues
 theme:
     name: material
     logo: https://avatars.githubusercontent.com/u/65528694?s=200&v=4
@@ -87,7 +87,7 @@ plugins:
     - mkdocs-video
 extra:
     web:
-        url: https://alc.syngenta-digital.com
+        url: https://github.com/syngenta/acai-js
 extra_css:
     - extra.css
 
