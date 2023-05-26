@@ -4,7 +4,7 @@ abort() {
     exit 1
 }
 
-ALC_CURRENT=(
+ACAI_CURRENT=(
     'router.route()'
     'requiredParams'
     'request.params'
@@ -57,7 +57,7 @@ if [[ ! "$UPGRADE_RESPONSE" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 read -r -p 'Have you created a clean branch to make these changes on? [y/N] ' BRANCH_RESPONSE
 if [[ ! "$BRANCH_RESPONSE" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    abort 'Pleaes make a clean branch and come back when you are ready...'
+    abort 'Please make a clean branch and come back when you are ready...'
 fi
 
 PWD=$(pwd)
@@ -70,14 +70,15 @@ fi
 
 read -r -p 'Please enter the relative path of your code from this current directory (no starting slash): ' CODE_RESPONSE
 
-APP_FILES=$(find $CODE_RESPONSE -type f -name "*.js")
+APP_FILES=$(find "$CODE_RESPONSE" -type f -name "*.js")
 for FILE in $APP_FILES; do
     echo "Upgrading file: ${FILE}";
-    for i in ${!ALC_CURRENT[@]}; do
-        OLD=${ALC_CURRENT[$i]}
+    # shellcheck disable=SC2068
+    for i in ${!ACAI_CURRENT[@]}; do
+        OLD=${ACAI_CURRENT[$i]}
         NEW=${ALC_UPGRADE[$i]}
         echo "Replacing: ${OLD} with ${NEW}"
-        sed -n "s/${OLD}/${NEW}/g" ${FILE}
+        sed -n "s/${OLD}/${NEW}/g" "${FILE}"
     done
     echo "Done with file: ${FILE}"
 done
