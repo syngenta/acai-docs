@@ -1,5 +1,0 @@
-profiles:
-    -
-        name: devops
-        account: '125443216265'
-        role: CICD

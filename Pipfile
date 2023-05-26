@@ -3,17 +3,15 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
+[requires]
+python_version = "3.8"
+
 [packages]
 mkdocs = "*"
 mkdocs-material = "*"
 mkdocs-markdownextradata-plugin = "*"
 pygments = "*"
 mkdocs-video = "*"
-
-[dev-packages]
-
-[requires]
-python_version = "3.8"
 
 [scripts]
 serve = "mkdocs serve"

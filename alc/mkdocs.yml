@@ -1,49 +1,39 @@
-site_name: AWS Lambda Client (ALC)
+site_name: Acai JS
 site_url: https://alc.syngenta-digital.com
-site_author: Syngenta Digital
+site_author: Paul Cruse III
 nav:
     - Home: index.md
-    - Node:
-        - Tutorials:
-            - node/demo.md
-        - node/install.md
-        - Event Handlers:
-            - APIGateway:
-                - node/apigateway/index.md
-                - Router:
-                    - node/apigateway/router/setup.md
-                    - node/apigateway/router/configurations.md
-                - EndPoint:
-                    - node/apigateway/endpoint/setup.md
-                    - node/apigateway/endpoint/configurations.md
-                - node/apigateway/request.md
-                - node/apigateway/response.md
-            - DynamoDB:
-                - node/dynamodb/index.md
-                - node/dynamodb/configurations.md
-                - node/dynamodb/record.md
-            - S3:
-                - node/s3/index.md
-                - node/s3/configurations.md
-                - node/s3/record.md
-            - SNS/SQS:
-                - node/sqs/index.md
-                - node/sqs/configurations.md
-                - node/sqs/record.md
-        - node/common/logger.md
-        - node/changes.md
-        - NPM Registry: https://www.npmjs.com/package/@syngenta-digital/alc
-        - Github Repository: https://github.com/syngenta-digital/package-node-alc/
-        - Issues: https://github.com/syngenta-digital/package-node-alc/issues
-    - Python:
-        - python/install.md
-        - PYPI Registry: https://pypi.org/project/syngenta-digital-alc/
-        - Github Repository: https://github.com/syngenta-digital/package-python-alc/
-        - Issues: https://github.com/syngenta-digital/package-python-alc/issues
-    - Rust:
-        - rust/install.md
-    - Typescript:
-        - typescript/install.md
+    - Tutorials:
+        - demo.md
+    - install.md
+    - Event Handlers:
+        - APIGateway:
+            - apigateway/index.md
+            - Router:
+                - apigateway/router/setup.md
+                - apigateway/router/configurations.md
+            - EndPoint:
+                - apigateway/endpoint/setup.md
+                - apigateway/endpoint/configurations.md
+            - apigateway/request.md
+            - apigateway/response.md
+        - DynamoDB:
+            - dynamodb/index.md
+            - dynamodb/configurations.md
+            - dynamodb/record.md
+        - S3:
+            - s3/index.md
+            - s3/configurations.md
+            - s3/record.md
+        - SNS/SQS:
+            - sqs/index.md
+            - sqs/configurations.md
+            - sqs/record.md
+    - common/logger.md
+    - changes.md
+    - NPM Registry: https://www.npmjs.com/package/@syngenta-digital/alc
+    - Github Repository: https://github.com/syngenta-digital/package-node-alc/
+    - Issues: https://github.com/syngenta-digital/package-node-alc/issues
 theme:
     name: material
     logo: https://avatars.githubusercontent.com/u/65528694?s=200&v=4

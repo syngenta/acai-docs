@@ -130,3 +130,6 @@ dmypy.json
 node_modules
 .serverless
 site
+
+#pycharm
+.idea
