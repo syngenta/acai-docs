@@ -1,6 +1,7 @@
 site_name: Acai JS
 site_url: https://syngenta.github.io/acai-js-docs
 site_author: Paul Cruse III
+site_dir: ../docs
 nav:
     - Home: index.md
     - Tutorials:
