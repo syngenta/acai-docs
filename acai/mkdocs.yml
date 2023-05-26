@@ -1,5 +1,5 @@
 site_name: Acai JS
-site_url: https://alc.syngenta-digital.com
+site_url: https://syngenta.github.io/acai-js-docs
 site_author: Paul Cruse III
 nav:
     - Home: index.md
@@ -87,7 +87,7 @@ plugins:
     - mkdocs-video
 extra:
     web:
-        url: https://github.com/syngenta/acai-js
+        url: https://syngenta.github.io/acai-js-docs
 extra_css:
     - extra.css
 
