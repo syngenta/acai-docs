@@ -1,3 +1,3 @@
-# acai-js-docs
+# acai-docs
 
-Docs repo for the acai-js project
+Docs repo for landing page of acai project
