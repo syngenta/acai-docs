@@ -1,69 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Acai Project</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <style>
-        .logo {
-            font-size: 100px;
-            text-align: center;
-            min-height: 470px;
-            max-width: 1300px;
-        }
-        .jumbotron {
-            background-image: url("https://raw.githubusercontent.com/syngenta/acai-docs/main/img/logo-word.png");
-            background-size: cover;
-            background-color: black;
-        }
-        .language{
-            background-color: grey;
-            border: 1px grey solid;
-            min-width: 200px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acai — The happy path, in every language.</title>
+<meta name="description" content="Acai is a DRY, declarative framework for AWS Lambdas. One philosophy, three runtimes — validate every input first, then write only the code that matters.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h2>The Acai Project</h2>
-        <h4>Bringing Happy Path Programming to all languages & platforms</h4>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="jumbotron logo"></div>
-            </div>
-        </div>
-        <div class="row">
-            <h4>
-                <img src="https://raw.githubusercontent.com/syngenta/acai-docs/main/img/aws-logo.svg" width="90px">
-                AWS Serverless Lambdas
-            </h4>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <a href="https://syngenta.github.io/acai-js-docs/" class="btn btn-primary btn-lg language" role="button"
-                    aria-disabled="true">
-                    <img src="https://raw.githubusercontent.com/syngenta/acai-docs/main/img/Node.js_logo.svg" width="90px">
-                    <br />
-                    Acai Node (JS)
-                </a>
-                 <a href="https://syngenta.github.io/acai-ts-docs/" class="btn btn-primary btn-lg language" role="button"
-                    aria-disabled="true">
-                    <img src="https://raw.githubusercontent.com/syngenta/acai-docs/main/img/ts-logo-512.png" width="90px">
-                    <br />
-                    Acai TypeScript (TS)
-                </a>
-                <a href="https://syngenta.github.io/acai-python-docs/" class="btn btn-primary btn-lg language" role="button" aria-disabled="true">
-                    <img src="https://raw.githubusercontent.com/syngenta/acai-docs/main/img/Python-logo-notext.svg.png" width="50px">
-                    <br />
-                    Acai Python
-                </a>
-            </div>
-        </div>
-        <hr />
+
+<!-- nav -->
+<nav class="nav">
+  <a href="/" class="nav-logo" style="text-decoration:none;color:inherit">
+    <svg width="22" height="22" viewBox="0 0 22 22">
+      <circle cx="8" cy="14" r="6.5" fill="#5B2A86"></circle>
+      <circle cx="15" cy="10" r="5" fill="none" stroke="#16151A" stroke-width="1.5"></circle>
+    </svg>
+    <span>acai</span>
+  </a>
+  <div class="nav-links">
+    <a href="https://syngenta.github.io/acai-python-docs/">python</a>
+    <a href="https://syngenta.github.io/acai-js-docs/">node</a>
+    <a href="https://syngenta.github.io/acai-ts-docs/">typescript</a>
+    <a href="https://github.com/syngenta/acai-python" class="nav-github">github ↗</a>
+  </div>
+</nav>
+
+<!-- hero -->
+<section class="hero">
+  <div class="hero-kicker">A FRAMEWORK FOR AWS LAMBDAS · PYTHON / NODE / TYPESCRIPT</div>
+  <h1>The happy path,<br><em>in every language.</em></h1>
+  <p>Acai is a DRY, declarative framework for AWS Lambdas. One philosophy, three runtimes — validate every input first, then write only the code that matters.</p>
+</section>
+
+<!-- philosophy -->
+<section class="philosophy">
+  <p class="philosophy-quote">&ldquo;No nested try/catch. No mid-level exceptions. Just the path your code was meant to take.&rdquo;</p>
+  <div class="philosophy-body">
+    <p><strong>Happy Path Programming</strong> is a simple idea: all inputs are validated before they are operated on. Acai's layers of configurable middleware let you declare what a valid input looks like — required bodies, headers, OpenAPI schemas — so invalid requests never reach your business logic.</p>
+    <p>What's left is code that reads the way you meant it: no defensive conditionals, no exception plumbing, no boilerplate. Just the happy path.</p>
+  </div>
+</section>
+
+<!-- code section -->
+<section class="code-section">
+  <div class="code-section-header">
+    <h2>One idea, three languages</h2>
+    <span class="code-section-caption">same framework · every trigger</span>
+  </div>
+
+  <div class="trigger-tabs">
+    <button class="trigger-tab active" data-trigger="api">API GATEWAY</button>
+    <button class="trigger-tab" data-trigger="sqs">SQS</button>
+    <button class="trigger-tab" data-trigger="ddb">DYNAMODB</button>
+  </div>
+
+  <!-- API GATEWAY -->
+  <div class="trigger-panel active" data-trigger="api">
+    <div class="code-grid">
+
+      <div>
+        <div class="code-col-header"><span class="lang">PYTHON</span><span class="pkg">acai-aws</span></div>
+        <div class="code-panel-label">1 · THE ROUTER</div>
+        <pre class="code-panel"><span class="tok-comment"># handler.py</span>
+<span class="tok-keyword">from</span> acai_aws.apigateway.router <span class="tok-keyword">import</span> Router
+
+router = Router(
+    base_path=<span class="tok-string">'grower/v1'</span>,
+    handlers=<span class="tok-string">'api/handlers'</span>,
+    schema=<span class="tok-string">'api/openapi.yml'</span>
+)
+router.auto_load()
+
+<span class="tok-keyword">def</span> handle(event, context):
+    <span class="tok-keyword">return</span> router.route(event, context)</pre>
+        <div class="code-panel-label">2 · AN ENDPOINT</div>
+        <pre class="code-panel"><span class="tok-comment"># api/handlers/grower.py</span>
+requirements = {
+    <span class="tok-string">'post'</span>: {<span class="tok-string">'required_body'</span>: <span class="tok-string">'v1-grower-request'</span>}
+}
+
+<span class="tok-keyword">def</span> post(request, response):
+    <span class="tok-comment"># already validated — happy path only</span>
+    response.body = {<span class="tok-string">'grower'</span>: request.body}
+    <span class="tok-keyword">return</span> response</pre>
+      </div>
+
+      <div>
+        <div class="code-col-header"><span class="lang">NODE</span><span class="pkg">acai-js</span></div>
+        <div class="code-panel-label">1 · THE ROUTER</div>
+        <pre class="code-panel"><span class="tok-comment">// handler.js</span>
+<span class="tok-keyword">const</span> { Router } = <span class="tok-keyword">require</span>(<span class="tok-string">'acai'</span>).apigateway;
+
+<span class="tok-keyword">const</span> router = <span class="tok-keyword">new</span> Router({
+    basePath: <span class="tok-string">'grower/v1'</span>,
+    handlerPath: <span class="tok-string">'api/handlers'</span>,
+    schemaPath: <span class="tok-string">'api/openapi.yml'</span>
+});
+
+<span class="tok-keyword">exports</span>.handle = <span class="tok-keyword">async</span> (event) =>
+    router.route(event);</pre>
+        <div class="code-panel-label">2 · AN ENDPOINT</div>
+        <pre class="code-panel"><span class="tok-comment">// api/handlers/grower.js</span>
+<span class="tok-keyword">exports</span>.requirements = {
+    post: { requiredBody: <span class="tok-string">'v1-grower-request'</span> }
+};
+
+<span class="tok-keyword">exports</span>.post = <span class="tok-keyword">async</span> (request, response) => {
+    <span class="tok-comment">// already validated — happy path only</span>
+    response.body = { grower: request.body };
+    <span class="tok-keyword">return</span> response;
+};</pre>
+      </div>
+
+      <div>
+        <div class="code-col-header"><span class="lang">TYPESCRIPT</span><span class="pkg">acai-ts</span></div>
+        <div class="code-panel-label">1 · THE ROUTER</div>
+        <pre class="code-panel"><span class="tok-comment">// handler.ts</span>
+<span class="tok-keyword">import</span> { Router } <span class="tok-keyword">from</span> <span class="tok-string">'acai-ts'</span>;
+
+<span class="tok-keyword">const</span> router = <span class="tok-keyword">new</span> Router({
+    basePath: <span class="tok-string">'grower/v1'</span>,
+    routesPath: <span class="tok-string">'./src/handlers/**/*.ts'</span>,
+    schemaPath: <span class="tok-string">'./openapi.yml'</span>
+});
+
+<span class="tok-keyword">export const</span> handler = <span class="tok-keyword">async</span> (event) =>
+    router.route(event);</pre>
+        <div class="code-panel-label">2 · AN ENDPOINT</div>
+        <pre class="code-panel"><span class="tok-comment">// src/handlers/grower.ts</span>
+<span class="tok-keyword">export class</span> GrowerEndpoint
+    <span class="tok-keyword">extends</span> BaseEndpoint {
+
+    <span class="tok-string">@Validate</span>({ requiredBody: <span class="tok-string">'v1-grower-request'</span> })
+    <span class="tok-keyword">async</span> post(request: Request, response: Response) {
+        <span class="tok-comment">// already validated — happy path</span>
+        response.body = { grower: request.body };
+        <span class="tok-keyword">return</span> response;
+    }
+}</pre>
+      </div>
+
     </div>
-    <br />
-    <br />
-    <br />
+    <div class="wire-up">
+      <div class="code-panel-label">WIRE IT UP · serverless.yml</div>
+      <pre class="code-panel">functions:
+    api-handler:
+        handler: api/handler.handle
+        events:
+            - http: { path: <span class="tok-string">/{proxy+}</span>, method: <span class="tok-string">ANY</span> }</pre>
+    </div>
+  </div>
+
+  <!-- SQS -->
+  <div class="trigger-panel" data-trigger="sqs">
+    <div class="code-grid">
+
+      <div>
+        <div class="code-col-header"><span class="lang">PYTHON</span><span class="pkg">acai-aws</span></div>
+        <div class="code-panel-label">THE HANDLER — validated before it runs</div>
+        <pre class="code-panel"><span class="tok-comment"># handlers/sqs.py</span>
+<span class="tok-keyword">from</span> acai_aws.sqs.requirements <span class="tok-keyword">import</span> requirements
+
+<span class="tok-string">@requirements</span>(
+    required_body=<span class="tok-string">'v1-sqs-event'</span>
+)
+<span class="tok-keyword">def</span> handle(event):
+    <span class="tok-keyword">for</span> record <span class="tok-keyword">in</span> event.records:
+        process(record.body)</pre>
+      </div>
+
+      <div>
+        <div class="code-col-header"><span class="lang">NODE</span><span class="pkg">acai-js</span></div>
+        <div class="code-panel-label">THE HANDLER — validated before it runs</div>
+        <pre class="code-panel"><span class="tok-comment">// handlers/sqs.js</span>
+<span class="tok-keyword">const</span> { sqs } = <span class="tok-keyword">require</span>(<span class="tok-string">'acai'</span>);
+
+<span class="tok-keyword">exports</span>.handle = <span class="tok-keyword">async</span> (event) => {
+    <span class="tok-keyword">const</span> sqsEvent = <span class="tok-keyword">new</span> sqs.Event(event, {
+        requiredBody: <span class="tok-string">'v1-sqs-event'</span>,
+        schemaPath: <span class="tok-string">'openapi.yml'</span>
+    });
+    <span class="tok-keyword">const</span> records = <span class="tok-keyword">await</span> sqsEvent.getRecords();
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> record <span class="tok-keyword">of</span> records) {
+        <span class="tok-keyword">await</span> process(record.body);
+    }
+};</pre>
+      </div>
+
+      <div>
+        <div class="code-col-header"><span class="lang">TYPESCRIPT</span><span class="pkg">acai-ts</span></div>
+        <div class="code-panel-label">THE HANDLER — validated before it runs</div>
+        <pre class="code-panel"><span class="tok-comment">// src/handlers/sqs.ts</span>
+<span class="tok-keyword">import</span> { Event } <span class="tok-keyword">from</span> <span class="tok-string">'acai-ts/sqs'</span>;
+<span class="tok-keyword">import</span> { SQSEvent } <span class="tok-keyword">from</span> <span class="tok-string">'aws-lambda'</span>;
+
+<span class="tok-keyword">export const</span> handle = <span class="tok-keyword">async</span> (event: SQSEvent) => {
+    <span class="tok-keyword">const</span> sqsEvent = <span class="tok-keyword">new</span> Event(event, {
+        requiredBody: <span class="tok-string">'v1-sqs-event'</span>,
+        schemaPath: <span class="tok-string">'./openapi.yml'</span>
+    });
+    <span class="tok-keyword">await</span> sqsEvent.process();
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> record <span class="tok-keyword">of</span> sqsEvent.records) {
+        <span class="tok-keyword">await</span> process(record.body);
+    }
+};</pre>
+      </div>
+
+    </div>
+    <div class="wire-up">
+      <div class="code-panel-label">WIRE IT UP · serverless.yml</div>
+      <pre class="code-panel">functions:
+    sqs-handler:
+        handler: handlers/sqs.handle
+        events:
+            - sqs: { arn: <span class="tok-string">!GetAtt GrowerQueue.Arn</span> }</pre>
+    </div>
+  </div>
+
+  <!-- DYNAMODB -->
+  <div class="trigger-panel" data-trigger="ddb">
+    <div class="code-grid">
+
+      <div>
+        <div class="code-col-header"><span class="lang">PYTHON</span><span class="pkg">acai-aws</span></div>
+        <div class="code-panel-label">THE HANDLER — streams, filtered by operation</div>
+        <pre class="code-panel"><span class="tok-comment"># handlers/dynamodb.py</span>
+<span class="tok-keyword">from</span> acai_aws.dynamodb.requirements <span class="tok-keyword">import</span> requirements
+
+<span class="tok-string">@requirements</span>(
+    operations=[<span class="tok-string">'created'</span>, <span class="tok-string">'deleted'</span>]
+)
+<span class="tok-keyword">def</span> handle(event):
+    <span class="tok-keyword">for</span> record <span class="tok-keyword">in</span> event.records:
+        sync(record.new_image)</pre>
+      </div>
+
+      <div>
+        <div class="code-col-header"><span class="lang">NODE</span><span class="pkg">acai-js</span></div>
+        <div class="code-panel-label">THE HANDLER — streams, filtered by operation</div>
+        <pre class="code-panel"><span class="tok-comment">// handlers/dynamodb.js</span>
+<span class="tok-keyword">const</span> { dynamodb } = <span class="tok-keyword">require</span>(<span class="tok-string">'acai'</span>);
+
+<span class="tok-keyword">exports</span>.handle = <span class="tok-keyword">async</span> (event) => {
+    <span class="tok-keyword">const</span> ddbEvent = <span class="tok-keyword">new</span> dynamodb.Event(event, {
+        operations: [<span class="tok-string">'create'</span>, <span class="tok-string">'delete'</span>]
+    });
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> record <span class="tok-keyword">of</span> ddbEvent.records) {
+        <span class="tok-keyword">await</span> sync(record.newImage);
+    }
+};</pre>
+      </div>
+
+      <div>
+        <div class="code-col-header"><span class="lang">TYPESCRIPT</span><span class="pkg">acai-ts</span></div>
+        <div class="code-panel-label">THE HANDLER — streams, filtered by operation</div>
+        <pre class="code-panel"><span class="tok-comment">// src/handlers/dynamodb.ts</span>
+<span class="tok-keyword">import</span> { Event } <span class="tok-keyword">from</span> <span class="tok-string">'acai-ts/dynamodb'</span>;
+<span class="tok-keyword">import</span> { DynamoDBStreamEvent } <span class="tok-keyword">from</span> <span class="tok-string">'aws-lambda'</span>;
+
+<span class="tok-keyword">export const</span> handle = <span class="tok-keyword">async</span> (event: DynamoDBStreamEvent) => {
+    <span class="tok-keyword">const</span> ddbEvent = <span class="tok-keyword">new</span> Event(event, {
+        operations: [<span class="tok-string">'create'</span>, <span class="tok-string">'delete'</span>]
+    });
+    <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> record <span class="tok-keyword">of</span> ddbEvent.records) {
+        <span class="tok-keyword">await</span> sync(record.newImage);
+    }
+};</pre>
+      </div>
+
+    </div>
+    <div class="wire-up">
+      <div class="code-panel-label">WIRE IT UP · serverless.yml</div>
+      <pre class="code-panel">functions:
+    ddb-handler:
+        handler: handlers/dynamodb.handle
+        events:
+            - stream: { type: <span class="tok-string">dynamodb</span>, arn: <span class="tok-string">!GetAtt GrowerTable.StreamArn</span> }</pre>
+    </div>
+  </div>
+
+</section>
+
+<!-- features -->
+<section class="features">
+  <div class="feature">
+    <div class="feature-index">01</div>
+    <div class="feature-title">Auto-routing</div>
+    <p>A configurable internal router maps files to routes — convention over configuration, no route tables.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-index">02</div>
+    <div class="feature-title">Schema validation</div>
+    <p>Declare required bodies, headers and OpenAPI schemas; invalid requests never reach your logic.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-index">03</div>
+    <div class="feature-title">Middleware, everywhere</div>
+    <p>Extensible before/after hooks for auth, timeouts and anything else — declared, not hand-rolled.</p>
+  </div>
+</section>
+
+<!-- event sources -->
+<section class="event-sources">
+  <span class="event-sources-label">EVERY EVENT SOURCE</span>
+  <div class="chips">
+    <span class="chip">API Gateway</span>
+    <span class="chip">DynamoDB</span>
+    <span class="chip">S3</span>
+    <span class="chip">SQS</span>
+    <span class="chip">SNS</span>
+    <span class="chip">Kinesis</span>
+    <span class="chip">Firehose</span>
+    <span class="chip">MSK</span>
+    <span class="chip">MQ</span>
+    <span class="chip">DocumentDB</span>
+  </div>
+</section>
+
+<!-- footer links -->
+<footer class="footer-links">
+  <a href="https://syngenta.github.io/acai-python-docs/" class="footer-card">
+    <div class="footer-card-title">acai-aws · PyPI</div>
+    <div class="footer-card-sub">Docs &amp; GitHub for Python →</div>
+  </a>
+  <a href="https://syngenta.github.io/acai-js-docs/" class="footer-card">
+    <div class="footer-card-title">acai-js · npm</div>
+    <div class="footer-card-sub">Docs &amp; GitHub for Node →</div>
+  </a>
+  <a href="https://syngenta.github.io/acai-ts-docs/" class="footer-card">
+    <div class="footer-card-title">acai-ts · npm</div>
+    <div class="footer-card-sub">Docs &amp; GitHub for TypeScript →</div>
+  </a>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
