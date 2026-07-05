@@ -305,7 +305,7 @@ a { color: inherit; }
 .feature-title {
   font: 500 19px/1.25 'IBM Plex Mono', monospace;
   letter-spacing: -0.02em;
-  margin-bottom: 10px;
+  margin: 0 0 10px;
 }
 
 .feature p {
@@ -372,12 +372,34 @@ a { color: inherit; }
 
 .footer-card-title {
   font: 500 13px/1 'IBM Plex Mono', monospace;
-  margin-bottom: 8px;
+  margin: 0 0 8px;
 }
 
 .footer-card-sub {
   font-size: 13px;
   color: var(--text-muted);
+}
+
+/* ---------- Agent discovery bar ---------- */
+.agent-bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px var(--gutter);
+  border-top: 1px solid var(--text);
+  font: 400 12px/1 'IBM Plex Mono', monospace;
+  color: var(--text-muted);
+}
+
+.agent-bar a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.agent-bar a:hover {
+  text-decoration: underline;
 }
 
 /* ---------- Responsive ---------- */

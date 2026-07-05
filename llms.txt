@@ -1,0 +1,19 @@
+# Acai
+
+> Acai is a DRY, declarative framework for AWS Lambda functions, available for Python, Node.js, and TypeScript. It implements Happy Path Programming: every input is validated — via auto-routing, OpenAPI schema validation, and configurable middleware — before business logic ever runs.
+
+Acai gives all three runtimes the same shape: a file-based router for API Gateway, and a uniform `Event`/requirements abstraction for asynchronous triggers (SQS, DynamoDB Streams, S3, SNS, Kinesis, Firehose, MSK, MQ, DocumentDB). The result is code with no defensive conditionals, no nested try/catch, and no boilerplate — just the happy path.
+
+## Packages
+
+- [acai-aws (Python, PyPI)](https://syngenta.github.io/acai-python-docs/): `pip install acai-aws`. Source: https://github.com/syngenta/acai-python
+- [acai (Node.js, npm — repo name acai-js)](https://syngenta.github.io/acai-js-docs/): `npm install acai`. Source: https://github.com/syngenta/acai-js
+- [acai-ts (TypeScript, npm)](https://syngenta.github.io/acai-ts-docs/): `npm install acai-ts`. Source: https://github.com/syngenta/acai-ts
+
+## For coding agents
+
+- [AGENTS.md](https://www.acaiproject.io/AGENTS.md): verified, per-language code patterns for the Router, and the SQS/DynamoDB/S3 Event classes — written to prevent the hallucinated `requirements()`-wrapper APIs that do not exist in acai/acai-ts.
+
+## Optional
+
+- [Homepage](https://www.acaiproject.io/): philosophy, side-by-side code samples for all three languages across API Gateway, SQS, and DynamoDB triggers.

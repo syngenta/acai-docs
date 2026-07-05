@@ -7,7 +7,9 @@
       var trigger = tab.getAttribute('data-trigger');
 
       tabs.forEach(function (t) {
-        t.classList.toggle('active', t === tab);
+        var isActive = t === tab;
+        t.classList.toggle('active', isActive);
+        t.setAttribute('aria-selected', String(isActive));
       });
       panels.forEach(function (p) {
         p.classList.toggle('active', p.getAttribute('data-trigger') === trigger);

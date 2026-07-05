@@ -3,19 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Acai — The happy path, in every language.</title>
-<meta name="description" content="Acai is a DRY, declarative framework for AWS Lambdas. One philosophy, three runtimes — validate every input first, then write only the code that matters.">
+<title>Acai — DRY, Declarative Framework for AWS Lambda (Python, Node.js &amp; TypeScript)</title>
+<meta name="description" content="Acai is a DRY, declarative framework for AWS Lambda functions in Python, Node.js and TypeScript. Auto-routing, OpenAPI schema validation and middleware for API Gateway, SQS, DynamoDB, S3, SNS, Kinesis and more — validate every input first, then write only the code that matters.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#141216">
+<link rel="canonical" href="https://www.acaiproject.io/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.acaiproject.io/">
+<meta property="og:site_name" content="Acai">
+<meta property="og:title" content="Acai — The happy path, in every language.">
+<meta property="og:description" content="A DRY, declarative framework for AWS Lambda functions in Python, Node.js and TypeScript. One philosophy, three runtimes — validate every input first, then write only the code that matters.">
+<meta property="og:image" content="https://www.acaiproject.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Acai — The happy path, in every language.">
+<meta name="twitter:description" content="A DRY, declarative framework for AWS Lambda functions in Python, Node.js and TypeScript.">
+<meta name="twitter:image" content="https://www.acaiproject.io/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.acaiproject.io/#website",
+      "url": "https://www.acaiproject.io/",
+      "name": "Acai",
+      "description": "A DRY, declarative framework for AWS Lambda functions in Python, Node.js and TypeScript.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://www.acaiproject.io/#software",
+      "name": "Acai",
+      "alternateName": ["acai-aws", "acai-js", "acai-ts"],
+      "description": "Acai is a DRY, declarative framework for AWS Lambda functions. It implements Happy Path Programming: every input is validated — via auto-routing, OpenAPI schema validation, and configurable middleware — before your business logic runs. Available for Python, Node.js and TypeScript, across API Gateway, SQS, DynamoDB, S3, SNS, Kinesis, Firehose, MSK, MQ and DocumentDB triggers.",
+      "url": "https://www.acaiproject.io/",
+      "codeRepository": "https://github.com/syngenta/acai-python",
+      "programmingLanguage": ["Python", "JavaScript", "TypeScript"],
+      "runtimePlatform": "AWS Lambda",
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "keywords": "AWS Lambda framework, serverless framework, Python AWS Lambda, Node.js AWS Lambda, TypeScript AWS Lambda, declarative framework, DRY framework, auto-routing, OpenAPI validation, happy path programming, API Gateway router, SQS handler, DynamoDB streams",
+      "sameAs": [
+        "https://github.com/syngenta/acai-python",
+        "https://github.com/syngenta/acai-js",
+        "https://github.com/syngenta/acai-ts"
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <!-- nav -->
-<nav class="nav">
+<nav class="nav" aria-label="Primary">
   <a href="/" class="nav-logo" style="text-decoration:none;color:inherit">
-    <svg width="22" height="22" viewBox="0 0 22 22">
+    <svg width="22" height="22" viewBox="0 0 22 22" role="img" aria-label="Acai logo">
       <circle cx="8" cy="14" r="6.5" fill="#5B2A86"></circle>
       <circle cx="15" cy="10" r="5" fill="none" stroke="#16151A" stroke-width="1.5"></circle>
     </svg>
@@ -29,6 +84,8 @@
   </div>
 </nav>
 
+<main>
+
 <!-- hero -->
 <section class="hero">
   <div class="hero-kicker">A FRAMEWORK FOR AWS LAMBDAS · PYTHON / NODE / TYPESCRIPT</div>
@@ -38,7 +95,7 @@
 
 <!-- philosophy -->
 <section class="philosophy">
-  <p class="philosophy-quote">&ldquo;No nested try/catch. No mid-level exceptions. Just the path your code was meant to take.&rdquo;</p>
+  <blockquote class="philosophy-quote">&ldquo;No nested try/catch. No mid-level exceptions. Just the path your code was meant to take.&rdquo;</blockquote>
   <div class="philosophy-body">
     <p><strong>Happy Path Programming</strong> is a simple idea: all inputs are validated before they are operated on. Acai's layers of configurable middleware let you declare what a valid input looks like — required bodies, headers, OpenAPI schemas — so invalid requests never reach your business logic.</p>
     <p>What's left is code that reads the way you meant it: no defensive conditionals, no exception plumbing, no boilerplate. Just the happy path.</p>
@@ -52,14 +109,14 @@
     <span class="code-section-caption">same framework · every trigger</span>
   </div>
 
-  <div class="trigger-tabs">
-    <button class="trigger-tab active" data-trigger="api">API GATEWAY</button>
-    <button class="trigger-tab" data-trigger="sqs">SQS</button>
-    <button class="trigger-tab" data-trigger="ddb">DYNAMODB</button>
+  <div class="trigger-tabs" role="tablist" aria-label="Event trigger">
+    <button class="trigger-tab active" role="tab" aria-selected="true" aria-controls="panel-api" id="tab-api" data-trigger="api">API GATEWAY</button>
+    <button class="trigger-tab" role="tab" aria-selected="false" aria-controls="panel-sqs" id="tab-sqs" data-trigger="sqs">SQS</button>
+    <button class="trigger-tab" role="tab" aria-selected="false" aria-controls="panel-ddb" id="tab-ddb" data-trigger="ddb">DYNAMODB</button>
   </div>
 
   <!-- API GATEWAY -->
-  <div class="trigger-panel active" data-trigger="api">
+  <div class="trigger-panel active" role="tabpanel" id="panel-api" aria-labelledby="tab-api" data-trigger="api">
     <div class="code-grid">
 
       <div>
@@ -156,7 +213,7 @@ requirements = {
   </div>
 
   <!-- SQS -->
-  <div class="trigger-panel" data-trigger="sqs">
+  <div class="trigger-panel" role="tabpanel" id="panel-sqs" aria-labelledby="tab-sqs" data-trigger="sqs">
     <div class="code-grid">
 
       <div>
@@ -222,7 +279,7 @@ requirements = {
   </div>
 
   <!-- DYNAMODB -->
-  <div class="trigger-panel" data-trigger="ddb">
+  <div class="trigger-panel" role="tabpanel" id="panel-ddb" aria-labelledby="tab-ddb" data-trigger="ddb">
     <div class="code-grid">
 
       <div>
@@ -289,17 +346,17 @@ requirements = {
 <section class="features">
   <div class="feature">
     <div class="feature-index">01</div>
-    <div class="feature-title">Auto-routing</div>
+    <h3 class="feature-title">Auto-routing</h3>
     <p>A configurable internal router maps files to routes — convention over configuration, no route tables.</p>
   </div>
   <div class="feature">
     <div class="feature-index">02</div>
-    <div class="feature-title">Schema validation</div>
+    <h3 class="feature-title">Schema validation</h3>
     <p>Declare required bodies, headers and OpenAPI schemas; invalid requests never reach your logic.</p>
   </div>
   <div class="feature">
     <div class="feature-index">03</div>
-    <div class="feature-title">Middleware, everywhere</div>
+    <h3 class="feature-title">Middleware, everywhere</h3>
     <p>Extensible before/after hooks for auth, timeouts and anything else — declared, not hand-rolled.</p>
   </div>
 </section>
@@ -321,20 +378,28 @@ requirements = {
   </div>
 </section>
 
+</main>
+
 <!-- footer links -->
-<footer class="footer-links">
-  <a href="https://syngenta.github.io/acai-python-docs/" class="footer-card">
-    <div class="footer-card-title">acai-aws · PyPI</div>
-    <div class="footer-card-sub">Docs &amp; GitHub for Python →</div>
-  </a>
-  <a href="https://syngenta.github.io/acai-js-docs/" class="footer-card">
-    <div class="footer-card-title">acai-js · npm</div>
-    <div class="footer-card-sub">Docs &amp; GitHub for Node →</div>
-  </a>
-  <a href="https://syngenta.github.io/acai-ts-docs/" class="footer-card">
-    <div class="footer-card-title">acai-ts · npm</div>
-    <div class="footer-card-sub">Docs &amp; GitHub for TypeScript →</div>
-  </a>
+<footer>
+  <div class="footer-links">
+    <a href="https://syngenta.github.io/acai-python-docs/" class="footer-card">
+      <h3 class="footer-card-title">acai-aws · PyPI</h3>
+      <div class="footer-card-sub">Docs &amp; GitHub for Python →</div>
+    </a>
+    <a href="https://syngenta.github.io/acai-js-docs/" class="footer-card">
+      <h3 class="footer-card-title">acai-js · npm</h3>
+      <div class="footer-card-sub">Docs &amp; GitHub for Node →</div>
+    </a>
+    <a href="https://syngenta.github.io/acai-ts-docs/" class="footer-card">
+      <h3 class="footer-card-title">acai-ts · npm</h3>
+      <div class="footer-card-sub">Docs &amp; GitHub for TypeScript →</div>
+    </a>
+  </div>
+  <div class="agent-bar">
+    <span>Building with an AI coding agent?</span>
+    <a href="/AGENTS.md">Read AGENTS.md →</a>
+  </div>
 </footer>
 
 <script src="script.js"></script>
